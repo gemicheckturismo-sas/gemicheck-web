@@ -353,6 +353,22 @@
     background: linear-gradient(165deg, #1e3a5f 0%, #2d5a8a 40%, #4a7ba8 70%, #7ba5c8 100%);
   }
 
+  .hero-visual-img-real {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  .hero-visual-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(10, 14, 26, 0.7) 100%);
+    z-index: 2;
+  }
+
   .hero-visual-img::before {
     content: '';
     position: absolute;
@@ -520,23 +536,17 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 30%, rgba(10, 14, 26, 0.85) 100%);
+    background: linear-gradient(180deg, rgba(10, 14, 26, 0.15) 0%, rgba(10, 14, 26, 0.4) 50%, rgba(10, 14, 26, 0.92) 100%);
   }
 
-  .destino-1 .destino-bg { background: linear-gradient(155deg, #1a4066 0%, #2d5f8a 50%, #4a7ba8 100%); }
-  .destino-2 .destino-bg { background: linear-gradient(155deg, #6b3410 0%, #8a5a2d 50%, #b8834a 100%); }
-  .destino-3 .destino-bg { background: linear-gradient(155deg, #0f5a3f 0%, #1d7e5c 50%, #3da881 100%); }
-  .destino-4 .destino-bg { background: linear-gradient(155deg, #8a3d1a 0%, #b85a2e 50%, #d97a44 100%); }
-  .destino-5 .destino-bg { background: linear-gradient(155deg, #2d5c3d 0%, #4a8a5f 50%, #6ba87e 100%); }
-  .destino-6 .destino-bg { background: linear-gradient(155deg, #34566b 0%, #527a8f 50%, #759db3 100%); }
-  .destino-7 .destino-bg { background: linear-gradient(155deg, #5c4a1f 0%, #8a7235 50%, #b89554 100%); }
-  .destino-8 .destino-bg { background: linear-gradient(155deg, #2a6b5c 0%, #3d9180 50%, #5db5a3 100%); }
-
-  .destino-mountains {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
+  .destino-1 .destino-bg { background: #1a4066 url('images/bariloche.jpg') center/cover; }
+  .destino-2 .destino-bg { background: #6b3410 url('images/mendoza.jpg') center/cover; }
+  .destino-3 .destino-bg { background: #0f5a3f url('images/iguazu.jpg') center/cover; }
+  .destino-4 .destino-bg { background: #8a3d1a url('images/salta.jpg') center/cover; }
+  .destino-5 .destino-bg { background: #2d5c3d url('images/angostura.jpg') center/cover; }
+  .destino-6 .destino-bg { background: #34566b url('images/san-martin.jpg') center/cover; }
+  .destino-7 .destino-bg { background: #5c4a1f url('images/cordoba.jpg') center/cover; }
+  .destino-8 .destino-bg { background: #2a6b5c url('images/brasil.jpg') center/cover; }
 
   .destino-content {
     position: absolute;
@@ -1144,20 +1154,8 @@
     </div>
 
     <div class="hero-visual">
-      <div class="hero-visual-img"></div>
-      <svg class="hero-visual-mountains" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
-        <circle cx="320" cy="90" r="42" fill="#f5e6d3" opacity="0.85"/>
-        <circle cx="320" cy="90" r="42" fill="url(#moonGrad)"/>
-        <defs>
-          <radialGradient id="moonGrad" cx="40%" cy="40%">
-            <stop offset="0%" stop-color="#fff8ea" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#d4b483" stop-opacity="0.3"/>
-          </radialGradient>
-        </defs>
-        <path d="M0,360 L50,320 L100,340 L160,280 L220,310 L280,250 L340,290 L400,270 L400,500 L0,500 Z" fill="#0f2942" opacity="0.85"/>
-        <path d="M0,390 L70,350 L140,375 L210,330 L280,360 L360,335 L400,345 L400,500 L0,500 Z" fill="#051a2e" opacity="0.95"/>
-        <path d="M0,430 L80,410 L160,420 L240,405 L320,415 L400,408 L400,500 L0,500 Z" fill="#021018"/>
-      </svg>
+      <img src="images/hero-bariloche.jpg" alt="Lago Nahuel Huapi, Bariloche" class="hero-visual-img-real">
+      <div class="hero-visual-overlay"></div>
       <div class="hero-visual-label">
         <div>
           <div class="hero-visual-label-eyebrow">DESTINO DESTACADO</div>
@@ -1194,10 +1192,6 @@
 
       <article class="destino-card destino-1 reveal">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,280 L50,230 L110,260 L170,210 L230,240 L300,220 L300,400 L0,400 Z" fill="#0a2942" opacity="0.7"/>
-          <path d="M0,310 L70,290 L140,305 L210,275 L280,300 L300,295 L300,400 L0,400 Z" fill="#051a2e" opacity="0.9"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1213,9 +1207,6 @@
 
       <article class="destino-card destino-2 reveal delay-1">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,300 L60,260 L120,280 L180,240 L240,270 L300,260 L300,400 L0,400 Z" fill="#3d1e08" opacity="0.7"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1231,9 +1222,6 @@
 
       <article class="destino-card destino-3 reveal delay-2">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,270 L40,240 L90,260 L150,220 L210,250 L270,230 L300,240 L300,400 L0,400 Z" fill="#042d1f" opacity="0.7"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1249,9 +1237,6 @@
 
       <article class="destino-card destino-4 reveal delay-3">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,290 L60,250 L120,280 L180,230 L240,260 L300,240 L300,400 L0,400 Z" fill="#4a1f0c" opacity="0.7"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1267,9 +1252,6 @@
 
       <article class="destino-card destino-5 reveal">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,280 L50,250 L100,270 L160,230 L220,255 L280,235 L300,245 L300,400 L0,400 Z" fill="#1a3824" opacity="0.7"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1285,9 +1267,6 @@
 
       <article class="destino-card destino-6 reveal delay-1">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,290 L60,260 L120,275 L180,240 L240,265 L300,250 L300,400 L0,400 Z" fill="#1c3244" opacity="0.7"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1303,9 +1282,6 @@
 
       <article class="destino-card destino-7 reveal delay-2">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,300 L70,270 L140,285 L210,255 L280,280 L300,275 L300,400 L0,400 Z" fill="#3a2c0f" opacity="0.7"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1321,9 +1297,6 @@
 
       <article class="destino-card destino-8 reveal delay-3">
         <div class="destino-bg"></div>
-        <svg class="destino-mountains" viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice">
-          <path d="M0,310 L60,285 L130,300 L200,275 L270,295 L300,290 L300,400 L0,400 Z" fill="#0a3028" opacity="0.7"/>
-        </svg>
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -1522,8 +1495,8 @@
       <div class="footer-col">
         <div class="footer-col-title">CONTACTO</div>
         <ul>
-          <li><a href="https://wa.me/5491122528595">WhatsApp</a></li>
-          <li><a href="mailto:gemicheck.turismo@gmail.com">gemicheck.turismo@gmail.com</a></li>
+          <li><a href="https://wa.me/5491100000000">WhatsApp</a></li>
+          <li><a href="mailto:hola@gemicheck.com">hola@gemicheck.com</a></li>
           <li><a href="https://instagram.com/gemicheck">Instagram</a></li>
           <li><a href="#">Buenos Aires · CABA</a></li>
         </ul>
@@ -1537,7 +1510,7 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5491122528595" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+<a href="https://wa.me/5491100000000" class="whatsapp-float" aria-label="Contactar por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
   </svg>
@@ -1607,7 +1580,7 @@
       body: googleFormData
     }).finally(() => {
       const msg = `Hola Gemicheck! Soy ${data.get('nombre')}, quiero cotizar un viaje a ${data.get('destino')} para ${data.get('personas')} personas${data.get('fecha') ? ' en ' + data.get('fecha') : ''}.${data.get('mensaje') ? ' ' + data.get('mensaje') : ''}`;
-      const whatsapp = `https://wa.me/5491122528595?text=${encodeURIComponent(msg)}`;
+      const whatsapp = `https://wa.me/5491100000000?text=${encodeURIComponent(msg)}`;
 
       submitBtn.innerHTML = '✓ ¡Recibido! Te abrimos WhatsApp...';
       submitBtn.style.background = 'var(--accent-teal)';
