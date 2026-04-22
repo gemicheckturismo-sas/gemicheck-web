@@ -40,7 +40,6 @@
     font-weight: 400;
     line-height: 1.6;
     overflow-x: hidden;
-    cursor: none;
   }
 
   @media (max-width: 900px) {
@@ -1422,9 +1421,6 @@
 </head>
 <body>
 
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
-
 <nav id="nav">
   <div class="container nav-inner">
     <a href="#" class="logo">
@@ -1913,29 +1909,6 @@
 </div>
 
 <script>
-  const cursor = document.querySelector('.cursor');
-  const cursorRing = document.querySelector('.cursor-ring');
-
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    setTimeout(() => {
-      cursorRing.style.left = e.clientX + 'px';
-      cursorRing.style.top = e.clientY + 'px';
-    }, 50);
-  });
-
-  document.querySelectorAll('a, button, .destino-card, input, select, textarea').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.classList.add('hover');
-      cursorRing.classList.add('hover');
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
-      cursorRing.classList.remove('hover');
-    });
-  });
-
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) nav.classList.add('scrolled');
