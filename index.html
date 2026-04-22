@@ -769,11 +769,9 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.4s var(--ease);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 80px 20px 60px;
   }
 
   .modal-overlay.active {
@@ -784,17 +782,19 @@
   .modal-content {
     max-width: 1100px;
     width: 100%;
+    margin: 0 auto;
     position: relative;
   }
 
   .modal-close {
-    position: absolute;
-    top: -48px;
-    right: 0;
-    width: 40px;
-    height: 40px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
     border: 1px solid var(--border-strong);
-    background: transparent;
+    background: rgba(10, 14, 26, 0.8);
+    backdrop-filter: blur(10px);
     color: var(--ink);
     border-radius: 50%;
     cursor: pointer;
@@ -802,13 +802,16 @@
     align-items: center;
     justify-content: center;
     font-family: inherit;
+    font-size: 18px;
     transition: all 0.3s var(--ease);
+    z-index: 201;
   }
 
   .modal-close:hover {
     background: var(--accent);
     border-color: var(--accent);
     color: var(--bg);
+    transform: rotate(90deg);
   }
 
   .modal-header {
@@ -920,11 +923,13 @@
   }
 
   .lightbox-img {
-    max-width: 90%;
-    max-height: 90vh;
+    max-width: 85%;
+    max-height: 85vh;
     border-radius: 8px;
     object-fit: contain;
     box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   .lightbox-close {
@@ -954,15 +959,74 @@
     transform: rotate(90deg);
   }
 
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--border-strong);
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 32px;
+    line-height: 1;
+    transition: all 0.3s var(--ease);
+    z-index: 2;
+    padding-bottom: 4px;
+  }
+
+  .lightbox-nav:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+
+  .lightbox-prev { left: 24px; }
+  .lightbox-next { right: 24px; }
+
+  @media (max-width: 640px) {
+    .lightbox-nav {
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
+    }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-img { max-width: calc(100% - 110px); }
+  }
+
   .lightbox-hint {
     position: absolute;
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     color: var(--ink-muted);
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .lightbox-counter {
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 3px;
+  }
+
+  .lightbox-hint-mobile { display: none; }
+
+  @media (max-width: 640px) {
+    .lightbox-hint-desktop { display: none; }
+    .lightbox-hint-mobile { display: inline; }
   }
 
   .modal-cta {
@@ -2011,23 +2075,52 @@
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Cerrar">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1, event)" aria-label="Anterior">‹</button>
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
-  <div class="lightbox-hint">CLICK AFUERA O ESC PARA CERRAR</div>
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1, event)" aria-label="Siguiente">›</button>
+  <div class="lightbox-hint">
+    <span class="lightbox-counter" id="lightboxCounter">1 / 12</span>
+    <span class="lightbox-hint-desktop">← → PARA NAVEGAR · ESC PARA CERRAR</span>
+    <span class="lightbox-hint-mobile">DESLIZÁ O TOCÁ LAS FLECHAS</span>
+  </div>
 </div>
 
 <script>
   // === LIGHTBOX ===
+  const TOTAL_CLIENTES = 12;
+  let currentLightboxIndex = 0;
+
   function openLightbox(src) {
+    // Extraer el número del archivo (cliente-NN.jpg)
+    const match = src.match(/cliente-(\d+)/);
+    if (match) {
+      currentLightboxIndex = parseInt(match[1]) - 1;
+    }
+    showLightboxImage();
     const lightbox = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    img.src = src;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
+  function showLightboxImage() {
+    const num = String(currentLightboxIndex + 1).padStart(2, '0');
+    const src = `images/clientes/cliente-${num}.jpg`;
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCounter').textContent = `${currentLightboxIndex + 1} / ${TOTAL_CLIENTES}`;
+  }
+
+  function navLightbox(direction, event) {
+    if (event) event.stopPropagation();
+    currentLightboxIndex = (currentLightboxIndex + direction + TOTAL_CLIENTES) % TOTAL_CLIENTES;
+    showLightboxImage();
+  }
+
   function closeLightbox(event) {
-    // Solo cerrar si click en fondo o botón X, NO en la imagen
-    if (event && event.target.classList.contains('lightbox-img')) return;
+    // Solo cerrar si click en fondo o botón X, NO en la imagen o flechas
+    if (event && (
+      event.target.classList.contains('lightbox-img') ||
+      event.target.classList.contains('lightbox-nav')
+    )) return;
     const lightbox = document.getElementById('lightbox');
     lightbox.classList.remove('active');
     // Solo restaurar scroll si no hay otro modal abierto
@@ -2036,15 +2129,29 @@
     }
   }
 
-  // Cerrar lightbox con Escape
+  // Teclado: Escape cierra, ← → navegan
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const lightbox = document.getElementById('lightbox');
-      if (lightbox.classList.contains('active')) {
-        closeLightbox();
-      }
-    }
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') navLightbox(-1);
+    else if (e.key === 'ArrowRight') navLightbox(1);
   });
+
+  // Swipe en mobile
+  let touchStartX = 0;
+  document.getElementById('lightbox').addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+
+  document.getElementById('lightbox').addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) navLightbox(1);
+      else navLightbox(-1);
+    }
+  }, { passive: true });
 
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
