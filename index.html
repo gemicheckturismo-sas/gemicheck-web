@@ -122,6 +122,15 @@
     color: var(--ink);
   }
 
+  .logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
+    transition: opacity 0.3s var(--ease);
+  }
+
+  .logo:hover .logo-img { opacity: 0.8; }
+
   .logo-mark {
     width: 28px;
     height: 28px;
@@ -612,6 +621,284 @@
 
   .destino-cta svg { width: 14px; height: 14px; }
 
+  .personalizada {
+    background: var(--bg);
+    padding: 100px 0;
+  }
+
+  .personalizada-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+  }
+
+  .personalizada-mosaico {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4px;
+  }
+
+  .mosaico-main {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mosaico-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mosaico-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .mosaico-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .personalizada-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(10, 14, 26, 0.3) 0%, rgba(10, 14, 26, 0.8) 45%, rgba(10, 14, 26, 0.95) 100%);
+  }
+
+  .personalizada-content {
+    position: relative;
+    z-index: 2;
+    margin-left: auto;
+    padding: 60px;
+    max-width: 55%;
+    text-align: left;
+  }
+
+  .personalizada-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+
+  .personalizada-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .personalizada-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+
+  @media (max-width: 900px) {
+    .personalizada-card {
+      min-height: 600px;
+      display: block;
+    }
+    .personalizada-mosaico {
+      position: relative;
+      height: 280px;
+      grid-template-columns: 1fr;
+    }
+    .mosaico-grid {
+      display: none;
+    }
+    .personalizada-overlay {
+      background: linear-gradient(180deg, rgba(10, 14, 26, 0.3) 0%, rgba(10, 14, 26, 0.95) 100%);
+    }
+    .personalizada-content {
+      max-width: 100%;
+      margin-left: 0;
+      padding: 40px 32px;
+      background: var(--bg-alt);
+    }
+  }
+
+  .clientes-btn {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+    padding: 14px 24px;
+    background: rgba(212, 180, 131, 0.12);
+    border: 1px solid var(--accent);
+    border-radius: 100px;
+    color: var(--accent);
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    align-self: flex-start;
+    width: fit-content;
+  }
+
+  .clientes-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+    transform: translateY(-2px);
+  }
+
+  .clientes-btn svg {
+    transition: transform 0.3s var(--ease);
+  }
+
+  .clientes-btn:hover svg { transform: translate(3px, -3px); }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 16, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .modal-content {
+    max-width: 1100px;
+    width: 100%;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: -48px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border-strong);
+    background: transparent;
+    color: var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    transition: all 0.3s var(--ease);
+  }
+
+  .modal-close:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+
+  .modal-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .modal-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 14px;
+  }
+
+  .modal-title em { font-style: italic; color: var(--accent); }
+
+  .modal-subtitle {
+    font-size: 15px;
+    color: var(--ink-muted);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .clientes-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+
+  @media (max-width: 900px) {
+    .clientes-gallery { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .clientes-gallery { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .cliente-item {
+    aspect-ratio: 4/5;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px;
+    color: var(--ink);
+  }
+
+  .cliente-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(155deg, var(--surface) 0%, var(--surface-hover) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-dim);
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .cliente-soon {
+    position: relative;
+    z-index: 2;
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 1.5px;
+  }
+
+  .modal-cta {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    color: var(--ink-muted);
+    font-size: 14px;
+  }
+
+  .modal-cta a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .modal-cta a:hover { text-decoration: underline; }
+
   .diferenciales {
     background: var(--bg);
     padding: 120px 0;
@@ -978,13 +1265,17 @@
 
   .footer-inner {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1fr;
-    gap: 60px;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;
+    gap: 48px;
     margin-bottom: 60px;
   }
 
-  @media (max-width: 900px) {
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 1100px) {
+    .footer-inner { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 700px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
 
   @media (max-width: 500px) {
@@ -1043,30 +1334,54 @@
     .footer-bottom { flex-direction: column; gap: 12px; }
   }
 
-  .whatsapp-float {
+  .floating-buttons {
     position: fixed;
     bottom: 32px;
     right: 32px;
-    width: 60px;
-    height: 60px;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .float-btn {
+    width: 58px;
+    height: 58px;
     border-radius: 50%;
-    background: #25D366;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 50;
     cursor: pointer;
-    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
     transition: all 0.3s var(--ease);
     color: white;
     text-decoration: none;
+  }
+
+  .float-btn svg { width: 26px; height: 26px; }
+
+  .whatsapp-float {
+    background: #25D366;
+    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.35);
   }
 
   .whatsapp-float:hover {
     transform: scale(1.1) rotate(-8deg);
   }
 
-  .whatsapp-float svg { width: 28px; height: 28px; }
+  .instagram-float {
+    background: linear-gradient(135deg, #fdc068 0%, #d13e7d 50%, #7b2bbd 100%);
+    box-shadow: 0 10px 40px rgba(209, 62, 125, 0.35);
+  }
+
+  .instagram-float:hover {
+    transform: scale(1.1) rotate(8deg);
+  }
+
+  @media (max-width: 700px) {
+    .floating-buttons { bottom: 20px; right: 20px; gap: 10px; }
+    .float-btn { width: 52px; height: 52px; }
+    .float-btn svg { width: 22px; height: 22px; }
+  }
 
   .reveal {
     opacity: 0;
@@ -1113,14 +1428,7 @@
 <nav id="nav">
   <div class="container nav-inner">
     <a href="#" class="logo">
-      <span class="logo-mark">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 2L4 9v14l12 7 12-7V9L16 2z" stroke="#d4b483" stroke-width="1.2"/>
-          <path d="M4 9l12 7 12-7M16 16v14" stroke="#d4b483" stroke-width="1.2" opacity="0.6"/>
-          <circle cx="16" cy="16" r="2" fill="#d4b483"/>
-        </svg>
-      </span>
-      GEMICHECK
+      <img src="images/logo.png" alt="Gemicheck" class="logo-img">
     </a>
     <ul class="nav-links">
       <li><a href="#destinos">Destinos</a></li>
@@ -1128,7 +1436,7 @@
       <li><a href="#cotizar">Cotizar</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#cotizar" class="nav-cta">Cotizá tu viaje</a>
+    <a href="#cotizar" class="nav-cta">Armá tu viaje</a>
   </div>
 </nav>
 
@@ -1136,17 +1444,17 @@
   <div class="hero-bg"></div>
   <div class="container hero-inner">
     <div>
-      <div class="hero-eyebrow">AGENCIA DE VIAJES BOUTIQUE</div>
+      <div class="hero-eyebrow">AGENCIA DE VIAJES PERSONALIZADA</div>
       <h1 class="hero-title">
         Tu viaje empieza<br>
         desde la <em>planificación</em>.
       </h1>
       <p class="hero-desc">
-        Diseñamos experiencias de viaje curadas por personas que conocen cada destino. No vendemos paquetes. Creamos recuerdos.
+        Ofrecemos experiencias, facilidad y satisfacción. Conocemos cada destino. No vendemos paquetes. Creamos recuerdos.
       </p>
       <div class="hero-ctas">
         <a href="#cotizar" class="btn btn-primary">
-          Cotizá tu viaje
+          Armá tu viaje
           <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
         <a href="#destinos" class="btn btn-ghost">Ver destinos</a>
@@ -1158,7 +1466,7 @@
       <div class="hero-visual-overlay"></div>
       <div class="hero-visual-label">
         <div>
-          <div class="hero-visual-label-eyebrow">DESTINO DESTACADO</div>
+          <div class="hero-visual-label-eyebrow">DESTINO DESTACADO DEL MES</div>
           <div class="hero-visual-label-title">Bariloche</div>
         </div>
         <div class="hero-visual-meta">
@@ -1179,12 +1487,8 @@
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="section-eyebrow">NUESTROS DESTINOS</div>
+        <div class="section-eyebrow">PRINCIPALES DESTINOS</div>
         <h2 class="section-title">Cada lugar,<br>una <em>historia.</em></h2>
-      </div>
-      <div class="section-meta">
-        08 EXPERIENCIAS<br>
-        CURADAS
       </div>
     </div>
 
@@ -1314,13 +1618,45 @@
   </div>
 </section>
 
+<section class="personalizada">
+  <div class="container">
+    <div class="personalizada-card reveal">
+      <div class="personalizada-mosaico">
+        <div class="mosaico-main">
+          <img src="images/hero-bariloche.jpg" alt="Bariloche">
+        </div>
+        <div class="mosaico-grid">
+          <img src="images/iguazu.jpg" alt="Iguazú">
+          <img src="images/salta.jpg" alt="Salta">
+          <img src="images/brasil.jpg" alt="Brasil">
+          <img src="images/mendoza.jpg" alt="Mendoza">
+        </div>
+        <div class="personalizada-overlay"></div>
+      </div>
+      <div class="personalizada-content">
+        <div class="section-eyebrow">ASESORÍA PERSONALIZADA</div>
+        <h2 class="personalizada-title">
+          ¿No sabés<br>dónde <em>viajar?</em>
+        </h2>
+        <p class="personalizada-desc">
+          Te brindamos recomendación gratuita con las mejores fechas, mejores precios y épocas del año. Contactanos y nos encargamos de ayudarte y guiarte hacia tu próximo destino.
+        </p>
+        <a href="https://wa.me/5491122528595?text=Hola%20Gemicheck!%20Quiero%20recomendaci%C3%B3n%20para%20mi%20pr%C3%B3ximo%20viaje" target="_blank" class="btn btn-primary">
+          Recibí tu recomendación
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diferenciales">
   <div class="container">
     <div class="dif-intro reveal">
       <div class="section-eyebrow">POR QUÉ GEMICHECK</div>
       <p class="dif-intro-text">
-        No somos una plataforma más.<br>
-        Somos la gente que <em>diseña tu viaje</em> como si fuera el suyo.
+        No somos una agencia más.<br>
+        <em>Diseñamos tu viaje</em>, como si fuera nuestro. Con profesionalismo y pasión.
       </p>
     </div>
 
@@ -1335,7 +1671,7 @@
       <div class="dif-item reveal delay-1">
         <div class="dif-number">02</div>
         <h3 class="dif-title">Viajes a medida</h3>
-        <p class="dif-desc">Diseñamos tu experiencia según tu estilo, ritmo y presupuesto. Nada prefabricado, todo pensado.</p>
+        <p class="dif-desc">Diseñamos tu experiencia según tu estilo, ritmo y presupuesto. Nada pre-armado, todo personalizado.</p>
       </div>
 
       <div class="dif-item reveal delay-2">
@@ -1352,29 +1688,33 @@
   <div class="container nosotros-inner">
     <div class="nosotros-visual reveal">
       <div class="nosotros-stat">
-        <div class="nosotros-stat-number">+200</div>
+        <div class="nosotros-stat-number">+100</div>
         <div class="nosotros-stat-label">VIAJEROS FELICES</div>
       </div>
       <div class="nosotros-founders">
         <div class="founder-avatar">C</div>
         <div class="founder-avatar">G</div>
         <div class="founders-info">
-          <div class="founders-info-title">Cristian &amp; Gonza</div>
+          <div class="founders-info-title">Crist &amp; Gonza</div>
           <div class="founders-info-sub">CO-FOUNDERS</div>
         </div>
       </div>
+      <button class="clientes-btn" onclick="document.getElementById('clientesModal').classList.add('active')">
+        <span>Lo que vivieron nuestros clientes</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
     </div>
 
     <div class="nosotros-text reveal delay-1">
       <div class="section-eyebrow">QUIÉNES SOMOS</div>
-      <h2>La agencia que <em>nosotros</em><br>hubiésemos querido tener.</h2>
+      <h2>La agencia que <em>nosotros</em><br>soñamos, ahora toca cumplir sus sueños.</h2>
       <p>
-        Gemicheck nace de la convicción de que viajar tiene que ser fácil, personal y memorable. No queremos que elijas un paquete; queremos diseñar tu próxima experiencia.
+        GemiCheck nace de la pasión por viajar. Tenemos la convicción de que tiene que ser fácil, personalizado y que el recuerdo sea único y anecdótico. No queremos que elijas un paquete; nos apasiona diseñar la experiencia de cada persona que toma la decisión de viajar.
       </p>
       <p>
-        Somos un equipo pequeño y enfocado. Cada viaje que armamos lo pensamos como si fuera para nosotros: destinos que conocemos, proveedores que probamos, detalles que no se ven pero que hacen toda la diferencia.
+        Somos un equipo enfocado. Cada viaje que armamos lo pensamos como si fuera para nosotros: destinos que conocemos, proveedores que probamos, detalles que no se ven pero que hacen toda la diferencia.
       </p>
-      <div class="nosotros-signature">— Cristian Castellano &amp; Gonza Balmaceda</div>
+      <div class="nosotros-signature">— Cristian Castellano &amp; Gonzalo Balmaceda</div>
     </div>
   </div>
 </section>
@@ -1397,7 +1737,7 @@
 <section class="cotizar" id="cotizar">
   <div class="container">
     <div class="cotizar-inner">
-      <div class="section-eyebrow reveal">COTIZÁ TU VIAJE</div>
+      <div class="section-eyebrow reveal">PLANIFICÁ TU VIAJE</div>
       <h2 class="cotizar-title reveal delay-1">Contanos tu<br><em>próximo destino.</em></h2>
       <p class="cotizar-desc reveal delay-2">
         Respondemos en menos de 24hs con una propuesta personalizada. Sin compromiso, sin letra chica.
@@ -1468,7 +1808,7 @@
       <div>
         <div class="footer-brand-title">Gemicheck</div>
         <p class="footer-brand-desc">
-          Agencia boutique de viajes. Diseñamos experiencias personalizadas por Argentina y Brasil, con asesoramiento humano y atención a cada detalle.
+          Agencia de viajes. Diseñamos experiencias personalizadas a cualquier destino, con asesoramiento humano y atención a cada detalle.
         </p>
       </div>
 
@@ -1486,7 +1826,7 @@
         <div class="footer-col-title">EMPRESA</div>
         <ul>
           <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#cotizar">Cotizar</a></li>
+          <li><a href="#cotizar">Planificar</a></li>
           <li><a href="#">Política de privacidad</a></li>
           <li><a href="#">Términos</a></li>
         </ul>
@@ -1495,10 +1835,20 @@
       <div class="footer-col">
         <div class="footer-col-title">CONTACTO</div>
         <ul>
-          <li><a href="https://wa.me/5491100000000">WhatsApp</a></li>
-          <li><a href="mailto:hola@gemicheck.com">hola@gemicheck.com</a></li>
-          <li><a href="https://instagram.com/gemicheck">Instagram</a></li>
+          <li><a href="https://wa.me/5491122528595">WhatsApp</a></li>
+          <li><a href="mailto:gemicheck.turismo@gmail.com">gemicheck.turismo@gmail.com</a></li>
           <li><a href="#">Buenos Aires · CABA</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">REDES</div>
+        <ul>
+          <li><a href="https://www.instagram.com/gemicheck.turismo" target="_blank">Instagram</a></li>
+          <li><a href="https://wa.me/5491122528595" target="_blank">WhatsApp</a></li>
+          <li><a href="#" target="_blank">Facebook</a></li>
+          <li><a href="#" target="_blank">TikTok</a></li>
+          <li><a href="#" target="_blank">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -1510,11 +1860,57 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5491100000000" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-  </svg>
-</a>
+<div class="floating-buttons">
+  <a href="https://www.instagram.com/gemicheck.turismo" target="_blank" class="float-btn instagram-float" aria-label="Seguinos en Instagram">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    </svg>
+  </a>
+  <a href="https://wa.me/5491122528595" class="float-btn whatsapp-float" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+    </svg>
+  </a>
+</div>
+
+<div class="modal-overlay" id="clientesModal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="document.getElementById('clientesModal').classList.remove('active')" aria-label="Cerrar">✕</button>
+    <div class="modal-header">
+      <h2 class="modal-title">Lo que vivieron<br>nuestros <em>clientes</em></h2>
+      <p class="modal-subtitle">Momentos reales de viajeros que confiaron en nosotros para diseñar su experiencia.</p>
+    </div>
+    <div class="clientes-gallery">
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+      <div class="cliente-item">
+        <div class="cliente-placeholder">PRÓXIMAMENTE</div>
+      </div>
+    </div>
+    <div class="modal-cta">
+      ¿Viajaste con nosotros? Etiquetanos en <a href="https://www.instagram.com/gemicheck.turismo" target="_blank">@gemicheck.turismo</a> y aparecé acá.
+    </div>
+  </div>
+</div>
 
 <script>
   const cursor = document.querySelector('.cursor');
@@ -1580,7 +1976,7 @@
       body: googleFormData
     }).finally(() => {
       const msg = `Hola Gemicheck! Soy ${data.get('nombre')}, quiero cotizar un viaje a ${data.get('destino')} para ${data.get('personas')} personas${data.get('fecha') ? ' en ' + data.get('fecha') : ''}.${data.get('mensaje') ? ' ' + data.get('mensaje') : ''}`;
-      const whatsapp = `https://wa.me/5491100000000?text=${encodeURIComponent(msg)}`;
+      const whatsapp = `https://wa.me/5491122528595?text=${encodeURIComponent(msg)}`;
 
       submitBtn.innerHTML = '✓ ¡Recibido! Te abrimos WhatsApp...';
       submitBtn.style.background = 'var(--accent-teal)';
@@ -1606,6 +2002,20 @@
       }
     });
   });
+
+  const clientesModal = document.getElementById('clientesModal');
+  if (clientesModal) {
+    clientesModal.addEventListener('click', (e) => {
+      if (e.target === clientesModal) {
+        clientesModal.classList.remove('active');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && clientesModal.classList.contains('active')) {
+        clientesModal.classList.remove('active');
+      }
+    });
+  }
 </script>
 
 </body>
