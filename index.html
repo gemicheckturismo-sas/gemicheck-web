@@ -753,11 +753,22 @@
     justify-content: space-between;
   }
 
+  .nosotros-visual-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+  }
+
   .nosotros-visual::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(212, 180, 131, 0.1), transparent 60%);
+    background: linear-gradient(to top, rgba(10,12,11,0.92) 0%, rgba(10,12,11,0.45) 50%, rgba(10,12,11,0.25) 100%);
+    z-index: 1;
   }
 
   .nosotros-stat {
@@ -1959,12 +1970,13 @@
 <section class="nosotros" id="nosotros">
   <div class="container nosotros-inner">
     <div class="nosotros-visual reveal">
+      <img src="images/founders.jpg" alt="Crist & Gonza" class="nosotros-visual-bg">
       <div class="nosotros-stat">
         <div class="nosotros-stat-number">+100</div>
         <div class="nosotros-stat-label">VIAJEROS FELICES</div>
       </div>
       <div class="nosotros-founders">
-        <img src="images/founders.jpg" alt="Crist & Gonza" class="founders-photo">
+        <img src="images/logo.png" alt="Gemicheck" class="founders-photo" style="background:#fff; padding:4px; border-radius:50%; object-fit:contain;">
         <div class="founders-info">
           <div class="founders-info-title">Crist &amp; Gonza</div>
           <div class="founders-info-sub">CO-FOUNDERS</div>
