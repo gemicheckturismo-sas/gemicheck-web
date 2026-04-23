@@ -790,6 +790,16 @@
     align-items: center;
   }
 
+  .founders-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid var(--accent);
+    flex-shrink: 0;
+  }
+
   .founder-avatar {
     width: 48px;
     height: 48px;
@@ -1774,7 +1784,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">01</span>
           <div>
             <div class="destino-region">PATAGONIA</div>
             <div class="destino-name">Bariloche</div>
@@ -1789,7 +1798,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">02</span>
           <div>
             <div class="destino-region">CUYO</div>
             <div class="destino-name">Mendoza</div>
@@ -1804,7 +1812,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">03</span>
           <div>
             <div class="destino-region">LITORAL</div>
             <div class="destino-name">Iguazú</div>
@@ -1819,7 +1826,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">04</span>
           <div>
             <div class="destino-region">NORTE</div>
             <div class="destino-name">Salta &amp; Jujuy</div>
@@ -1834,7 +1840,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">05</span>
           <div>
             <div class="destino-region">PATAGONIA</div>
             <div class="destino-name">V. La Angostura</div>
@@ -1849,7 +1854,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">06</span>
           <div>
             <div class="destino-region">PATAGONIA</div>
             <div class="destino-name">S. M. de los Andes</div>
@@ -1864,7 +1868,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">07</span>
           <div>
             <div class="destino-region">MEDITERRÁNEA</div>
             <div class="destino-name">Córdoba</div>
@@ -1879,7 +1882,6 @@
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">08</span>
           <div>
             <div class="destino-region">INTERNACIONAL</div>
             <div class="destino-name">Brasil</div>
@@ -1962,8 +1964,7 @@
         <div class="nosotros-stat-label">VIAJEROS FELICES</div>
       </div>
       <div class="nosotros-founders">
-        <div class="founder-avatar">C</div>
-        <div class="founder-avatar">G</div>
+        <img src="images/founders.jpg" alt="Crist & Gonza" class="founders-photo">
         <div class="founders-info">
           <div class="founders-info-title">Crist &amp; Gonza</div>
           <div class="founders-info-sub">CO-FOUNDERS</div>
@@ -2270,8 +2271,13 @@
   }
   function navLightbox(direction, event) {
     if (event) event.stopPropagation();
-    currentLightboxIndex = (currentLightboxIndex + direction + TOTAL_CLIENTES) % TOTAL_CLIENTES;
-    showLightboxImage();
+    const enDestino = document.getElementById('destinoModal') && document.getElementById('destinoModal').classList.contains('active');
+    if (enDestino && destinoLightboxImages.length > 1) {
+      navDestinoLightbox(direction);
+    } else {
+      currentLightboxIndex = (currentLightboxIndex + direction + TOTAL_CLIENTES) % TOTAL_CLIENTES;
+      showLightboxImage();
+    }
   }
   function closeLightbox(event) {
     if (event && (event.target.classList.contains('lightbox-img') || event.target.classList.contains('lightbox-nav'))) return;
@@ -2420,12 +2426,28 @@
     },
     brasil: {
       nombre: "Brasil", region: "Internacional",
-      desc: "Calor, samba, playas paradisíacas y la calidez única del pueblo brasileño. Tenemos dos destinos curados con experiencias muy distintas: Río de Janeiro, la ciudad maravillosa, y Búzios, el paraíso de las 23 playas. Hacé click en el destino que te llame para conocer más.",
+      desc: "Calor, samba, playas paradisíacas y la calidez única del pueblo brasileño. Tenemos tres destinos curados con experiencias muy distintas: Florianópolis, la isla de la magia, Río de Janeiro, la ciudad maravillosa, y Búzios, el paraíso de las 23 playas. Hacé click en el destino que te llame para conocer más.",
       esGrupo: true,
       subDestinos: [
-        { id: "rio", nombre: "Río de Janeiro", region: "Ciudad maravillosa", tag: "Cristo · Copacabana · Cultura", img: "images/brasil.jpg" },
-        { id: "buzios", nombre: "Búzios", region: "Costa fluminense", tag: "23 playas · Sofisticación", img: "images/brasil.jpg" }
+        { id: "florianopolis", nombre: "Florianópolis", region: "Santa Catarina", tag: "Playas · Dunas · Surf", img: "images/destinos/florianopolis-1.jpg" },
+        { id: "rio", nombre: "Río de Janeiro", region: "Ciudad maravillosa", tag: "Cristo · Copacabana · Cultura", img: "images/destinos/rio-1.jpg" },
+        { id: "buzios", nombre: "Búzios", region: "Costa fluminense", tag: "23 playas · Sofisticación", img: "images/destinos/buzios-1.jpg" }
       ]
+    },
+    florianopolis: {
+      nombre: "Florianópolis", region: "Brasil · Santa Catarina", fotos: 1, parentName: "Brasil", parent: "brasil",
+      desc: "La isla de la magia. Más de 40 playas con personalidades únicas: surf en Joaquina, aguas calmas en Jurerê, dunas en Ingleses y vida nocturna en Lagoa da Conceição. Floripa combina naturaleza, cultura gaucha y la energía brasileña en una isla que te atrapa desde el primer día.",
+      actividades: [
+        { i: "🏄", t: "Surf en Joaquina", d: "Una de las mejores olas de Brasil, con escuelas para todos los niveles y ambiente joven." },
+        { i: "🌊", t: "Praia Mole y Galheta", d: "Las playas más vibrantes de la isla, con una energía única entre jóvenes y turistas del mundo." },
+        { i: "🚵", t: "Lagoa da Conceição", d: "El corazón de Floripa: laguna, restaurantes, bares y el mejor windsurf de la región." },
+        { i: "🏖️", t: "Jurerê Internacional", d: "La playa más exclusiva, con beach clubs, gastronomía de autor y puesta de sol de película." }
+      ],
+      calor: "Diciembre a Marzo (24° a 32°, alta temporada)",
+      frio: "Junio a Agosto (15° a 22°, tranquilo y agradable)",
+      tAlta: "Diciembre, Enero, Febrero y Carnaval",
+      tMedia: "Marzo, Abril, Octubre y Noviembre",
+      tBaja: "Mayo, Junio, Julio, Agosto y Septiembre"
     },
     rio: {
       nombre: "Río de Janeiro", region: "Brasil · Estado de Rio", fotos: 4, parentName: "Brasil", parent: "brasil",
@@ -2458,7 +2480,7 @@
       tBaja: "Mayo, Junio, Agosto, Septiembre y Noviembre"
     }
   };
-  const FOTO_FOLDERS = { bariloche:'bariloche', mendoza:'mendoza', iguazu:'iguazu', salta:'salta', angostura:'angostura', 'san-martin':'san-martin', cordoba:'cordoba', rio:'rio', buzios:'buzios' };
+  const FOTO_FOLDERS = { bariloche:'bariloche', mendoza:'mendoza', iguazu:'iguazu', salta:'salta', angostura:'angostura', 'san-martin':'san-martin', cordoba:'cordoba', florianopolis:'florianopolis', rio:'rio', buzios:'buzios' };
   let currentDestino = null;
 
   function openDestino(destinoId) {
@@ -2562,10 +2584,31 @@
     const dest = DESTINOS[currentDestino];
     if (dest.parent) openDestino(dest.parent);
   }
+  let destinoLightboxImages = [];
+  let destinoLightboxIndex = 0;
   function openDestinoLightbox(src) {
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightboxCounter').textContent = '';
+    const folder = currentDestino ? (FOTO_FOLDERS[currentDestino] || currentDestino) : null;
+    const dest = currentDestino ? DESTINOS[currentDestino] : null;
+    if (folder && dest && dest.fotos) {
+      destinoLightboxImages = [];
+      for (let i = 1; i <= dest.fotos; i++) {
+        destinoLightboxImages.push('images/destinos/' + folder + '-' + i + '.jpg');
+      }
+      destinoLightboxIndex = destinoLightboxImages.indexOf(src);
+      if (destinoLightboxIndex < 0) destinoLightboxIndex = 0;
+    } else {
+      destinoLightboxImages = [src];
+      destinoLightboxIndex = 0;
+    }
+    document.getElementById('lightboxImg').src = destinoLightboxImages[destinoLightboxIndex];
+    document.getElementById('lightboxCounter').textContent = destinoLightboxImages.length > 1 ? (destinoLightboxIndex + 1) + ' / ' + destinoLightboxImages.length : '';
     document.getElementById('lightbox').classList.add('active');
+  }
+  function navDestinoLightbox(direction) {
+    if (destinoLightboxImages.length < 2) return;
+    destinoLightboxIndex = (destinoLightboxIndex + direction + destinoLightboxImages.length) % destinoLightboxImages.length;
+    document.getElementById('lightboxImg').src = destinoLightboxImages[destinoLightboxIndex];
+    document.getElementById('lightboxCounter').textContent = (destinoLightboxIndex + 1) + ' / ' + destinoLightboxImages.length;
   }
   const destinoModalEl = document.getElementById('destinoModal');
   if (destinoModalEl) {
