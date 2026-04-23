@@ -2485,7 +2485,7 @@
   function renderGrupo(dest) {
     const subs = dest.subDestinos.map(sub => `
       <div class="brasil-sub-card" onclick="openDestino('${sub.id}')">
-        <div class="brasil-sub-card-bg" style="background-image: url('images/destinos/${sub.id}/1.jpg'), url('${sub.img}');"></div>
+        <div class="brasil-sub-card-bg" style="background-image: url('images/destinos/${sub.id}-1.jpg'), url('${sub.img}');"></div>
         <div class="brasil-sub-card-arrow">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
@@ -2511,8 +2511,8 @@
     let fotosHtml = '<div class="destino-fotos">';
     for (let i = 1; i <= dest.fotos; i++) {
       const cls = i === 1 ? 'destino-foto destino-foto-1' : 'destino-foto';
-      fotosHtml += `<div class="${cls}" onclick="openDestinoLightbox('images/destinos/${folder}/${i}.jpg')">
-        <img src="images/destinos/${folder}/${i}.jpg" alt="${dest.nombre} ${i}" loading="lazy" onerror="this.style.opacity=0.3">
+      fotosHtml += `<div class="${cls}" onclick="openDestinoLightbox('images/destinos/${folder}-${i}.jpg')">
+        <img src="images/destinos/${folder}-${i}.jpg" alt="${dest.nombre} ${i}" loading="lazy" onerror="this.style.opacity=0.3">
       </div>`;
     }
     fotosHtml += '</div>';
