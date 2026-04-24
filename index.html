@@ -36,7 +36,7 @@
 <meta name="twitter:description" content="Agencia de viajes personalizada. Diseñamos experiencias a medida por personas que conocen cada destino.">
 <meta name="twitter:image" content="https://gemicheck.com.ar/images/og-image.jpg">
 
-<!-- Schema.org para SEO local -->
+<!-- Schema.org -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,9 +53,7 @@
     "addressRegion": "Buenos Aires",
     "addressCountry": "AR"
   },
-  "sameAs": [
-    "https://www.instagram.com/gemicheck.turismo"
-  ],
+  "sameAs": ["https://www.instagram.com/gemicheck.turismo"],
   "areaServed": ["Argentina", "Brasil"],
   "priceRange": "$$"
 }
@@ -95,12 +93,10 @@
     font-weight: 400;
     line-height: 1.6;
     overflow-x: hidden;
+    
   }
 
-  @media (max-width: 900px) {
-    body { cursor: auto; }
-    .cursor { display: none !important; }
-  }
+
 
   .cursor {
     position: fixed;
@@ -180,10 +176,7 @@
     height: 36px;
     width: auto;
     display: block;
-    transition: opacity 0.3s var(--ease);
   }
-
-  .logo:hover .logo-img { opacity: 0.8; }
 
   .logo-mark {
     width: 28px;
@@ -236,7 +229,7 @@
     color: var(--ink);
     font-size: 13px;
     font-family: inherit;
-    cursor: none;
+    
     transition: all 0.3s var(--ease);
     text-decoration: none;
   }
@@ -358,7 +351,7 @@
     font-size: 14px;
     font-weight: 500;
     font-family: inherit;
-    cursor: none;
+    
     transition: all 0.3s var(--ease);
     text-decoration: none;
     display: inline-flex;
@@ -410,26 +403,18 @@
     animation: scaleIn 1.4s var(--ease) 0.5s forwards;
   }
 
-  .hero-visual-img {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(165deg, #1e3a5f 0%, #2d5a8a 40%, #4a7ba8 70%, #7ba5c8 100%);
-  }
-
-  .hero-visual-img-real {
+  .hero-visual-photo {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: 1;
   }
 
-  .hero-visual-overlay {
+  .hero-visual-img {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 40%, rgba(10, 14, 26, 0.7) 100%);
-    z-index: 2;
+    background: linear-gradient(165deg, #1e3a5f 0%, #2d5a8a 40%, #4a7ba8 70%, #7ba5c8 100%);
   }
 
   .hero-visual-img::before {
@@ -444,6 +429,14 @@
   .hero-visual-mountains {
     position: absolute;
     inset: 0;
+    z-index: 2;
+  }
+
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(10,14,26,0.85) 100%);
     z-index: 2;
   }
 
@@ -577,39 +570,31 @@
     border-radius: 16px;
     overflow: hidden;
     position: relative;
-    cursor: none;
+    
     transition: transform 0.6s var(--ease);
-  }
-
-  @media (max-width: 900px) {
-    .destino-card { cursor: pointer; }
   }
 
   .destino-card:hover { transform: translateY(-8px); }
 
-  .destino-bg {
+  .destino-photo {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     transition: transform 1s var(--ease);
   }
 
-  .destino-card:hover .destino-bg { transform: scale(1.08); }
+  .destino-card:hover .destino-photo { transform: scale(1.08); }
 
-  .destino-bg::after {
+  .destino-card::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10, 14, 26, 0.15) 0%, rgba(10, 14, 26, 0.4) 50%, rgba(10, 14, 26, 0.92) 100%);
+    background: linear-gradient(180deg, transparent 30%, rgba(10, 14, 26, 0.9) 100%);
+    z-index: 1;
+    pointer-events: none;
   }
-
-  .destino-1 .destino-bg { background: #1a4066 url('images/bariloche.jpg') center/cover; }
-  .destino-2 .destino-bg { background: #6b3410 url('images/mendoza.jpg') center/cover; }
-  .destino-3 .destino-bg { background: #0f5a3f url('images/iguazu.jpg') center/cover; }
-  .destino-4 .destino-bg { background: #8a3d1a url('images/salta.jpg') center/cover; }
-  .destino-5 .destino-bg { background: #2d5c3d url('images/angostura.jpg') center/cover; }
-  .destino-6 .destino-bg { background: #34566b url('images/san-martin.jpg') center/cover; }
-  .destino-7 .destino-bg { background: #5c4a1f url('images/cordoba.jpg') center/cover; }
-  .destino-8 .destino-bg { background: #2a6b5c url('images/brasil.jpg') center/cover; }
 
   .destino-content {
     position: absolute;
@@ -674,431 +659,6 @@
   }
 
   .destino-cta svg { width: 14px; height: 14px; }
-
-  .personalizada {
-    background: var(--bg);
-    padding: 100px 0;
-  }
-
-  .personalizada-card {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    min-height: 440px;
-    display: flex;
-    align-items: center;
-  }
-
-  .personalizada-mosaico {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 4px;
-  }
-
-  .mosaico-main {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .mosaico-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .mosaico-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-  }
-
-  .mosaico-grid img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .personalizada-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(10, 14, 26, 0.3) 0%, rgba(10, 14, 26, 0.8) 45%, rgba(10, 14, 26, 0.95) 100%);
-  }
-
-  .personalizada-content {
-    position: relative;
-    z-index: 2;
-    margin-left: auto;
-    padding: 60px;
-    max-width: 55%;
-    text-align: left;
-  }
-
-  .personalizada-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(36px, 5vw, 58px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -1px;
-    margin-bottom: 24px;
-  }
-
-  .personalizada-title em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .personalizada-desc {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--ink-muted);
-    margin-bottom: 32px;
-    max-width: 480px;
-  }
-
-  @media (max-width: 900px) {
-    .personalizada-card {
-      min-height: 600px;
-      display: block;
-    }
-    .personalizada-mosaico {
-      position: relative;
-      height: 280px;
-      grid-template-columns: 1fr;
-    }
-    .mosaico-grid {
-      display: none;
-    }
-    .personalizada-overlay {
-      background: linear-gradient(180deg, rgba(10, 14, 26, 0.3) 0%, rgba(10, 14, 26, 0.95) 100%);
-    }
-    .personalizada-content {
-      max-width: 100%;
-      margin-left: 0;
-      padding: 40px 32px;
-      background: var(--bg-alt);
-    }
-  }
-
-  .clientes-btn {
-    position: relative;
-    z-index: 2;
-    margin-top: 20px;
-    padding: 14px 24px;
-    background: rgba(212, 180, 131, 0.12);
-    border: 1px solid var(--accent);
-    border-radius: 100px;
-    color: var(--accent);
-    font-size: 13px;
-    font-family: inherit;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    transition: all 0.3s var(--ease);
-    align-self: flex-start;
-    width: fit-content;
-  }
-
-  .clientes-btn:hover {
-    background: var(--accent);
-    color: var(--bg);
-    transform: translateY(-2px);
-  }
-
-  .clientes-btn svg {
-    transition: transform 0.3s var(--ease);
-  }
-
-  .clientes-btn:hover svg { transform: translate(3px, -3px); }
-
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(5, 8, 16, 0.92);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    z-index: 200;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s var(--ease);
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 80px 20px 60px;
-  }
-
-  .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .modal-content {
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .modal-close {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--border-strong);
-    background: rgba(10, 14, 26, 0.8);
-    backdrop-filter: blur(10px);
-    color: var(--ink);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-    font-size: 18px;
-    transition: all 0.3s var(--ease);
-    z-index: 201;
-  }
-
-  .modal-close:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--bg);
-    transform: rotate(90deg);
-  }
-
-  .modal-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-
-  .modal-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(32px, 4.5vw, 52px);
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -1px;
-    margin-bottom: 14px;
-  }
-
-  .modal-title em { font-style: italic; color: var(--accent); }
-
-  .modal-subtitle {
-    font-size: 15px;
-    color: var(--ink-muted);
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .clientes-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-
-  @media (max-width: 900px) {
-    .clientes-gallery { grid-template-columns: repeat(3, 1fr); }
-  }
-
-  @media (max-width: 600px) {
-    .clientes-gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  }
-
-  .cliente-item {
-    aspect-ratio: 9/16;
-    background: var(--surface);
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.4s var(--ease);
-  }
-
-  .cliente-item::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 14, 26, 0.15);
-    opacity: 0;
-    transition: opacity 0.3s var(--ease);
-    pointer-events: none;
-  }
-
-  .cliente-item:hover {
-    transform: translateY(-4px);
-  }
-
-  .cliente-item:hover::after {
-    opacity: 1;
-  }
-
-  .cliente-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.6s var(--ease);
-  }
-
-  .cliente-item:hover img {
-    transform: scale(1.05);
-  }
-
-  .cliente-placeholder {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(155deg, var(--surface) 0%, var(--surface-hover) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--ink-dim);
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
-
-  .lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 300;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s var(--ease);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-  }
-
-  .lightbox.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .lightbox-img {
-    max-width: 85%;
-    max-height: 85vh;
-    border-radius: 8px;
-    object-fit: contain;
-    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
-    user-select: none;
-    -webkit-user-drag: none;
-  }
-
-  .lightbox-close {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    width: 44px;
-    height: 44px;
-    border: 1px solid var(--border-strong);
-    background: rgba(0, 0, 0, 0.5);
-    color: var(--ink);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-    font-size: 18px;
-    transition: all 0.3s var(--ease);
-    z-index: 2;
-  }
-
-  .lightbox-close:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--bg);
-    transform: rotate(90deg);
-  }
-
-  .lightbox-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 56px;
-    height: 56px;
-    border: 1px solid var(--border-strong);
-    background: rgba(0, 0, 0, 0.5);
-    color: var(--ink);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: inherit;
-    font-size: 32px;
-    line-height: 1;
-    transition: all 0.3s var(--ease);
-    z-index: 2;
-    padding-bottom: 4px;
-  }
-
-  .lightbox-nav:hover {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--bg);
-  }
-
-  .lightbox-prev { left: 24px; }
-  .lightbox-next { right: 24px; }
-
-  @media (max-width: 640px) {
-    .lightbox-nav {
-      width: 44px;
-      height: 44px;
-      font-size: 24px;
-    }
-    .lightbox-prev { left: 12px; }
-    .lightbox-next { right: 12px; }
-    .lightbox-img { max-width: calc(100% - 110px); }
-  }
-
-  .lightbox-hint {
-    position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--ink-muted);
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .lightbox-counter {
-    color: var(--accent);
-    font-weight: 500;
-    letter-spacing: 3px;
-  }
-
-  .lightbox-hint-mobile { display: none; }
-
-  @media (max-width: 640px) {
-    .lightbox-hint-desktop { display: none; }
-    .lightbox-hint-mobile { display: inline; }
-  }
-
-  .modal-cta {
-    text-align: center;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--border);
-    color: var(--ink-muted);
-    font-size: 14px;
-  }
-
-  .modal-cta a {
-    color: var(--accent);
-    text-decoration: none;
-  }
-
-  .modal-cta a:hover { text-decoration: underline; }
 
   .diferenciales {
     background: var(--bg);
@@ -1193,11 +753,22 @@
     justify-content: space-between;
   }
 
+  .nosotros-visual-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+  }
+
   .nosotros-visual::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(212, 180, 131, 0.1), transparent 60%);
+    background: linear-gradient(to top, rgba(10,12,11,0.92) 0%, rgba(10,12,11,0.45) 50%, rgba(10,12,11,0.25) 100%);
+    z-index: 1;
   }
 
   .nosotros-stat {
@@ -1228,6 +799,16 @@
     display: flex;
     gap: 16px;
     align-items: center;
+  }
+
+  .founders-photo {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 2px solid var(--accent);
+    flex-shrink: 0;
   }
 
   .founder-avatar {
@@ -1466,17 +1047,13 @@
 
   .footer-inner {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;
-    gap: 48px;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+    gap: 60px;
     margin-bottom: 60px;
   }
 
-  @media (max-width: 1100px) {
-    .footer-inner { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
-  }
-
-  @media (max-width: 700px) {
-    .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  @media (max-width: 900px) {
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 40px; }
   }
 
   @media (max-width: 500px) {
@@ -1535,54 +1112,30 @@
     .footer-bottom { flex-direction: column; gap: 12px; }
   }
 
-  .floating-buttons {
+  .whatsapp-float {
     position: fixed;
     bottom: 32px;
     right: 32px;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .float-btn {
-    width: 58px;
-    height: 58px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
+    background: #25D366;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 50;
     cursor: pointer;
+    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.4);
     transition: all 0.3s var(--ease);
     color: white;
     text-decoration: none;
-  }
-
-  .float-btn svg { width: 26px; height: 26px; }
-
-  .whatsapp-float {
-    background: #25D366;
-    box-shadow: 0 10px 40px rgba(37, 211, 102, 0.35);
   }
 
   .whatsapp-float:hover {
     transform: scale(1.1) rotate(-8deg);
   }
 
-  .instagram-float {
-    background: linear-gradient(135deg, #fdc068 0%, #d13e7d 50%, #7b2bbd 100%);
-    box-shadow: 0 10px 40px rgba(209, 62, 125, 0.35);
-  }
-
-  .instagram-float:hover {
-    transform: scale(1.1) rotate(8deg);
-  }
-
-  @media (max-width: 700px) {
-    .floating-buttons { bottom: 20px; right: 20px; gap: 10px; }
-    .float-btn { width: 52px; height: 52px; }
-    .float-btn svg { width: 22px; height: 22px; }
-  }
+  .whatsapp-float svg { width: 28px; height: 28px; }
 
   .reveal {
     opacity: 0;
@@ -1619,6 +1172,552 @@
     background: var(--accent);
     color: var(--bg);
   }
+
+  .personalizada {
+    background: var(--bg);
+    padding: 100px 0;
+  }
+  .personalizada-card {
+    background: var(--bg-alt);
+    border-radius: 24px;
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .personalizada-card { grid-template-columns: 1fr; padding: 40px 28px; gap: 40px; }
+  }
+  .personalizada-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 16px 0 20px;
+  }
+  .personalizada-title em { font-style: italic; color: var(--accent); }
+  .personalizada-desc {
+    font-size: 16px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .personalizada-mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    aspect-ratio: 1/1;
+  }
+  .personalizada-mosaic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .floating-buttons {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 50;
+  }
+  .floating-buttons .whatsapp-float,
+  .floating-buttons .instagram-float {
+    position: static;
+    bottom: auto;
+    right: auto;
+  }
+  .instagram-float {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 40px rgba(220,39,67,0.4);
+    transition: all 0.3s var(--ease);
+    color: white;
+    text-decoration: none;
+  }
+  .instagram-float:hover { transform: scale(1.1) rotate(8deg); }
+  .instagram-float svg { width: 28px; height: 28px; }
+
+  .clientes-btn {
+    margin-top: 32px;
+    padding: 18px 28px;
+    background: transparent;
+    border: 1px solid var(--border-strong);
+    border-radius: 100px;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s var(--ease);
+  }
+  .clientes-btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+    border-color: var(--accent);
+  }
+  .clientes-btn svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease); }
+  .clientes-btn:hover svg { transform: translate(4px,-4px); }
+
+  /* Modal Clientes */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 16, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 80px 20px 60px;
+  }
+  .modal-overlay.active { opacity: 1; pointer-events: auto; }
+  .modal-content { max-width: 1100px; width: 100%; margin: 0 auto; position: relative; }
+  .modal-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-strong);
+    background: rgba(10, 14, 26, 0.8);
+    backdrop-filter: blur(10px);
+    color: var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 18px;
+    transition: all 0.3s var(--ease);
+    z-index: 201;
+  }
+  .modal-close:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    transform: rotate(90deg);
+  }
+  .modal-header { text-align: center; margin-bottom: 40px; }
+  .modal-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .modal-title em { font-style: italic; color: var(--accent); }
+  .modal-subtitle {
+    font-size: 15px;
+    color: var(--ink-muted);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .modal-cta {
+    text-align: center;
+    margin-top: 40px;
+    padding: 24px;
+    color: var(--ink-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .modal-cta a { color: var(--accent); text-decoration: none; }
+  .modal-cta a:hover { text-decoration: underline; }
+
+  .clientes-gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 900px) { .clientes-gallery { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 600px) { .clientes-gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; } }
+  .cliente-item {
+    aspect-ratio: 9/16;
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s var(--ease);
+  }
+  .cliente-item:hover { transform: translateY(-4px); }
+  .cliente-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+  .cliente-item:hover img { transform: scale(1.05); }
+
+  /* Lightbox */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 300;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .lightbox.active { opacity: 1; pointer-events: auto; }
+  .lightbox-img {
+    max-width: 85%;
+    max-height: 85vh;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+    user-select: none;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-strong);
+    background: rgba(0,0,0,0.5);
+    color: var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 18px;
+    transition: all 0.3s var(--ease);
+    z-index: 2;
+  }
+  .lightbox-close:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: rotate(90deg); }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border: 1px solid var(--border-strong);
+    background: rgba(0,0,0,0.5);
+    color: var(--ink);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    font-size: 32px;
+    line-height: 1;
+    transition: all 0.3s var(--ease);
+    z-index: 2;
+    padding-bottom: 4px;
+  }
+  .lightbox-nav:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .lightbox-prev { left: 24px; }
+  .lightbox-next { right: 24px; }
+  @media (max-width: 640px) {
+    .lightbox-nav { width: 44px; height: 44px; font-size: 24px; }
+    .lightbox-prev { left: 12px; }
+    .lightbox-next { right: 12px; }
+    .lightbox-img { max-width: calc(100% - 110px); }
+  }
+  .lightbox-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--ink-muted);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+  .lightbox-counter { color: var(--accent); font-weight: 500; letter-spacing: 3px; }
+  .lightbox-hint-mobile { display: none; }
+  @media (max-width: 640px) {
+    .lightbox-hint-desktop { display: none; }
+    .lightbox-hint-mobile { display: inline; }
+  }
+
+  /* Modal Destino */
+  .destino-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 8, 16, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s var(--ease);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 80px 20px 60px;
+  }
+  .destino-modal.active { opacity: 1; pointer-events: auto; }
+  .destino-modal-content { max-width: 1100px; width: 100%; margin: 0 auto; }
+  .destino-modal-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 18px;
+    border: 1px solid var(--border-strong);
+    background: rgba(10,14,26,0.8);
+    backdrop-filter: blur(10px);
+    color: var(--ink);
+    border-radius: 24px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s var(--ease);
+    z-index: 201;
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+  .destino-modal-back.visible { display: inline-flex; }
+  .destino-modal-back:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  .destino-header {
+    text-align: left;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 40px;
+  }
+  .destino-region-tag {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .destino-modal-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .destino-modal-name em { font-style: italic; color: var(--accent); }
+  .destino-modal-desc {
+    font-size: clamp(15px, 1.2vw, 17px);
+    line-height: 1.7;
+    color: var(--ink-muted);
+    max-width: 800px;
+  }
+  .destino-fotos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 8px;
+    margin-bottom: 60px;
+    height: 260px;
+  }
+  .destino-foto {
+    background: var(--surface);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.4s var(--ease);
+  }
+  .destino-foto:hover { transform: translateY(-4px); }
+  .destino-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
+  .destino-foto:hover img { transform: scale(1.05); }
+  .destino-foto-1 { grid-row: 1; grid-column: auto; }
+  @media (max-width: 768px) {
+    .destino-fotos { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); height: 340px; }
+    .destino-foto-1 { grid-row: auto; grid-column: auto; }
+  }
+  .destino-section-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--ink);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .destino-section-title em { font-style: italic; color: var(--accent); }
+  .destino-actividades {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 600px) { .destino-actividades { grid-template-columns: 1fr; } }
+  .destino-actividad {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s var(--ease);
+  }
+  .destino-actividad:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--surface-hover); }
+  .destino-actividad-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+  .destino-actividad-titulo { font-family: 'Fraunces', serif; font-size: 20px; color: var(--ink); margin-bottom: 8px; }
+  .destino-actividad-desc { font-size: 14px; line-height: 1.6; color: var(--ink-muted); }
+  .destino-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  @media (max-width: 768px) { .destino-info-grid { grid-template-columns: 1fr; } }
+  .destino-info-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+  }
+  .destino-info-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .destino-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 20px;
+  }
+  .destino-info-row:last-child { border-bottom: none; }
+  .destino-info-label {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .destino-info-value { font-size: 14px; color: var(--ink); text-align: right; line-height: 1.5; }
+  .badge-temp {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-right: 6px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+  .badge-alta { background: rgba(229,115,115,0.15); color: #e57373; border: 1px solid rgba(229,115,115,0.3); }
+  .badge-media { background: rgba(212,180,131,0.15); color: #d4b483; border: 1px solid rgba(212,180,131,0.3); }
+  .badge-baja { background: rgba(78,201,168,0.15); color: #4ec9a8; border: 1px solid rgba(78,201,168,0.3); }
+  .destino-cotizar {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 22px 40px;
+    border-radius: 12px;
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  .destino-cotizar:hover {
+    background: var(--ink);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(212,180,131,0.3);
+  }
+  .destino-cotizar svg { width: 20px; height: 20px; }
+  .brasil-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  @media (max-width: 900px) { .brasil-subgrid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 768px) { .brasil-subgrid { grid-template-columns: 1fr; } }
+  .brasil-sub-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s var(--ease);
+    aspect-ratio: 4/5;
+    position: relative;
+  }
+  .brasil-sub-card:hover { border-color: var(--accent); transform: translateY(-6px); }
+  .brasil-sub-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s var(--ease);
+  }
+  .brasil-sub-card:hover .brasil-sub-card-bg { transform: scale(1.08); }
+  .brasil-sub-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(5,8,16,0.85) 100%);
+    z-index: 1;
+  }
+  .brasil-sub-card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 32px;
+    z-index: 2;
+  }
+  .brasil-sub-card-region { color: var(--accent); font-size: 11px; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase; }
+  .brasil-sub-card-name {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .brasil-sub-card-tag { font-size: 13px; color: var(--ink-muted); }
+  .brasil-sub-card-arrow {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(10,14,26,0.6);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink);
+    transition: all 0.3s var(--ease);
+  }
+  .brasil-sub-card:hover .brasil-sub-card-arrow { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 </style>
 </head>
 <body>
@@ -1634,7 +1733,7 @@
       <li><a href="#cotizar">Cotizar</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#cotizar" class="nav-cta">Armá tu viaje</a>
+    <a href="#cotizar" class="nav-cta">Cotizá tu viaje</a>
   </div>
 </nav>
 
@@ -1660,8 +1759,7 @@
     </div>
 
     <div class="hero-visual">
-      <img src="images/hero-bariloche.jpg" alt="Lago Nahuel Huapi, Bariloche" class="hero-visual-img-real">
-      <div class="hero-visual-overlay"></div>
+      <img src="images/hero-bariloche.jpg" alt="Cerro López, Bariloche" class="hero-visual-photo">
       <div class="hero-visual-label">
         <div>
           <div class="hero-visual-label-eyebrow">DESTINO DESTACADO DEL MES</div>
@@ -1692,13 +1790,12 @@
 
     <div class="destinos-grid">
 
-      <article class="destino-card destino-1 reveal">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-1 reveal" onclick="openDestino('bariloche')">
+        <img src="images/bariloche.jpg" alt="Bariloche" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">01</span>
           <div>
             <div class="destino-region">PATAGONIA</div>
             <div class="destino-name">Bariloche</div>
@@ -1707,13 +1804,12 @@
         </div>
       </article>
 
-      <article class="destino-card destino-2 reveal delay-1">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-2 reveal delay-1" onclick="openDestino('mendoza')">
+        <img src="images/mendoza.jpg" alt="Mendoza" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">02</span>
           <div>
             <div class="destino-region">CUYO</div>
             <div class="destino-name">Mendoza</div>
@@ -1722,13 +1818,12 @@
         </div>
       </article>
 
-      <article class="destino-card destino-3 reveal delay-2">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-3 reveal delay-2" onclick="openDestino('iguazu')">
+        <img src="images/iguazu.jpg" alt="Iguazú" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">03</span>
           <div>
             <div class="destino-region">LITORAL</div>
             <div class="destino-name">Iguazú</div>
@@ -1737,13 +1832,12 @@
         </div>
       </article>
 
-      <article class="destino-card destino-4 reveal delay-3">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-4 reveal delay-3" onclick="openDestino('salta')">
+        <img src="images/salta.jpg" alt="Salta &amp; Jujuy" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">04</span>
           <div>
             <div class="destino-region">NORTE</div>
             <div class="destino-name">Salta &amp; Jujuy</div>
@@ -1752,13 +1846,12 @@
         </div>
       </article>
 
-      <article class="destino-card destino-5 reveal">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-5 reveal" onclick="openDestino('angostura')">
+        <img src="images/angostura.jpg" alt="V. La Angostura" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">05</span>
           <div>
             <div class="destino-region">PATAGONIA</div>
             <div class="destino-name">V. La Angostura</div>
@@ -1767,13 +1860,12 @@
         </div>
       </article>
 
-      <article class="destino-card destino-6 reveal delay-1">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-6 reveal delay-1" onclick="openDestino('san-martin')">
+        <img src="images/san-martin.jpg" alt="S. M. de los Andes" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">06</span>
           <div>
             <div class="destino-region">PATAGONIA</div>
             <div class="destino-name">S. M. de los Andes</div>
@@ -1782,13 +1874,12 @@
         </div>
       </article>
 
-      <article class="destino-card destino-7 reveal delay-2">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-7 reveal delay-2" onclick="openDestino('cordoba')">
+        <img src="images/cordoba.jpg" alt="Córdoba" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">07</span>
           <div>
             <div class="destino-region">MEDITERRÁNEA</div>
             <div class="destino-name">Córdoba</div>
@@ -1797,13 +1888,12 @@
         </div>
       </article>
 
-      <article class="destino-card destino-8 reveal delay-3">
-        <div class="destino-bg"></div>
+      <article class="destino-card destino-8 reveal delay-3" onclick="openDestino('brasil')">
+        <img src="images/brasil.jpg" alt="Brasil" class="destino-photo">
         <div class="destino-cta">
           <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
         <div class="destino-content">
-          <span class="destino-number">08</span>
           <div>
             <div class="destino-region">INTERNACIONAL</div>
             <div class="destino-name">Brasil</div>
@@ -1816,33 +1906,28 @@
   </div>
 </section>
 
+
 <section class="personalizada">
   <div class="container">
     <div class="personalizada-card reveal">
-      <div class="personalizada-mosaico">
-        <div class="mosaico-main">
-          <img src="images/hero-bariloche.jpg" alt="Bariloche">
-        </div>
-        <div class="mosaico-grid">
-          <img src="images/iguazu.jpg" alt="Iguazú">
-          <img src="images/salta.jpg" alt="Salta">
-          <img src="images/brasil.jpg" alt="Brasil">
-          <img src="images/mendoza.jpg" alt="Mendoza">
-        </div>
-        <div class="personalizada-overlay"></div>
-      </div>
-      <div class="personalizada-content">
+      <div class="personalizada-text">
         <div class="section-eyebrow">ASESORÍA PERSONALIZADA</div>
-        <h2 class="personalizada-title">
-          ¿No sabés<br>dónde <em>viajar?</em>
-        </h2>
+        <h2 class="personalizada-title">¿No sabés <em>dónde viajar?</em></h2>
         <p class="personalizada-desc">
-          Te brindamos recomendación gratuita con las mejores fechas, mejores precios y épocas del año. Contactanos y nos encargamos de ayudarte y guiarte hacia tu próximo destino.
+          Te brindamos recomendaciones gratuitas con las mejores fechas, precios y épocas para cada destino. Contactanos y nos encargamos de ayudarte y guiarte para tu próximo viaje.
         </p>
-        <a href="https://wa.me/5491122528595?text=Hola%20Gemicheck!%20Quiero%20recomendaci%C3%B3n%20para%20mi%20pr%C3%B3ximo%20viaje" target="_blank" class="btn btn-primary">
-          Recibí tu recomendación
+        <a href="https://wa.me/5491130615149?text=Hola%20Gemicheck!%20Quiero%20asesoramiento%20para%20mi%20pr%C3%B3ximo%20viaje" target="_blank" class="btn btn-primary">
+          Pedí tu asesoría gratis
           <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </a>
+      </div>
+      <div class="personalizada-visual">
+        <div class="personalizada-mosaic">
+          <img src="images/iguazu.jpg" alt="">
+          <img src="images/mendoza.jpg" alt="">
+          <img src="images/salta.jpg" alt="">
+          <img src="images/brasil.jpg" alt="">
+        </div>
       </div>
     </div>
   </div>
@@ -1854,7 +1939,8 @@
       <div class="section-eyebrow">POR QUÉ GEMICHECK</div>
       <p class="dif-intro-text">
         No somos una agencia más.<br>
-        <em>Diseñamos tu viaje</em>, como si fuera nuestro. Con profesionalismo y pasión.
+        Diseñamos <em>tu viaje, como si fuera nuestro.</em><br>
+        Con profesionalismo y pasión.
       </p>
     </div>
 
@@ -1869,7 +1955,7 @@
       <div class="dif-item reveal delay-1">
         <div class="dif-number">02</div>
         <h3 class="dif-title">Viajes a medida</h3>
-        <p class="dif-desc">Diseñamos tu experiencia según tu estilo, ritmo y presupuesto. Nada pre-armado, todo personalizado.</p>
+        <p class="dif-desc">Diseñamos tu experiencia según tu estilo, ritmo y presupuesto. Nada prefabricado, todo pensado.</p>
       </div>
 
       <div class="dif-item reveal delay-2">
@@ -1885,27 +1971,23 @@
 <section class="nosotros" id="nosotros">
   <div class="container nosotros-inner">
     <div class="nosotros-visual reveal">
+      <img src="images/founders.jpg" alt="Crist & Gonza" class="nosotros-visual-bg">
       <div class="nosotros-stat">
         <div class="nosotros-stat-number">+100</div>
         <div class="nosotros-stat-label">VIAJEROS FELICES</div>
       </div>
       <div class="nosotros-founders">
-        <div class="founder-avatar">C</div>
-        <div class="founder-avatar">G</div>
+        <img src="images/logo.png" alt="Gemicheck" class="founders-photo" style="background:#fff; padding:4px; border-radius:50%; object-fit:contain;">
         <div class="founders-info">
           <div class="founders-info-title">Crist &amp; Gonza</div>
           <div class="founders-info-sub">CO-FOUNDERS</div>
         </div>
       </div>
-      <button class="clientes-btn" onclick="document.getElementById('clientesModal').classList.add('active')">
-        <span>Lo que vivieron nuestros clientes</span>
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-      </button>
     </div>
 
     <div class="nosotros-text reveal delay-1">
       <div class="section-eyebrow">QUIÉNES SOMOS</div>
-      <h2>La agencia que <em>nosotros</em><br>soñamos, ahora toca cumplir sus sueños.</h2>
+      <h2>La agencia que <em>nosotros</em> soñamos,<br>ahora toca cumplir sus sueños.</h2>
       <p>
         GemiCheck nace de la pasión por viajar. Tenemos la convicción de que tiene que ser fácil, personalizado y que el recuerdo sea único y anecdótico. No queremos que elijas un paquete; nos apasiona diseñar la experiencia de cada persona que toma la decisión de viajar.
       </p>
@@ -1913,6 +1995,10 @@
         Somos un equipo enfocado. Cada viaje que armamos lo pensamos como si fuera para nosotros: destinos que conocemos, proveedores que probamos, detalles que no se ven pero que hacen toda la diferencia.
       </p>
       <div class="nosotros-signature">— Cristian Castellano &amp; Gonzalo Balmaceda</div>
+      <button class="clientes-btn" onclick="document.getElementById('clientesModal').classList.add('active'); document.body.style.overflow='hidden';">
+        <span>Lo que vivieron nuestros clientes</span>
+        <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -1978,7 +2064,7 @@
         <div class="form-row">
           <div class="form-group">
             <label>FECHA APROXIMADA</label>
-            <input type="text" name="fecha" placeholder="Marzo 2026 / 1ra quincena">
+            <input type="month" name="fecha">
           </div>
           <div class="form-group">
             <label>EMAIL</label>
@@ -2024,18 +2110,16 @@
         <div class="footer-col-title">EMPRESA</div>
         <ul>
           <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#cotizar">Planificar</a></li>
-          <li><a href="#">Política de privacidad</a></li>
-          <li><a href="#">Términos</a></li>
+          <li><a href="#cotizar">Cotizar</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <div class="footer-col-title">CONTACTO</div>
         <ul>
-          <li><a href="https://wa.me/5491122528595">WhatsApp</a></li>
+          <li><a href="https://wa.me/5491130615149" target="_blank">WhatsApp</a></li>
           <li><a href="mailto:gemicheck.turismo@gmail.com">gemicheck.turismo@gmail.com</a></li>
-          <li><a href="#">Buenos Aires · CABA</a></li>
+          <li><span style="color:var(--ink-muted)">Buenos Aires · CABA</span></li>
         </ul>
       </div>
 
@@ -2043,10 +2127,7 @@
         <div class="footer-col-title">REDES</div>
         <ul>
           <li><a href="https://www.instagram.com/gemicheck.turismo" target="_blank">Instagram</a></li>
-          <li><a href="https://wa.me/5491122528595" target="_blank">WhatsApp</a></li>
-          <li><a href="#" target="_blank">Facebook</a></li>
-          <li><a href="#" target="_blank">TikTok</a></li>
-          <li><a href="#" target="_blank">LinkedIn</a></li>
+          <li><a href="https://wa.me/5491130615149" target="_blank">WhatsApp</a></li>
         </ul>
       </div>
     </div>
@@ -2059,21 +2140,21 @@
 </footer>
 
 <div class="floating-buttons">
-  <a href="https://www.instagram.com/gemicheck.turismo" target="_blank" class="float-btn instagram-float" aria-label="Seguinos en Instagram">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-    </svg>
-  </a>
-  <a href="https://wa.me/5491122528595" class="float-btn whatsapp-float" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-    </svg>
-  </a>
+<a href="https://www.instagram.com/gemicheck.turismo" target="_blank" class="instagram-float" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+</a>
+<a href="https://wa.me/5491130615149" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
 </div>
 
+
+<!-- Modal Clientes -->
 <div class="modal-overlay" id="clientesModal">
   <div class="modal-content">
-    <button class="modal-close" onclick="document.getElementById('clientesModal').classList.remove('active')" aria-label="Cerrar">✕</button>
+    <button class="modal-close" onclick="document.getElementById('clientesModal').classList.remove('active'); document.body.style.overflow='';" aria-label="Cerrar">✕</button>
     <div class="modal-header">
       <div class="section-eyebrow" style="color: var(--accent); margin-bottom: 18px;">EXPERIENCIAS GEMICHECK</div>
       <h2 class="modal-title">Fanáticos de<br>verlos <em>felices</em> ✈</h2>
@@ -2086,40 +2167,40 @@
     </div>
     <div class="clientes-gallery">
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-01.jpg')">
-        <img src="images/clientes/cliente-01.jpg" alt="Viaje a Iguazú" loading="lazy">
+        <img src="images/clientes/cliente-01.jpg" alt="Cliente 1" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-02.jpg')">
-        <img src="images/clientes/cliente-02.jpg" alt="Familia en Iguazú" loading="lazy">
+        <img src="images/clientes/cliente-02.jpg" alt="Cliente 2" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-03.jpg')">
-        <img src="images/clientes/cliente-03.jpg" alt="Aventura en Patagonia" loading="lazy">
+        <img src="images/clientes/cliente-03.jpg" alt="Cliente 3" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-04.jpg')">
-        <img src="images/clientes/cliente-04.jpg" alt="Pareja en Mendoza" loading="lazy">
+        <img src="images/clientes/cliente-04.jpg" alt="Cliente 4" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-05.jpg')">
-        <img src="images/clientes/cliente-05.jpg" alt="Amigas en Bariloche" loading="lazy">
+        <img src="images/clientes/cliente-05.jpg" alt="Cliente 5" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-06.jpg')">
-        <img src="images/clientes/cliente-06.jpg" alt="Playa en Buzios" loading="lazy">
+        <img src="images/clientes/cliente-06.jpg" alt="Cliente 6" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-07.jpg')">
-        <img src="images/clientes/cliente-07.jpg" alt="Villa Traful" loading="lazy">
+        <img src="images/clientes/cliente-07.jpg" alt="Cliente 7" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-08.jpg')">
-        <img src="images/clientes/cliente-08.jpg" alt="Arraial do Cabo" loading="lazy">
+        <img src="images/clientes/cliente-08.jpg" alt="Cliente 8" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-09.jpg')">
-        <img src="images/clientes/cliente-09.jpg" alt="Mendoza mirador" loading="lazy">
+        <img src="images/clientes/cliente-09.jpg" alt="Cliente 9" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-10.jpg')">
-        <img src="images/clientes/cliente-10.jpg" alt="Patagonia aventura" loading="lazy">
+        <img src="images/clientes/cliente-10.jpg" alt="Cliente 10" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-11.jpg')">
-        <img src="images/clientes/cliente-11.jpg" alt="Salvador de Bahía" loading="lazy">
+        <img src="images/clientes/cliente-11.jpg" alt="Cliente 11" loading="lazy">
       </div>
       <div class="cliente-item" onclick="openLightbox('images/clientes/cliente-12.jpg')">
-        <img src="images/clientes/cliente-12.jpg" alt="Viaje emotivo" loading="lazy">
+        <img src="images/clientes/cliente-12.jpg" alt="Cliente 12" loading="lazy">
       </div>
     </div>
     <div class="modal-cta">
@@ -2128,6 +2209,16 @@
   </div>
 </div>
 
+<!-- Modal Destino -->
+<div class="destino-modal" id="destinoModal">
+  <button class="modal-close" onclick="closeDestino()" aria-label="Cerrar">✕</button>
+  <button class="destino-modal-back" id="destinoBack" onclick="backToParent()">
+    <span>←</span> <span id="destinoBackText">Volver</span>
+  </button>
+  <div class="destino-modal-content" id="destinoContent"></div>
+</div>
+
+<!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
   <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Cerrar">✕</button>
   <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1, event)" aria-label="Anterior">‹</button>
@@ -2141,130 +2232,30 @@
 </div>
 
 <script>
-  // === LIGHTBOX ===
-  const TOTAL_CLIENTES = 12;
-  let currentLightboxIndex = 0;
-
-  function openLightbox(src) {
-    // Extraer el número del archivo (cliente-NN.jpg)
-    const match = src.match(/cliente-(\d+)/);
-    if (match) {
-      currentLightboxIndex = parseInt(match[1]) - 1;
-    }
-    showLightboxImage();
-    const lightbox = document.getElementById('lightbox');
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function showLightboxImage() {
-    const num = String(currentLightboxIndex + 1).padStart(2, '0');
-    const src = `images/clientes/cliente-${num}.jpg`;
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightboxCounter').textContent = `${currentLightboxIndex + 1} / ${TOTAL_CLIENTES}`;
-  }
-
-  function navLightbox(direction, event) {
-    if (event) event.stopPropagation();
-    currentLightboxIndex = (currentLightboxIndex + direction + TOTAL_CLIENTES) % TOTAL_CLIENTES;
-    showLightboxImage();
-  }
-
-  function closeLightbox(event) {
-    // Solo cerrar si click en fondo o botón X, NO en la imagen o flechas
-    if (event && (
-      event.target.classList.contains('lightbox-img') ||
-      event.target.classList.contains('lightbox-nav')
-    )) return;
-    const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('active');
-    // Solo restaurar scroll si no hay otro modal abierto
-    if (!document.getElementById('clientesModal').classList.contains('active')) {
-      document.body.style.overflow = '';
-    }
-  }
-
-  // Teclado: Escape cierra, ← → navegan
-  document.addEventListener('keydown', (e) => {
-    const lightbox = document.getElementById('lightbox');
-    if (!lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    else if (e.key === 'ArrowLeft') navLightbox(-1);
-    else if (e.key === 'ArrowRight') navLightbox(1);
-  });
-
-  // Swipe en mobile
-  let touchStartX = 0;
-  document.getElementById('lightbox').addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-  }, { passive: true });
-
-  document.getElementById('lightbox').addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX - touchEndX;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) navLightbox(1);
-      else navLightbox(-1);
-    }
-  }, { passive: true });
-
+  // Nav scroll
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
 
+  // Reveal animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+      if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+  // Form cotizar -> WhatsApp
   document.getElementById('cotizarForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const data = new FormData(e.target);
-
-    const submitBtn = e.target.querySelector('.form-submit');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = 'Enviando...';
-
-    const googleFormData = new FormData();
-    googleFormData.append('entry.1506468831', data.get('nombre') || '');
-    googleFormData.append('entry.589745448', data.get('whatsapp') || '');
-    googleFormData.append('entry.938106082', data.get('email') || '');
-    googleFormData.append('entry.1492252764', data.get('destino') || '');
-    googleFormData.append('entry.496708878', data.get('fecha') || '');
-    googleFormData.append('entry.1231937784', data.get('personas') || '');
-    googleFormData.append('entry.414511312', data.get('mensaje') || '');
-
-    fetch('https://docs.google.com/forms/d/e/1FAIpQLSdvivl4Cy8E2__h5TslAzLxTPss30gcwZPCrt4fER-s_GWQAQ/formResponse', {
-      method: 'POST',
-      mode: 'no-cors',
-      body: googleFormData
-    }).finally(() => {
-      const msg = `Hola Gemicheck! Soy ${data.get('nombre')}, quiero cotizar un viaje a ${data.get('destino')} para ${data.get('personas')} personas${data.get('fecha') ? ' en ' + data.get('fecha') : ''}.${data.get('mensaje') ? ' ' + data.get('mensaje') : ''}`;
-      const whatsapp = `https://wa.me/5491122528595?text=${encodeURIComponent(msg)}`;
-
-      submitBtn.innerHTML = '✓ ¡Recibido! Te abrimos WhatsApp...';
-      submitBtn.style.background = 'var(--accent-teal)';
-
-      setTimeout(() => {
-        window.open(whatsapp, '_blank');
-        e.target.reset();
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-        }, 2000);
-      }, 800);
-    });
+    const msg = `Hola Gemicheck! Soy ${data.get('nombre')}, quiero cotizar un viaje a ${data.get('destino')} para ${data.get('personas')} personas${data.get('fecha') ? ' en ' + data.get('fecha') : ''}.${data.get('mensaje') ? ' ' + data.get('mensaje') : ''}`;
+    window.open(`https://wa.me/5491130615149?text=${encodeURIComponent(msg)}`, '_blank');
   });
 
+  // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
       const target = document.querySelector(link.getAttribute('href'));
@@ -2275,17 +2266,368 @@
     });
   });
 
+  // ============= LIGHTBOX (clientes) =============
+  const TOTAL_CLIENTES = 12;
+  let currentLightboxIndex = 0;
+
+  function openLightbox(src) {
+    const match = src.match(/cliente-(\d+)/);
+    if (match) currentLightboxIndex = parseInt(match[1]) - 1;
+    showLightboxImage();
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function showLightboxImage() {
+    const num = String(currentLightboxIndex + 1).padStart(2, '0');
+    document.getElementById('lightboxImg').src = `images/clientes/cliente-${num}.jpg`;
+    document.getElementById('lightboxCounter').textContent = `${currentLightboxIndex + 1} / ${TOTAL_CLIENTES}`;
+  }
+  function navLightbox(direction, event) {
+    if (event) event.stopPropagation();
+    const enDestino = document.getElementById('destinoModal') && document.getElementById('destinoModal').classList.contains('active');
+    if (enDestino && destinoLightboxImages.length > 1) {
+      navDestinoLightbox(direction);
+    } else {
+      currentLightboxIndex = (currentLightboxIndex + direction + TOTAL_CLIENTES) % TOTAL_CLIENTES;
+      showLightboxImage();
+    }
+  }
+  function closeLightbox(event) {
+    if (event && (event.target.classList.contains('lightbox-img') || event.target.classList.contains('lightbox-nav'))) return;
+    document.getElementById('lightbox').classList.remove('active');
+    if (!document.getElementById('clientesModal').classList.contains('active') && !document.getElementById('destinoModal').classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
+  }
+  document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('lightbox');
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    else if (e.key === 'ArrowLeft') navLightbox(-1);
+    else if (e.key === 'ArrowRight') navLightbox(1);
+  });
+  let touchStartX = 0;
+  document.getElementById('lightbox').addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.getElementById('lightbox').addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) navLightbox(diff > 0 ? 1 : -1);
+  }, { passive: true });
+
+  // ============= MODAL CLIENTES (cierre por click afuera + Escape) =============
   const clientesModal = document.getElementById('clientesModal');
   if (clientesModal) {
     clientesModal.addEventListener('click', (e) => {
       if (e.target === clientesModal) {
         clientesModal.classList.remove('active');
+        document.body.style.overflow = '';
       }
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && clientesModal.classList.contains('active')) {
+      if (e.key === 'Escape' && clientesModal.classList.contains('active') && !document.getElementById('lightbox').classList.contains('active')) {
         clientesModal.classList.remove('active');
+        document.body.style.overflow = '';
       }
+    });
+  }
+
+  // ============= SISTEMA DE DESTINOS =============
+  const DESTINOS = {
+    bariloche: {
+      nombre: "Bariloche", region: "Patagonia · Río Negro", fotos: 4,
+      desc: "Donde el lago Nahuel Huapi refleja los Andes y cada estación cuenta una historia distinta. Bariloche es el punto de partida para vivir la Patagonia con todos los sentidos: trekking entre lengas centenarias, navegación en aguas turquesas, esquí de clase mundial en el Cerro Catedral, chocolates artesanales y atardeceres que se quedan grabados.",
+      actividades: [
+        { i: "⛷️", t: "Esquí en Cerro Catedral", d: "El centro de esquí más grande de Sudamérica con 120 km de pistas para todos los niveles." },
+        { i: "🚣", t: "Navegación a Isla Victoria", d: "Cruzar el Nahuel Huapi hasta el Bosque de Arrayanes, una experiencia única en el mundo." },
+        { i: "🥾", t: "Trekking al Refugio Frey", d: "Senderos al Cerro Campanario, Refugio Frey y el Circuito Chico con vistas inolvidables." },
+        { i: "🍫", t: "Ruta del Chocolate", d: "Recorrer las chocolaterías centenarias de la calle Mitre y la Colonia Suiza." }
+      ],
+      calor: "Diciembre a Marzo (15° a 25°)",
+      frio: "Junio a Septiembre (-5° a 5°, con nevadas)",
+      tAlta: "Enero, Febrero, Julio y Agosto",
+      tMedia: "Marzo, Abril, Junio, Septiembre y Diciembre",
+      tBaja: "Mayo, Octubre y Noviembre"
+    },
+    mendoza: {
+      nombre: "Mendoza", region: "Cuyo · Mendoza", fotos: 4,
+      desc: "La capital del vino argentino al pie de la Cordillera de los Andes. Más de 200 bodegas abiertas al turismo, el Aconcagua coronando el horizonte, y una gastronomía donde cada plato encuentra su Malbec ideal. Una experiencia para los sentidos, ya sea entre viñedos en otoño o sobre la nieve de Las Leñas en invierno.",
+      actividades: [
+        { i: "🍷", t: "Ruta del Vino", d: "Recorrido por bodegas premium en Luján de Cuyo, Maipú y el Valle de Uco con catas y maridajes." },
+        { i: "🏔️", t: "Alta Montaña y Aconcagua", d: "Excursión al Puente del Inca, Cristo Redentor y mirador del cerro más alto de América." },
+        { i: "🚣", t: "Rafting en el Río Mendoza", d: "Aventura sobre los rápidos andinos en Potrerillos, ideal para todos los niveles." },
+        { i: "♨️", t: "Termas de Cacheuta", d: "Aguas termales naturales con vista a la montaña, perfectas para relajarse después de un día activo." }
+      ],
+      calor: "Diciembre a Marzo (25° a 35°)",
+      frio: "Junio a Agosto (3° a 16°, con nevadas en montaña)",
+      tAlta: "Enero, Febrero, Marzo (Vendimia), Julio y Agosto",
+      tMedia: "Septiembre, Octubre y Diciembre",
+      tBaja: "Abril, Mayo, Junio y Noviembre"
+    },
+    iguazu: {
+      nombre: "Iguazú", region: "Litoral · Misiones", fotos: 4,
+      desc: "Una de las Siete Maravillas Naturales del Mundo. 275 saltos de agua rodeados de selva subtropical, donde la naturaleza se manifiesta en su forma más imponente. La Garganta del Diablo, el rugido del agua y los arcoíris constantes hacen de Iguazú una experiencia que se siente con todo el cuerpo.",
+      actividades: [
+        { i: "💧", t: "Garganta del Diablo", d: "El salto más imponente: 80 metros de caída de agua que se sienten antes de verse." },
+        { i: "🚤", t: "Gran Aventura en Lancha", d: "Excursión que te lleva debajo de los saltos para sentir la fuerza del agua de cerca." },
+        { i: "🌳", t: "Circuito Inferior y Superior", d: "Pasarelas que recorren las cataratas desde distintas alturas y perspectivas." },
+        { i: "🦋", t: "Lado Brasileño + Parque das Aves", d: "La vista panorámica completa del conjunto y el santuario de aves tropicales." }
+      ],
+      calor: "Octubre a Marzo (25° a 38°, alta humedad)",
+      frio: "Junio a Agosto (10° a 22°, agradable)",
+      tAlta: "Enero, Febrero, Julio, Semana Santa y feriados largos",
+      tMedia: "Marzo, Abril, Junio y Diciembre",
+      tBaja: "Mayo, Agosto, Septiembre, Octubre y Noviembre"
+    },
+    salta: {
+      nombre: "Salta y Jujuy", region: "Norte · NOA", fotos: 4,
+      desc: "La Argentina profunda, donde la tierra cambia de color con cada curva del camino. Cerros multicolores, pueblos coloniales detenidos en el tiempo, salares infinitos y la riqueza de las culturas andinas. Salta y Jujuy se viajan despacio, con mate en mano, dejando que cada paisaje cuente su propia historia.",
+      actividades: [
+        { i: "🌈", t: "Cerro de los 7 Colores (Purmamarca)", d: "El icónico cerro al amanecer, cuando los colores se intensifican y el silencio acompaña." },
+        { i: "🚂", t: "Tren a las Nubes", d: "Una de las vías férreas más altas del mundo, atravesando viaductos y paisajes de altura." },
+        { i: "🧂", t: "Salinas Grandes", d: "Un mar blanco infinito a 3.450m de altura, espectacular al mediodía y al atardecer." },
+        { i: "🍷", t: "Cafayate y Quebrada de las Conchas", d: "Bodegas de altura con Torrontés y formaciones rocosas de millones de años." }
+      ],
+      calor: "Noviembre a Marzo (20° a 30°, con lluvias)",
+      frio: "Mayo a Agosto (5° a 20°, seco y soleado)",
+      tAlta: "Junio, Julio, Agosto, Semana Santa y feriados largos",
+      tMedia: "Marzo, Abril, Mayo, Septiembre y Octubre",
+      tBaja: "Noviembre, Diciembre, Enero y Febrero"
+    },
+    angostura: {
+      nombre: "Villa La Angostura", region: "Patagonia · Neuquén", fotos: 4,
+      desc: "La Patagonia en su versión más íntima. Un pueblo de montaña enclavado entre lagos, bosques de arrayanes únicos en el mundo y el comienzo de la mítica Ruta de los 7 Lagos. Villa La Angostura es para quienes buscan tranquilidad, naturaleza pura y la calidez de un destino donde cada rincón parece pintado.",
+      actividades: [
+        { i: "🌳", t: "Bosque de Arrayanes", d: "Los únicos arrayanes centenarios del mundo, accesibles por trekking o navegación." },
+        { i: "🛣️", t: "Ruta de los 7 Lagos", d: "El recorrido panorámico más famoso de la Patagonia hasta San Martín de los Andes." },
+        { i: "⛷️", t: "Cerro Bayo", d: "Centro de esquí familiar y mirador panorámico durante todo el año." },
+        { i: "🚣", t: "Lago Correntoso y Espejo", d: "Kayak, pesca con mosca y playas escondidas para desconectar del mundo." }
+      ],
+      calor: "Diciembre a Marzo (12° a 24°)",
+      frio: "Junio a Septiembre (-3° a 7°, con nevadas)",
+      tAlta: "Enero, Febrero, Julio y Agosto",
+      tMedia: "Marzo, Abril, Septiembre y Diciembre",
+      tBaja: "Mayo, Junio, Octubre y Noviembre"
+    },
+    "san-martin": {
+      nombre: "San Martín de los Andes", region: "Patagonia · Neuquén", fotos: 4,
+      desc: "Donde la Ruta de los 7 Lagos llega a su destino más esperado. A orillas del Lago Lácar y rodeado de bosques milenarios, San Martín combina la sofisticación de un pueblo de montaña europeo con la inmensidad patagónica. Hogar del Parque Nacional Lanín y de paisajes que invitan a quedarse para siempre.",
+      actividades: [
+        { i: "🌋", t: "Volcán Lanín", d: "Excursión al Parque Nacional Lanín con vistas al volcán y trekking en bosques de pehuenes." },
+        { i: "🎣", t: "Pesca con Mosca", d: "Uno de los mejores spots del mundo para pescar truchas en lagos y ríos cristalinos." },
+        { i: "⛷️", t: "Cerro Chapelco", d: "Centro de esquí familiar con pistas para todos los niveles y vista al Lácar." },
+        { i: "🏞️", t: "Lago Lácar y Quila Quina", d: "Playas, kayak y senderos hasta Quila Quina con tradiciones mapuches." }
+      ],
+      calor: "Diciembre a Marzo (10° a 23°)",
+      frio: "Junio a Septiembre (-2° a 8°, con nevadas)",
+      tAlta: "Enero, Febrero, Julio y Agosto",
+      tMedia: "Marzo, Abril, Septiembre y Diciembre",
+      tBaja: "Mayo, Junio, Octubre y Noviembre"
+    },
+    cordoba: {
+      nombre: "Córdoba", region: "Centro · Córdoba", fotos: 4,
+      desc: "Sierras suaves, ríos cristalinos y pueblos con alma. Córdoba es la opción perfecta para quienes buscan naturaleza accesible, vida nocturna vibrante y rincones cargados de historia. Desde Villa Carlos Paz hasta La Cumbrecita, pasando por las Estancias Jesuíticas, Patrimonio de la Humanidad. Un destino que tiene algo para cada viajero.",
+      actividades: [
+        { i: "💧", t: "Ríos y balnearios", d: "Mina Clavero, La Falda y los ríos serranos para refrescarse en verano." },
+        { i: "🏘️", t: "La Cumbrecita y Villa General Belgrano", d: "Pueblos alpinos centroeuropeos enclavados en las sierras." },
+        { i: "⛪", t: "Estancias Jesuíticas", d: "Patrimonio de la Humanidad UNESCO: Alta Gracia, Santa Catalina y más." },
+        { i: "🎵", t: "Festival de Cosquín y vida nocturna", d: "El folklore del país en enero y las cervecerías artesanales todo el año." }
+      ],
+      calor: "Noviembre a Marzo (20° a 32°)",
+      frio: "Junio a Agosto (3° a 17°)",
+      tAlta: "Enero, Febrero y Julio (Festival de Cosquín en enero)",
+      tMedia: "Marzo, Abril, Septiembre, Octubre y Diciembre",
+      tBaja: "Mayo, Junio, Agosto y Noviembre"
+    },
+    brasil: {
+      nombre: "Brasil", region: "Internacional",
+      desc: "Calor, samba, playas paradisíacas y la calidez única del pueblo brasileño. Tenemos tres destinos curados con experiencias muy distintas: Florianópolis, la isla de la magia, Río de Janeiro, la ciudad maravillosa, y Búzios, el paraíso de las 23 playas. Hacé click en el destino que te llame para conocer más.",
+      esGrupo: true,
+      subDestinos: [
+        { id: "florianopolis", nombre: "Florianópolis", region: "Santa Catarina", tag: "Playas · Dunas · Surf", img: "images/destinos/florianopolis-1.jpg" },
+        { id: "rio", nombre: "Río de Janeiro", region: "Ciudad maravillosa", tag: "Cristo · Copacabana · Cultura", img: "images/destinos/rio-1.jpg" },
+        { id: "buzios", nombre: "Búzios", region: "Costa fluminense", tag: "23 playas · Sofisticación", img: "images/destinos/buzios-1.jpg" }
+      ]
+    },
+    florianopolis: {
+      nombre: "Florianópolis", region: "Brasil · Santa Catarina", fotos: 4, parentName: "Brasil", parent: "brasil",
+      desc: "La isla de la magia. Más de 40 playas con personalidades únicas: surf en Joaquina, aguas calmas en Jurerê, dunas en Ingleses y vida nocturna en Lagoa da Conceição. Floripa combina naturaleza, cultura gaucha y la energía brasileña en una isla que te atrapa desde el primer día.",
+      actividades: [
+        { i: "🏄", t: "Surf en Joaquina", d: "Una de las mejores olas de Brasil, con escuelas para todos los niveles y ambiente joven." },
+        { i: "🌊", t: "Praia Mole y Galheta", d: "Las playas más vibrantes de la isla, con una energía única entre jóvenes y turistas del mundo." },
+        { i: "🚵", t: "Lagoa da Conceição", d: "El corazón de Floripa: laguna, restaurantes, bares y el mejor windsurf de la región." },
+        { i: "🏖️", t: "Jurerê Internacional", d: "La playa más exclusiva, con beach clubs, gastronomía de autor y puesta de sol de película." }
+      ],
+      calor: "Diciembre a Marzo (24° a 32°, alta temporada)",
+      frio: "Junio a Agosto (15° a 22°, tranquilo y agradable)",
+      tAlta: "Diciembre, Enero, Febrero y Carnaval",
+      tMedia: "Marzo, Abril, Octubre y Noviembre",
+      tBaja: "Mayo, Junio, Julio, Agosto y Septiembre"
+    },
+    rio: {
+      nombre: "Río de Janeiro", region: "Brasil · Estado de Rio", fotos: 4, parentName: "Brasil", parent: "brasil",
+      desc: "La ciudad maravillosa donde la naturaleza y la urbe conviven como en ningún otro lugar del mundo. El Cristo Redentor abrazando la ciudad desde el Corcovado, el Pan de Azúcar custodiando la bahía, las playas icónicas de Copacabana e Ipanema, y una vida cultural que late samba todos los días.",
+      actividades: [
+        { i: "✝️", t: "Cristo Redentor", d: "Subida al Corcovado para abrazar la ciudad desde una de las 7 Maravillas del Mundo." },
+        { i: "🚠", t: "Pan de Azúcar", d: "Bondinho hasta la cima para ver atardeceres que cambian la vida." },
+        { i: "🏖️", t: "Copacabana e Ipanema", d: "Las playas icónicas, agua de coco, fútbol playa y posto 9 al atardecer." },
+        { i: "🎶", t: "Lapa, Santa Teresa y favela tour", d: "Vida nocturna auténtica, samba y la perspectiva real de la ciudad." }
+      ],
+      calor: "Octubre a Abril (24° a 35°, alta humedad)",
+      frio: "Junio a Agosto (18° a 25°, ideal para recorrer)",
+      tAlta: "Diciembre a Febrero, Carnaval y Año Nuevo",
+      tMedia: "Marzo, Abril, Julio y Septiembre",
+      tBaja: "Mayo, Junio, Agosto, Octubre y Noviembre"
+    },
+    buzios: {
+      nombre: "Búzios", region: "Brasil · Estado de Rio", fotos: 4, parentName: "Brasil", parent: "brasil",
+      desc: "23 playas con personalidades distintas en una península de ensueño. Lo que Brigitte Bardot descubrió en los 60 sigue intacto: aguas cristalinas, casitas blancas, gastronomía de primer nivel y un ambiente sofisticado pero relajado.",
+      actividades: [
+        { i: "🏝️", t: "Tour de las playas", d: "Geribá, Ferradura, João Fernandes, Azedinha, Brava y muchas más en lancha o buggy." },
+        { i: "🤿", t: "Snorkel y buceo", d: "Aguas transparentes con vida marina diversa, ideal para principiantes y avanzados." },
+        { i: "🍽️", t: "Rua das Pedras", d: "El paseo principal con los mejores restaurantes, bares y tiendas de la región." },
+        { i: "🌅", t: "Atardecer en Praia da Ferradura", d: "Una de las puestas de sol más hermosas del litoral fluminense." }
+      ],
+      calor: "Octubre a Abril (24° a 32°)",
+      frio: "Junio a Agosto (18° a 24°)",
+      tAlta: "Diciembre, Enero, Febrero, Carnaval y Semana Santa",
+      tMedia: "Marzo, Abril, Julio y Octubre",
+      tBaja: "Mayo, Junio, Agosto, Septiembre y Noviembre"
+    }
+  };
+  const FOTO_FOLDERS = { bariloche:'bariloche', mendoza:'mendoza', iguazu:'iguazu', salta:'salta', angostura:'angostura', 'san-martin':'san-martin', cordoba:'cordoba', florianopolis:'florianopolis', rio:'rio', buzios:'buzios' };
+  let currentDestino = null;
+
+  function openDestino(destinoId) {
+    const dest = DESTINOS[destinoId];
+    if (!dest) return;
+    currentDestino = destinoId;
+    const content = document.getElementById('destinoContent');
+    if (dest.esGrupo) {
+      content.innerHTML = renderGrupo(dest);
+      document.getElementById('destinoBack').classList.remove('visible');
+    } else {
+      content.innerHTML = renderDestino(destinoId, dest);
+      if (dest.parent) {
+        document.getElementById('destinoBack').classList.add('visible');
+        document.getElementById('destinoBackText').textContent = `Volver a ${dest.parentName}`;
+      } else {
+        document.getElementById('destinoBack').classList.remove('visible');
+      }
+    }
+    document.getElementById('destinoModal').classList.add('active');
+    document.getElementById('destinoModal').scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+  function renderGrupo(dest) {
+    const subs = dest.subDestinos.map(sub => `
+      <div class="brasil-sub-card" onclick="openDestino('${sub.id}')">
+        <div class="brasil-sub-card-bg" style="background-image: url('images/destinos/${sub.id}-1.jpg'), url('${sub.img}');"></div>
+        <div class="brasil-sub-card-arrow">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="brasil-sub-card-content">
+          <div class="brasil-sub-card-region">${sub.region}</div>
+          <div class="brasil-sub-card-name">${sub.nombre}</div>
+          <div class="brasil-sub-card-tag">${sub.tag}</div>
+        </div>
+      </div>
+    `).join('');
+    return `
+      <div class="destino-header">
+        <div class="destino-region-tag">${dest.region}</div>
+        <h2 class="destino-modal-name">${dest.nombre}</h2>
+        <p class="destino-modal-desc">${dest.desc}</p>
+      </div>
+      <h3 class="destino-section-title">Elegí tu <em>destino</em> en Brasil</h3>
+      <div class="brasil-subgrid">${subs}</div>
+    `;
+  }
+  function renderDestino(destinoId, dest) {
+    const folder = FOTO_FOLDERS[destinoId] || destinoId;
+    let fotosHtml = '<div class="destino-fotos">';
+    for (let i = 1; i <= dest.fotos; i++) {
+      const cls = i === 1 ? 'destino-foto destino-foto-1' : 'destino-foto';
+      fotosHtml += `<div class="${cls}" onclick="openDestinoLightbox('images/destinos/${folder}-${i}.jpg')">
+        <img src="images/destinos/${folder}-${i}.jpg" alt="${dest.nombre} ${i}" loading="lazy" onerror="this.style.opacity=0.3">
+      </div>`;
+    }
+    fotosHtml += '</div>';
+    const actsHtml = dest.actividades.map(a => `
+      <div class="destino-actividad">
+        <span class="destino-actividad-icon">${a.i}</span>
+        <div class="destino-actividad-titulo">${a.t}</div>
+        <div class="destino-actividad-desc">${a.d}</div>
+      </div>
+    `).join('');
+    const mensajeWa = encodeURIComponent(`Hola Gemicheck! Quiero información para viajar a ${dest.nombre} 😊`);
+    return `
+      <div class="destino-header">
+        <div class="destino-region-tag">${dest.region}</div>
+        <h2 class="destino-modal-name">${dest.nombre}</h2>
+        <p class="destino-modal-desc">${dest.desc}</p>
+      </div>
+      ${fotosHtml}
+      <h3 class="destino-section-title">Qué <em>hacer</em></h3>
+      <div class="destino-actividades">${actsHtml}</div>
+      <div class="destino-info-grid">
+        <div class="destino-info-card">
+          <h4 class="destino-info-card-title">🌡️ Clima</h4>
+          <div class="destino-info-row"><span class="destino-info-label">Calor</span><span class="destino-info-value">${dest.calor}</span></div>
+          <div class="destino-info-row"><span class="destino-info-label">Frío</span><span class="destino-info-value">${dest.frio}</span></div>
+        </div>
+        <div class="destino-info-card">
+          <h4 class="destino-info-card-title">📅 Temporada turística</h4>
+          <div class="destino-info-row"><span class="badge-temp badge-alta">Alta</span><span class="destino-info-value">${dest.tAlta}</span></div>
+          <div class="destino-info-row"><span class="badge-temp badge-media">Media</span><span class="destino-info-value">${dest.tMedia}</span></div>
+          <div class="destino-info-row"><span class="badge-temp badge-baja">Baja</span><span class="destino-info-value">${dest.tBaja}</span></div>
+        </div>
+      </div>
+      <a href="https://wa.me/5491130615149?text=${mensajeWa}" target="_blank" class="destino-cotizar">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Cotizar viaje a ${dest.nombre}
+      </a>
+    `;
+  }
+  function closeDestino() {
+    document.getElementById('destinoModal').classList.remove('active');
+    document.body.style.overflow = '';
+    currentDestino = null;
+  }
+  function backToParent() {
+    if (!currentDestino) return;
+    const dest = DESTINOS[currentDestino];
+    if (dest.parent) openDestino(dest.parent);
+  }
+  let destinoLightboxImages = [];
+  let destinoLightboxIndex = 0;
+  function openDestinoLightbox(src) {
+    const folder = currentDestino ? (FOTO_FOLDERS[currentDestino] || currentDestino) : null;
+    const dest = currentDestino ? DESTINOS[currentDestino] : null;
+    if (folder && dest && dest.fotos) {
+      destinoLightboxImages = [];
+      for (let i = 1; i <= dest.fotos; i++) {
+        destinoLightboxImages.push('images/destinos/' + folder + '-' + i + '.jpg');
+      }
+      destinoLightboxIndex = destinoLightboxImages.indexOf(src);
+      if (destinoLightboxIndex < 0) destinoLightboxIndex = 0;
+    } else {
+      destinoLightboxImages = [src];
+      destinoLightboxIndex = 0;
+    }
+    document.getElementById('lightboxImg').src = destinoLightboxImages[destinoLightboxIndex];
+    document.getElementById('lightboxCounter').textContent = destinoLightboxImages.length > 1 ? (destinoLightboxIndex + 1) + ' / ' + destinoLightboxImages.length : '';
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function navDestinoLightbox(direction) {
+    if (destinoLightboxImages.length < 2) return;
+    destinoLightboxIndex = (destinoLightboxIndex + direction + destinoLightboxImages.length) % destinoLightboxImages.length;
+    document.getElementById('lightboxImg').src = destinoLightboxImages[destinoLightboxIndex];
+    document.getElementById('lightboxCounter').textContent = (destinoLightboxIndex + 1) + ' / ' + destinoLightboxImages.length;
+  }
+  const destinoModalEl = document.getElementById('destinoModal');
+  if (destinoModalEl) {
+    destinoModalEl.addEventListener('click', (e) => { if (e.target === destinoModalEl) closeDestino(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && destinoModalEl.classList.contains('active') && !document.getElementById('lightbox').classList.contains('active')) closeDestino();
     });
   }
 </script>
