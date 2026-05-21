@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Viaje a Brasil desde Buenos Aires | Florianopolis, Rio y Buzios | Gemicheck</title>
 <meta name="description" content="Paquetes a Brasil desde Buenos Aires. Florianopolis, Rio de Janeiro y Buzios. Playas, cultura y aventura. Cotiza gratis por WhatsApp.">
-<meta name="keywords" content="viaje a Brasil, paquete Brasil, Florianopolis, Rio de Janeiro, Buzios, turismo Brasil Argentina, playas Brasil">
+<meta name="keywords" content="viaje a Brasil, Florianopolis, Rio de Janeiro, Buzios, turismo Brasil Argentina, playas Brasil">
 <meta name="author" content="Gemicheck SAS">
 <link rel="canonical" href="https://www.gemicheck.com.ar/brasil">
 <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
@@ -1681,56 +1681,19 @@
   .brasil-sub-card:hover .brasil-sub-card-arrow { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 </style>
 <style>
-  .dest-hero{position:relative;height:55vh;min-height:380px;background:linear-gradient(to bottom,rgba(10,14,26,.35) 0%,rgba(10,14,26,.88) 100%) center/cover no-repeat;display:flex;align-items:flex-end;padding:60px 0 50px}
-  .dest-breadcrumb{font-size:12px;color:var(--ink-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
-  .dest-breadcrumb a{color:var(--accent);text-decoration:none}
-  .dest-hero-region{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-  .dest-hero-title{font-family:"Fraunces",serif;font-size:clamp(42px,6vw,76px);font-weight:300;line-height:1;color:var(--ink);margin-bottom:20px}
-  .dest-hero-pills{display:flex;gap:12px;flex-wrap:wrap}
-  .dest-pill{padding:6px 16px;border:1px solid rgba(255,255,255,.2);border-radius:20px;font-size:12px;color:var(--ink-muted)}
-  .dest-pill strong{color:var(--ink);font-weight:500}
-  .dest-body{padding:80px 0}
-  .dest-grid{display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:start}
-  @media(max-width:900px){.dest-grid{grid-template-columns:1fr}}
-  .dest-section-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-  .dest-section-title{font-family:"Fraunces",serif;font-size:clamp(26px,3vw,38px);font-weight:300;line-height:1.2;margin-bottom:24px;color:var(--ink)}
-  .dest-section-title em{font-style:italic;color:var(--accent)}
-  .dest-intro{font-size:16px;line-height:1.8;color:var(--ink-muted);margin-bottom:20px}
-  .dest-por-que{font-size:15px;line-height:1.75;color:var(--ink-dim);padding:24px;background:var(--surface);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;margin-bottom:48px}
-  .dest-actividades{margin-bottom:60px}
-  .dest-actividad{padding:18px 0;border-bottom:1px solid var(--border)}
-  .dest-actividad:last-child{border-bottom:none}
-  .dest-act-title{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:6px}
-  .dest-act-desc{font-size:14px;color:var(--ink-muted);line-height:1.65}
-  .dest-temporadas{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:60px}
-  @media(max-width:600px){.dest-temporadas{grid-template-columns:1fr}}
-  .dest-temporada{padding:18px;background:var(--surface);border-radius:10px;border:1px solid var(--border)}
-  .dest-temp-label{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:6px}
-  .dest-temp-desc{font-size:13px;color:var(--ink-muted);line-height:1.6}
-  .dest-faq-item{padding:18px 0;border-bottom:1px solid var(--border)}
-  .dest-faq-item:last-child{border-bottom:none}
-  .dest-faq-q{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px}
-  .dest-faq-a{font-size:14px;color:var(--ink-muted);line-height:1.65}
-  .dest-sidebar{position:sticky;top:100px}
-  .dest-card-cotiza{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:20px}
-  .dest-card-precio-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim);margin-bottom:8px}
-  .dest-card-precio{font-family:"Fraunces",serif;font-size:42px;font-weight:300;color:var(--accent);line-height:1;margin-bottom:6px}
-  .dest-card-precio-sub{font-size:12px;color:var(--ink-dim);margin-bottom:24px}
-  .dest-card-info{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border)}
-  .dest-card-info-row{display:flex;justify-content:space-between;font-size:13px}
-  .dest-card-info-label{color:var(--ink-dim)}
-  .dest-card-info-val{color:var(--ink);font-weight:500}
-  .dest-card-incluye{margin-bottom:24px}
-  .dest-card-incluye-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px}
-  .dest-card-incluye ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:7px}
-  .dest-card-incluye li{font-size:13px;color:var(--ink-muted)}
-  .btn-wa-destino{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px;background:#25d366;color:#fff;border-radius:10px;font-size:15px;font-weight:500;text-decoration:none;transition:background .2s,transform .15s}
-  .btn-wa-destino:hover{background:#1db954;transform:translateY(-2px)}
-  .dest-card-otros{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px}
-  .dest-card-otros-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim);margin-bottom:14px}
-  .dest-otros-links{display:flex;flex-direction:column;gap:6px}
-  .dest-otro-link{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-alt);border-radius:8px;font-size:13px;color:var(--ink-muted);text-decoration:none;transition:color .2s,background .2s}
-  .dest-otro-link:hover{color:var(--ink);background:var(--surface-hover)}
+.dest-hero{position:relative;min-height:50vh;background:linear-gradient(to bottom,rgba(10,14,26,.3) 0%,rgba(10,14,26,.9) 100%),url("/images/brasil.jpg") center/cover no-repeat;display:flex;align-items:flex-end;padding:120px 0 50px}
+.dest-breadcrumb{font-size:11px;color:var(--ink-dim);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+.dest-breadcrumb a{color:var(--accent);text-decoration:none}
+.dest-breadcrumb a:hover{text-decoration:underline}
+.dest-body{padding:80px 0}
+.dest-grid{display:grid;grid-template-columns:1fr 280px;gap:60px;align-items:start}
+@media(max-width:900px){.dest-grid{grid-template-columns:1fr}}
+.dest-sidebar{position:sticky;top:100px}
+.dest-sidebar-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:16px}
+.dest-sidebar-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-dim);margin-bottom:16px}
+.dest-otros-links{display:flex;flex-direction:column;gap:6px}
+.dest-otro-link{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--bg-alt);border-radius:8px;font-size:13px;color:var(--ink-muted);text-decoration:none;transition:color .2s,background .2s;border:1px solid transparent}
+.dest-otro-link:hover{color:var(--accent);background:var(--surface-hover);border-color:var(--border)}
 </style>
 </head>
 <body>
@@ -1748,63 +1711,67 @@
     <a href="/#cotizar" class="nav-cta">Cotizá tu viaje</a>
   </div>
 </nav>
-<div class="dest-hero" style="background-image:linear-gradient(to bottom,rgba(10,14,26,.35) 0%,rgba(10,14,26,.88) 100%),url("/images/brasil.jpg")">
+
+<div class="dest-hero">
   <div class="container">
-    <div class="dest-breadcrumb"><a href="/">Inicio</a> &middot; <a href="/#destinos">Destinos</a> &middot; Brasil</div>
-    <div class="dest-hero-region">Internacional - Brasil</div>
-    <h1 class="dest-hero-title">Brasil</h1>
-    <div class="dest-hero-pills">
-      <div class="dest-pill">Desde <strong>USD 900</strong></div>
-      <div class="dest-pill">Duracion <strong>7 a 10 noches</strong></div>
-      <div class="dest-pill">Mejor epoca <strong>May a Sep</strong></div>
-    </div>
+    <div class="dest-breadcrumb"><a href="/">Inicio</a> · <a href="/#destinos">Destinos</a> · Brasil</div>
+    <div class="destino-region-tag">Internacional</div>
+    <h1 class="destino-modal-name">Brasil</h1>
+    <p class="destino-modal-desc" style="max-width:700px;margin-top:16px">Calor, samba, playas paradisíacas y la calidez única del pueblo brasileño. Tenemos tres destinos curados con experiencias muy distintas: Florianópolis, la isla de la magia, Río de Janeiro, la ciudad maravillosa, y Búzios, el paraíso de las 23 playas.</p>
   </div>
 </div>
+
 <div class="dest-body">
   <div class="container">
     <div class="dest-grid">
       <div>
-        <p class="dest-section-label">El destino</p>
-        <h2 class="dest-section-title">Por que <em>Brasil</em></h2>
-        <p class="dest-intro">Brasil tiene todo: las playas mas lindas de Sudamerica, una cultura vibrante, gastronomia increible y una energia que no se encuentra en otro lado. Desde los argentinos, es el destino internacional mas elegido y nosotros lo conocemos muy bien.</p>
-        <div class="dest-por-que">Porque hay un Brasil para cada tipo de viajero. Florianopolis para los que buscan playa y naturaleza, Rio para los que quieren ciudad y cultura, Buzios para los que buscan exclusividad. Nosotros te ayudamos a elegir y armamos todo.</div>
-        <div class="dest-actividades">
-          <p class="dest-section-label">Que hacer</p>
-          <h2 class="dest-section-title">Actividades <em>imperdibles</em></h2>
-          <div class="dest-actividad"><div class="dest-act-title">Florianopolis</div><div class="dest-act-desc">La isla de la magia. Mas de 40 playas con personalidades unicas: surf, aguas calmas, dunas y vida nocturna en Lagoa da Conceicao.</div></div><div class="dest-actividad"><div class="dest-act-title">Rio de Janeiro</div><div class="dest-act-desc">El Cristo Redentor, Copacabana, Ipanema, el Pan de Azucar y la samba. La ciudad mas iconica de Brasil.</div></div><div class="dest-actividad"><div class="dest-act-title">Buzios</div><div class="dest-act-desc">El Saint-Tropez brasileno. 23 playas de aguas turquesas y un ambiente sofisticado que enamora.</div></div><div class="dest-actividad"><div class="dest-act-title">Playas y naturaleza</div><div class="dest-act-desc">Brasil tiene algunas de las playas mas espectaculares del mundo, con agua calida todo el ano.</div></div>
+        
+        <h3 class="destino-section-title" style="margin-bottom:32px">Qué <em>hacer</em></h3>
+        <div class="destino-actividades"><div class="destino-actividad">
+        <span class="destino-actividad-icon">🏖️</span>
+        <div class="destino-actividad-titulo">Florianópolis</div>
+        <div class="destino-actividad-desc">La isla de la magia. Más de 40 playas con personalidades únicas: surf, dunas y vida nocturna en Lagoa da Conceição.</div>
+      </div><div class="destino-actividad">
+        <span class="destino-actividad-icon">🗿</span>
+        <div class="destino-actividad-titulo">Río de Janeiro</div>
+        <div class="destino-actividad-desc">El Cristo Redentor, Copacabana, Ipanema, el Pan de Azúcar y la samba. La ciudad más icónica de Brasil.</div>
+      </div><div class="destino-actividad">
+        <span class="destino-actividad-icon">⚓</span>
+        <div class="destino-actividad-titulo">Búzios</div>
+        <div class="destino-actividad-desc">El Saint-Tropez brasileño. 23 playas de aguas turquesas y un ambiente sofisticado que enamora.</div>
+      </div><div class="destino-actividad">
+        <span class="destino-actividad-icon">🌊</span>
+        <div class="destino-actividad-titulo">Playas y naturaleza</div>
+        <div class="destino-actividad-desc">Brasil tiene algunas de las playas más espectaculares del mundo, con agua cálida todo el año.</div>
+      </div></div>
+        <div class="destino-info-grid">
+          <div class="destino-info-card">
+            <h4 class="destino-info-card-title">🌡️ Clima</h4>
+            <div class="destino-info-row"><span class="destino-info-label">Calor</span><span class="destino-info-value">Diciembre a Marzo (28° a 35°)</span></div>
+            <div class="destino-info-row"><span class="destino-info-label">Frío</span><span class="destino-info-value">Mayo a Septiembre (18° a 25°, ideal para argentinos)</span></div>
+          </div>
+          <div class="destino-info-card">
+            <h4 class="destino-info-card-title">📅 Temporada turística</h4>
+            <div class="destino-info-row"><span class="badge-temp badge-alta">Alta</span><span class="destino-info-value">Diciembre, Enero, Febrero y Carnaval</span></div>
+            <div class="destino-info-row"><span class="badge-temp badge-media">Media</span><span class="destino-info-value">Marzo, Abril, Octubre y Noviembre</span></div>
+            <div class="destino-info-row"><span class="badge-temp badge-baja">Baja</span><span class="destino-info-value">Mayo, Junio, Julio, Agosto y Septiembre</span></div>
+          </div>
         </div>
-        <div>
-          <p class="dest-section-label">Cuando ir</p>
-          <h2 class="dest-section-title">Mejor <em>epoca</em></h2>
-          <div class="dest-temporadas"><div class="dest-temporada"><div class="dest-temp-label">Invierno argentino (May-Sep)</div><div class="dest-temp-desc">La mejor epoca para ir desde Argentina. En Brasil el clima es perfecto: sol, poca lluvia y menos turistas.</div></div><div class="dest-temporada"><div class="dest-temp-label">Primavera (Sep-Nov)</div><div class="dest-temp-desc">Muy buen momento, el calor empieza a subir y hay buenas ofertas.</div></div><div class="dest-temporada"><div class="dest-temp-label">Verano brasileno (Dic-Mar)</div><div class="dest-temp-desc">Temporada alta con mucho movimiento y precios mas altos.</div></div><div class="dest-temporada"><div class="dest-temp-label">Otono (Mar-May)</div><div class="dest-temp-desc">Excelente epoca, el calor baja un poco y las playas se vacian.</div></div></div>
-        </div>
-        <div>
-          <p class="dest-section-label">Preguntas frecuentes</p>
-          <h2 class="dest-section-title">Lo que <em>mas nos preguntan</em></h2>
-          <div class="dest-faq-item"><div class="dest-faq-q">Necesito pasaporte para ir a Brasil?</div><div class="dest-faq-a">Si, necesitas pasaporte argentino vigente. No se necesita visa.</div></div><div class="dest-faq-item"><div class="dest-faq-q">Cual es el mejor destino de Brasil?</div><div class="dest-faq-a">Depende. Florianopolis para playa y naturaleza, Rio para ciudad y cultura, Buzios para exclusividad.</div></div><div class="dest-faq-item"><div class="dest-faq-q">Cuando conviene ir para evitar el calor extremo?</div><div class="dest-faq-a">De mayo a septiembre el clima es mas fresco y agradable.</div></div>
-        </div>
+        <a href="https://wa.me/5491130615149?text=Hola%20Gemicheck%21%20Quiero%20información%20para%20viajar%20a%20Brasil%20" target="_blank" class="destino-cotizar">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Cotizar viaje a Brasil
+        </a>
       </div>
       <div class="dest-sidebar">
-        <div class="dest-card-cotiza">
-          <p style="font-size:13px;color:var(--ink-muted);line-height:1.7;margin-bottom:24px;">Armamos cada viaje a medida, sin paquetes cerrados. Contanos tus fechas, preferencias y presupuesto, y te cotizamos sin compromiso.</p>
-          <div class="dest-card-info">
-            <div class="dest-card-info-row"><span class="dest-card-info-label">Duracion estimada</span><span class="dest-card-info-val">7 a 10 noches</span></div>
-            <div class="dest-card-info-row"><span class="dest-card-info-label">Mejor epoca</span><span class="dest-card-info-val">May a Sep</span></div>
-            <div class="dest-card-info-row"><span class="dest-card-info-label">Salida desde</span><span class="dest-card-info-val">Buenos Aires</span></div>
-          </div>
-          <a href="https://wa.me/5491130615149?text=Hola!%20Me%20interesa%20cotizar%20un%20viaje%20a%20Brasil." target="_blank" class="btn-wa-destino">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            Cotizar por WhatsApp
-          </a>
-        </div>
-        <div class="dest-card-otros">
-          <div class="dest-card-otros-title">Otros destinos</div>
-          <div class="dest-otros-links"><a href="/bariloche" class="dest-otro-link">Bariloche <span>+</span></a><a href="/mendoza" class="dest-otro-link">Mendoza <span>+</span></a><a href="/iguazu" class="dest-otro-link">Iguazu <span>+</span></a><a href="/salta" class="dest-otro-link">Salta y Jujuy <span>+</span></a><a href="/cordoba" class="dest-otro-link">Cordoba <span>+</span></a></div>
+        <div class="dest-sidebar-card">
+          <div class="dest-sidebar-title">Otros destinos</div>
+          <div class="dest-otros-links"><a href="/bariloche" class="dest-otro-link">Bariloche <span>→</span></a><a href="/mendoza" class="dest-otro-link">Mendoza <span>→</span></a><a href="/iguazu" class="dest-otro-link">Iguazú <span>→</span></a><a href="/salta" class="dest-otro-link">Salta y Jujuy <span>→</span></a><a href="/cordoba" class="dest-otro-link">Córdoba <span>→</span></a></div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <footer id="contacto">
   <div class="container">
     <div class="footer-inner">
@@ -1870,13 +1837,18 @@
 </div>
 
 
+
 <div class="floating-buttons">
 <a href="https://www.instagram.com/gemicheck.turismo" target="_blank" class="instagram-float" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-<a href="https://wa.me/5491130615149?text=Hola!%20Me%20interesa%20cotizar%20un%20viaje%20a%20Brasil." target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+<a href="https://wa.me/5491130615149?text=Hola%20Gemicheck%21%20Quiero%20información%20para%20viajar%20a%20Brasil%20" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
 </div>
 <script>
   const nav=document.getElementById("nav");
   window.addEventListener("scroll",()=>{if(window.scrollY>40)nav.classList.add("scrolled");else nav.classList.remove("scrolled");});
+  document.querySelectorAll(".reveal").forEach(el=>{
+    const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")});},{threshold:0.12});
+    obs.observe(el);
+  });
 </script>
 </body>
 </html>
