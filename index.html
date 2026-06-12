@@ -345,6 +345,22 @@
     animation: fadeUp 1.2s var(--ease) 0.8s forwards;
   }
 
+  .hero-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    text-decoration: none;
+    opacity: 0;
+    animation: fadeUp 1.2s var(--ease) 1s forwards;
+    transition: color 0.3s var(--ease);
+  }
+  .hero-trust:hover { color: var(--ink); }
+  .hero-trust strong { color: var(--accent); font-weight: 500; }
+  .hero-trust-stars { color: var(--accent); letter-spacing: 2px; font-size: 14px; }
+
   .btn {
     padding: 16px 32px;
     border-radius: 100px;
@@ -1271,6 +1287,38 @@
   .clientes-btn svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease); }
   .clientes-btn:hover svg { transform: translate(4px,-4px); }
 
+
+  /* Reseñas Google */
+  .resenas { background: var(--bg-alt); padding: 110px 0; border-top: 1px solid var(--border); }
+  .resenas-header { display:flex; justify-content:space-between; align-items:flex-end; gap:32px; margin-bottom:48px; flex-wrap:wrap; }
+  .resenas-badge {
+    display:inline-flex; align-items:center; gap:14px;
+    background: var(--surface); border:1px solid var(--border);
+    border-radius:100px; padding:14px 26px;
+  }
+  .resenas-badge-score { font-family:'Fraunces',serif; font-size:30px; color:var(--accent); line-height:1; font-style:italic; }
+  .resenas-badge-meta { font-size:12px; color:var(--ink-muted); line-height:1.5; }
+  .resenas-badge-meta .stars { color:var(--accent); letter-spacing:2px; font-size:13px; display:block; }
+  .resenas-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:800px){ .resenas-grid{ grid-template-columns:1fr; } }
+  .resena-card {
+    background: var(--surface); border:1px solid var(--border); border-radius:16px;
+    padding:34px; display:flex; flex-direction:column; gap:18px;
+    transition: border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .resena-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .resena-stars { color:var(--accent); letter-spacing:3px; font-size:15px; }
+  .resena-texto { font-size:15px; line-height:1.75; color:var(--ink-muted); font-style:italic; }
+  .resena-autor { display:flex; align-items:center; gap:12px; margin-top:auto; }
+  .resena-avatar {
+    width:40px; height:40px; border-radius:50%; background:var(--accent);
+    color:var(--bg); display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:16px; flex-shrink:0;
+  }
+  .resena-nombre { font-size:13.5px; color:var(--ink); }
+  .resena-fuente { font-size:11px; color:var(--ink-dim); letter-spacing:1px; }
+  .resenas-cta-wrap { text-align:center; margin-top:44px; }
+
   /* Modal Clientes */
   .modal-overlay {
     position: fixed;
@@ -1747,7 +1795,7 @@
         desde la <em>planificación</em>.
       </h1>
       <p class="hero-desc">
-        Ofrecemos experiencias, facilidad y satisfacción. Conocemos cada destino. No vendemos paquetes. Creamos recuerdos.
+        No vendemos paquetes: <strong style="color:var(--ink);font-weight:500">creamos recuerdos</strong>. Te asesoran personas reales que conocen cada destino y diseñan tu viaje a tu medida, a tu ritmo y a tu presupuesto.
       </p>
       <div class="hero-ctas">
         <a href="#cotizar" class="btn btn-primary">
@@ -1756,6 +1804,10 @@
         </a>
         <a href="#destinos" class="btn btn-ghost">Ver destinos</a>
       </div>
+      <a href="https://g.page/r/CagcIAklS46tEBM" target="_blank" class="hero-trust">
+        <span class="hero-trust-stars">★★★★★</span>
+        <span><strong>5.0 en Google</strong> · +100 viajeros felices</span>
+      </a>
     </div>
 
     <div class="hero-visual">
@@ -1964,6 +2016,58 @@
         <p class="dif-desc">Plan de financiación adaptado a vos. Viajá sin tensionar tu economía, con total transparencia.</p>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<section class="resenas" id="resenas">
+  <div class="container">
+    <div class="resenas-header reveal">
+      <div>
+        <div class="section-eyebrow">LO QUE DICEN DE NOSOTROS</div>
+        <h2 class="section-title">Reseñas <em>reales.</em></h2>
+      </div>
+      <a href="https://g.page/r/CagcIAklS46tEBM" target="_blank" class="resenas-badge" style="text-decoration:none">
+        <span class="resenas-badge-score">5.0</span>
+        <span class="resenas-badge-meta">
+          <span class="stars">★★★★★</span>
+          Calificación perfecta en Google
+        </span>
+      </a>
+    </div>
+
+    <div class="resenas-grid">
+      <div class="resena-card reveal">
+        <div class="resena-stars">★★★★★</div>
+        <p class="resena-texto">"Mis primeros viajes fueron con ellos y los volvería a elegir una y mil veces. ¿Opción de pago? Tenés. ¿Presupuesto a medida de tu bolsillo? Tenés. ¿Asesoramiento durante todo el viaje? ¡Tenés! Y con todo el amor del mundo."</p>
+        <div class="resena-autor">
+          <div class="resena-avatar">B</div>
+          <div>
+            <div class="resena-nombre">Belén S.</div>
+            <div class="resena-fuente">RESEÑA DE GOOGLE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="resena-card reveal delay-1">
+        <div class="resena-stars">★★★★★</div>
+        <p class="resena-texto">"Hicieron de nuestro viaje a las Cataratas del Iguazú una experiencia inolvidable. Estuvieron pendientes de nosotros desde el primer momento. Se nota el cariño y la dedicación que le ponen a lo que hacen."</p>
+        <div class="resena-autor">
+          <div class="resena-avatar">D</div>
+          <div>
+            <div class="resena-nombre">Dayana V.</div>
+            <div class="resena-fuente">RESEÑA DE GOOGLE</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resenas-cta-wrap reveal delay-2">
+      <a href="https://g.page/r/CagcIAklS46tEBM" target="_blank" class="btn btn-ghost">
+        Ver todas las reseñas en Google
+        <svg class="btn-arrow" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
     </div>
   </div>
 </section>
