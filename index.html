@@ -578,7 +578,7 @@
   }
 
   @media (max-width: 600px) {
-    .destinos-grid { grid-template-columns: 1fr; }
+    .destinos-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   .destino-card {
@@ -1319,6 +1319,41 @@
   .resena-fuente { font-size:11px; color:var(--ink-dim); letter-spacing:1px; }
   .resenas-cta-wrap { text-align:center; margin-top:44px; }
 
+  /* Caribe grid mobile */
+  #caribe-grid .destino-name {
+    font-size: clamp(14px, 3.5vw, 28px);
+  }
+  #caribe-grid .destino-region {
+    font-size: clamp(7px, 1.8vw, 10px);
+    letter-spacing: 1px;
+  }
+  #caribe-grid .destino-tag {
+    font-size: clamp(8px, 2vw, 12px);
+  }
+  #caribe-grid .destino-content {
+    padding: clamp(10px, 2.5vw, 20px);
+  }
+  @media (max-width: 600px) {
+    #caribe-grid {
+      gap: 8px !important;
+    }
+    #caribe-grid .destino-name {
+      font-size: 13px;
+      line-height: 1;
+    }
+    #caribe-grid .destino-region {
+      font-size: 7px;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    #caribe-grid .destino-tag {
+      font-size: 8px;
+    }
+    #caribe-grid .destino-content {
+      padding: 10px;
+    }
+  }
+
   /* Modal Clientes */
   .modal-overlay {
     position: fixed;
@@ -1955,58 +1990,6 @@
       </article>
 
     </div>
-
-    <!-- CARIBE -->
-    <div style="margin-top:48px">
-      <div class="section-eyebrow" style="margin-bottom:16px">DESTINOS INTERNACIONALES · CARIBE</div>
-      <h3 style="font-family:'Fraunces',serif;font-size:clamp(24px,3vw,36px);font-weight:300;margin-bottom:32px;line-height:1.1">Sol, playa y <em style="font-style:italic;color:var(--accent)">todo incluido.</em></h3>
-      <div class="destinos-grid" style="grid-template-columns:repeat(3,1fr)">
-
-        <article class="destino-card reveal" onclick="window.location.href='/aruba'" style="cursor:pointer">
-          <img src="images/aruba.jpg" alt="Aruba" class="destino-photo">
-          <div class="destino-cta">
-            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-          </div>
-          <div class="destino-content">
-            <div>
-              <div class="destino-region">CARIBE · ANTILLAS HOLANDESAS</div>
-              <div class="destino-name">Aruba</div>
-              <div class="destino-tag">Playas · Sin huracanes · Sol garantizado</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="destino-card reveal delay-1" onclick="window.location.href='/cancun'" style="cursor:pointer">
-          <img src="images/cancun.jpg" alt="Cancún" class="destino-photo">
-          <div class="destino-cta">
-            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-          </div>
-          <div class="destino-content">
-            <div>
-              <div class="destino-region">CARIBE · MÉXICO</div>
-              <div class="destino-name">Cancún</div>
-              <div class="destino-tag">Cenotes · Chichén Itzá · Riviera Maya</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="destino-card reveal delay-2" onclick="window.location.href='/punta-cana'" style="cursor:pointer">
-          <img src="images/punta-cana.jpg" alt="Punta Cana" class="destino-photo">
-          <div class="destino-cta">
-            <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-          </div>
-          <div class="destino-content">
-            <div>
-              <div class="destino-region">CARIBE · REP. DOMINICANA</div>
-              <div class="destino-name">Punta Cana</div>
-              <div class="destino-tag">Todo incluido · Isla Saona · Bávaro</div>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-
   </div>
 </section>
 
