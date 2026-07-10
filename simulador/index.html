@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulá tu viaje — Gemicheck</title>
+<meta name="description" content="Elegí destino, mes, viajeros e intereses y mirá tu itinerario armado antes de cotizar. Simulador de viajes Gemicheck.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/simulador">
+<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0e1a; --bg-alt:#0f1424; --surface:#141a2e; --surface-hover:#1a2038;
+  --ink:#f4eee4; --ink-muted:#8b8fa0; --ink-dim:#565a6b;
+  --accent:#d4b483; --accent-hot:#e8c89a; --accent-teal:#4ec9a8;
+  --border:rgba(244,238,228,0.08); --border-strong:rgba(244,238,228,0.15);
+  --ease:cubic-bezier(0.2,0.7,0.2,1);
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+.container { max-width:900px; margin:0 auto; padding:0 24px; }
+h1,h2,h3 { font-family:'Fraunces',serif; font-weight:300; }
+a { color:inherit; }
+nav#nav { position:sticky; top:0; z-index:50; background:rgba(10,14,26,0.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); padding:16px 0; }
+nav .container { display:flex; align-items:center; justify-content:space-between; }
+nav a.logo { font-family:'Fraunces',serif; font-size:20px; letter-spacing:1px; text-decoration:none; color:var(--ink); }
+nav a.logo span { color:var(--accent); }
+nav a.back { font-size:13px; color:var(--ink-muted); text-decoration:none; border:1px solid var(--border-strong); padding:8px 16px; border-radius:100px; transition:all .3s var(--ease); }
+nav a.back:hover { border-color:var(--accent); color:var(--accent); }
+
+.hero { text-align:center; padding:56px 0 32px; }
+.hero .eyebrow { color:var(--accent); font-size:12px; letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; }
+.hero h1 { font-size:clamp(28px,5vw,44px); line-height:1.15; margin-bottom:14px; }
+.hero h1 em { font-style:italic; color:var(--accent); }
+.hero p { color:var(--ink-muted); font-size:15px; max-width:480px; margin:0 auto; }
+
+#stepsBar { display:flex; justify-content:center; gap:8px; margin:28px 0 8px; }
+.sim-dot { width:8px; height:8px; border-radius:50%; background:var(--border-strong); transition:all .3s var(--ease); }
+.sim-dot.on { background:var(--accent); width:24px; border-radius:4px; }
+
+.sim-card { background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:32px 24px; margin:16px 0 64px; }
+.sim-step-title { font-family:'Fraunces',serif; font-weight:300; font-size:clamp(20px,3vw,28px); margin-bottom:6px; text-align:center; }
+.sim-step-sub { text-align:center; color:var(--ink-muted); font-size:13px; margin-bottom:28px; }
+
+.sim-dest-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px; }
+.sim-dest-card { position:relative; border-radius:14px; overflow:hidden; cursor:pointer; aspect-ratio:3/4; border:2px solid transparent; transition:all .3s var(--ease); background:var(--bg-alt); }
+.sim-dest-card:hover, .sim-dest-card.sel { border-color:var(--accent); transform:translateY(-3px); }
+.sim-dest-card img { width:100%; height:100%; object-fit:cover; display:block; opacity:.85; }
+.sim-dest-card:hover img { opacity:1; }
+.sim-dest-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(0,0,0,.85) 10%,transparent 60%); display:flex; flex-direction:column; justify-content:flex-end; padding:10px; }
+.sim-dest-name { font-family:'Fraunces',serif; font-size:14px; color:#fff; line-height:1.2; }
+.sim-dest-region { font-size:10px; color:rgba(255,255,255,.6); margin-top:2px; }
+
+.sim-mes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(90px,1fr)); gap:10px; margin-bottom:16px; }
+.sim-mes { border:1px solid var(--border-strong); border-radius:12px; padding:14px 8px; text-align:center; cursor:pointer; transition:all .25s var(--ease); background:var(--bg-alt); }
+.sim-mes:hover { border-color:var(--accent); }
+.sim-mes.sel { border-color:var(--accent); background:rgba(212,180,131,.12); }
+.sim-mes-name { font-size:13px; margin-bottom:6px; }
+.sim-badge { display:inline-block; font-size:10px; letter-spacing:.5px; padding:3px 8px; border-radius:100px; text-transform:uppercase; }
+.sim-badge.alta { background:rgba(232,89,89,.15); color:#e88989; }
+.sim-badge.media { background:rgba(212,180,131,.15); color:var(--accent); }
+.sim-badge.baja { background:rgba(78,201,168,.15); color:var(--accent-teal); }
+.sim-legend { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; font-size:11px; color:var(--ink-muted); margin-top:8px; }
+.sim-legend span { display:inline-flex; align-items:center; gap:5px; }
+.sim-legend i { width:7px; height:7px; border-radius:50%; display:inline-block; }
+
+.sim-row { display:flex; gap:24px; flex-wrap:wrap; justify-content:center; margin-bottom:24px; }
+.sim-stepper { text-align:center; }
+.sim-stepper label { display:block; font-size:12px; color:var(--ink-muted); margin-bottom:8px; }
+.sim-stepper-ctrl { display:flex; align-items:center; gap:14px; }
+.sim-stepper-ctrl button { width:36px; height:36px; border-radius:50%; border:1px solid var(--border-strong); background:var(--bg-alt); color:var(--ink); font-size:16px; cursor:pointer; transition:all .25s var(--ease); }
+.sim-stepper-ctrl button:hover { border-color:var(--accent); color:var(--accent); }
+.sim-stepper-ctrl span { font-family:'Fraunces',serif; font-size:22px; min-width:24px; text-align:center; }
+
+.sim-noches { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:8px; }
+.sim-noche { border:1px solid var(--border-strong); border-radius:100px; padding:8px 16px; font-size:13px; cursor:pointer; transition:all .25s var(--ease); background:var(--bg-alt); }
+.sim-noche:hover { border-color:var(--accent); }
+.sim-noche.sel { border-color:var(--accent); background:var(--accent); color:var(--bg); font-weight:600; }
+
+.sim-chip-grid { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+.sim-chip { border:1px solid var(--border-strong); border-radius:100px; padding:10px 18px; font-size:13px; cursor:pointer; transition:all .25s var(--ease); background:var(--bg-alt); }
+.sim-chip:hover { border-color:var(--accent); }
+.sim-chip.sel { border-color:var(--accent); background:rgba(212,180,131,.15); color:var(--accent); }
+
+.sim-nav { display:flex; justify-content:space-between; align-items:center; margin-top:28px; }
+.sim-btn { border-radius:100px; padding:13px 28px; font-size:14px; font-weight:500; cursor:pointer; border:none; transition:all .3s var(--ease); }
+.sim-btn.primary { background:var(--accent); color:var(--bg); }
+.sim-btn.primary:hover { background:var(--accent-hot); transform:translateY(-2px); }
+.sim-btn.primary:disabled { opacity:.35; cursor:not-allowed; transform:none; }
+.sim-btn.ghost { background:transparent; color:var(--ink-muted); border:1px solid var(--border-strong); }
+.sim-btn.ghost:hover { color:var(--ink); border-color:var(--border-strong); }
+.sim-skip { text-align:center; margin-top:14px; }
+.sim-skip a { font-size:12px; color:var(--ink-dim); text-decoration:underline; cursor:pointer; }
+
+.hidden { display:none !important; }
+
+/* Resultado */
+.sim-result-head { text-align:center; margin-bottom:8px; }
+.sim-result-dest { font-size:13px; color:var(--accent); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px; }
+.sim-result-title { font-family:'Fraunces',serif; font-size:clamp(24px,4vw,34px); font-weight:300; margin-bottom:10px; }
+.sim-result-title em { font-style:italic; color:var(--accent); }
+.sim-result-meta { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:6px; }
+.sim-result-meta span { font-size:12px; background:var(--bg-alt); border:1px solid var(--border); padding:6px 14px; border-radius:100px; color:var(--ink-muted); }
+.sim-season-note { text-align:center; font-size:13px; color:var(--accent); margin:18px auto 0; max-width:480px; }
+
+.sim-day { display:flex; gap:16px; align-items:flex-start; padding:18px 0; border-bottom:1px solid var(--border); }
+.sim-day:last-of-type { border-bottom:none; }
+.sim-day-img { width:96px; height:96px; object-fit:cover; border-radius:12px; flex-shrink:0; }
+.sim-day-n { font-size:10px; letter-spacing:2px; color:var(--accent); text-transform:uppercase; margin-bottom:4px; }
+.sim-day-t { font-family:'Fraunces',serif; font-size:17px; margin-bottom:4px; }
+.sim-day-d { font-size:13px; color:var(--ink-muted); line-height:1.5; }
+
+.sim-cta-box { text-align:center; margin-top:32px; padding-top:28px; border-top:1px solid var(--border); }
+.sim-cta-box p.sub { font-size:13px; color:var(--ink-muted); max-width:400px; margin:14px auto 0; }
+.sim-cta-wa { display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#fff; padding:16px 32px; border-radius:100px; text-decoration:none; font-size:15px; font-weight:600; transition:all .3s var(--ease); }
+.sim-cta-wa:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,.35); }
+.sim-restart { display:block; margin:20px auto 0; background:none; border:none; color:var(--ink-dim); font-size:12px; text-decoration:underline; cursor:pointer; }
+
+footer { text-align:center; padding:32px 0; color:var(--ink-dim); font-size:12px; }
+
+@media (max-width:600px) {
+  .sim-card { padding:24px 16px; }
+  .sim-row { gap:16px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <a href="/" class="logo">gemi<span>check</span></a>
+    <a href="/" class="back">← Volver al sitio</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <div class="eyebrow">Simulador de viaje</div>
+    <h1>Mirá tu viaje antes de <em>cotizar</em></h1>
+    <p>Elegí destino, mes y viajeros. Te armamos un itinerario en 30 segundos.</p>
+  </div>
+
+  <div id="stepsBar">
+    <div class="sim-dot on" id="dot1"></div>
+    <div class="sim-dot" id="dot2"></div>
+    <div class="sim-dot" id="dot3"></div>
+    <div class="sim-dot" id="dot4"></div>
+  </div>
+
+  <!-- PASO 1: DESTINO -->
+  <div class="sim-card" id="paso1">
+    <div class="sim-step-title">¿A dónde te imaginás yendo?</div>
+    <div class="sim-step-sub">Elegí un destino para empezar</div>
+    <div class="sim-dest-grid" id="destGrid"></div>
+  </div>
+
+  <!-- PASO 2: MES -->
+  <div class="sim-card hidden" id="paso2">
+    <div class="sim-step-title">¿En qué mes viajás?</div>
+    <div class="sim-step-sub">La temporada cambia según el destino elegido</div>
+    <div class="sim-mes-grid" id="mesGrid"></div>
+    <div class="sim-legend">
+      <span><i style="background:#e88989"></i> Alta temporada</span>
+      <span><i style="background:var(--accent)"></i> Temporada media</span>
+      <span><i style="background:var(--accent-teal)"></i> Temporada baja — mejores precios</span>
+    </div>
+    <div class="sim-nav">
+      <button class="sim-btn ghost" onclick="goStep(1)">← Atrás</button>
+      <button class="sim-btn primary" id="btn2" disabled onclick="goStep(3)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- PASO 3: VIAJEROS -->
+  <div class="sim-card hidden" id="paso3">
+    <div class="sim-step-title">¿Quiénes viajan?</div>
+    <div class="sim-step-sub">Contanos cuántos son y cuántas noches</div>
+    <div class="sim-row">
+      <div class="sim-stepper">
+        <label>Adultos</label>
+        <div class="sim-stepper-ctrl">
+          <button onclick="chg('adultos',-1)">−</button><span id="numAdultos">2</span><button onclick="chg('adultos',1)">+</button>
+        </div>
+      </div>
+      <div class="sim-stepper">
+        <label>Menores</label>
+        <div class="sim-stepper-ctrl">
+          <button onclick="chg('menores',-1)">−</button><span id="numMenores">0</span><button onclick="chg('menores',1)">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="sim-step-sub" style="margin-top:8px">¿Cuántas noches?</div>
+    <div class="sim-noches" id="nochesGrid"></div>
+    <div class="sim-nav">
+      <button class="sim-btn ghost" onclick="goStep(2)">← Atrás</button>
+      <button class="sim-btn primary" id="btn3" disabled onclick="goStep(4)">Continuar →</button>
+    </div>
+  </div>
+
+  <!-- PASO 4: INTERESES -->
+  <div class="sim-card hidden" id="paso4">
+    <div class="sim-step-title">¿Qué te interesa más?</div>
+    <div class="sim-step-sub">Elegí una o más — opcional</div>
+    <div class="sim-chip-grid" id="interesesGrid"></div>
+    <div class="sim-skip"><a onclick="verResultado()">Saltear este paso →</a></div>
+    <div class="sim-nav">
+      <button class="sim-btn ghost" onclick="goStep(3)">← Atrás</button>
+      <button class="sim-btn primary" onclick="verResultado()">✨ Ver mi itinerario</button>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div class="sim-card hidden" id="resultado"></div>
+</div>
+
+<footer>Gemicheck Turismo SAS · gemicheck.com.ar</footer>
+
+<script>
+const D = {"bariloche": {"nombre": "Bariloche", "emoji": "🏔️", "region": "Patagonia · Argentina", "img": ["/images/destinos/bariloche-1.jpg", "/images/destinos/bariloche-2.jpg", "/images/destinos/bariloche-3.jpg", "/images/destinos/bariloche-4.jpg"], "temporada": ["media", "media", "baja", "baja", "media", "alta", "alta", "alta", "media", "baja", "baja", "media"], "intereses": [{"k": "nieve", "e": "🎿", "l": "Nieve y esquí"}, {"k": "trekking", "e": "🥾", "l": "Trekking"}, {"k": "choco", "e": "🍫", "l": "Chocolate y cerveza"}, {"k": "lago", "e": "🚤", "l": "Lago y navegación"}], "act": [{"t": "Cerro Catedral", "d": "Día completo de esquí o snowboard en el centro de esquí más grande de Sudamérica.", "tags": ["nieve"], "kids": false}, {"t": "Circuito Chico", "d": "Recorrido en auto por Llao Llao, Punto Panorámico y Puerto Pañuelo.", "tags": ["trekking", "lago"], "kids": true}, {"t": "Centro Cívico y Calle Mitre", "d": "Chocolaterías artesanales, cervecerías y el clásico paseo por el centro.", "tags": ["choco"], "kids": true}, {"t": "Refugio Frey", "d": "Trekking de montaña con vista a las agujas graníticas (apto verano).", "tags": ["trekking"], "kids": false}, {"t": "Cerro Campanario", "d": "Aerosilla con una de las vistas más lindas de la Patagonia.", "tags": ["lago", "trekking"], "kids": true}, {"t": "Navegación Lago Nahuel Huapi", "d": "Excursión en catamarán a Isla Victoria y Bosque de Arrayanes.", "tags": ["lago"], "kids": true}]}, "mendoza": {"nombre": "Mendoza", "emoji": "🍷", "region": "Cuyo · Argentina", "img": ["/images/destinos/mendoza-1.jpg", "/images/destinos/mendoza-2.jpg", "/images/destinos/mendoza-3.jpg", "/images/destinos/mendoza-4.jpg"], "temporada": ["alta", "alta", "media", "media", "baja", "baja", "baja", "media", "media", "alta", "alta", "alta"], "intereses": [{"k": "vino", "e": "🍷", "l": "Bodegas y vino"}, {"k": "montana", "e": "⛰️", "l": "Montaña y Aconcagua"}, {"k": "gastro", "e": "🍽️", "l": "Gastronomía"}, {"k": "bike", "e": "🚴", "l": "Bici por Maipú"}], "act": [{"t": "Ruta del vino en Luján de Cuyo", "d": "Visita y degustación en bodegas boutique de Malbec.", "tags": ["vino"], "kids": false}, {"t": "Bici por Maipú", "d": "Recorré bodegas familiares en bicicleta, ritmo relajado.", "tags": ["bike", "vino"], "kids": true}, {"t": "Alta Montaña y Puente del Inca", "d": "Excursión hacia el Aconcagua con paradas fotográficas.", "tags": ["montana"], "kids": true}, {"t": "Cena de altura", "d": "Restó de bodega con menú maridado, atardecer sobre la cordillera.", "tags": ["gastro", "vino"], "kids": false}, {"t": "Plaza Independencia y centro", "d": "Paseo urbano, ferias de artesanos y heladerías.", "tags": ["gastro"], "kids": true}, {"t": "Termas de Cacheuta", "d": "Relax en piletas termales con vista a la montaña.", "tags": ["montana"], "kids": true}]}, "iguazu": {"nombre": "Iguazú", "emoji": "💦", "region": "Misiones · Argentina", "img": ["/images/destinos/iguazu-1.jpg", "/images/destinos/iguazu-2.jpg", "/images/destinos/iguazu-3.jpg", "/images/destinos/iguazu-4.jpg"], "temporada": ["alta", "alta", "media", "media", "baja", "baja", "media", "media", "media", "alta", "alta", "alta"], "intereses": [{"k": "cataratas", "e": "💦", "l": "Cataratas"}, {"k": "aventura", "e": "🚤", "l": "Gran Aventura"}, {"k": "selva", "e": "🌿", "l": "Selva y fauna"}, {"k": "brasil", "e": "🇧🇷", "l": "Lado brasilero"}], "act": [{"t": "Circuito Superior e Inferior", "d": "Las pasarelas clásicas del Parque Nacional Iguazú, lado argentino.", "tags": ["cataratas"], "kids": true}, {"t": "Garganta del Diablo", "d": "El mirador más impactante, en tren ecológico + pasarela.", "tags": ["cataratas"], "kids": true}, {"t": "Gran Aventura en lancha", "d": "Paseo en gomón bajo las cataratas — mojarse garantizado.", "tags": ["aventura"], "kids": false}, {"t": "Parque das Aves + lado brasilero", "d": "Vista panorámica desde Brasil y santuario de aves.", "tags": ["brasil", "selva"], "kids": true}, {"t": "Sendero Macuco", "d": "Caminata en la selva misionera, avistaje de fauna.", "tags": ["selva"], "kids": false}, {"t": "Hito Tres Fronteras", "d": "El punto donde se unen Argentina, Brasil y Paraguay.", "tags": ["selva", "brasil"], "kids": true}]}, "salta": {"nombre": "Salta", "emoji": "🌵", "region": "Noroeste · Argentina", "img": ["/images/destinos/salta-1.jpg", "/images/destinos/salta-2.jpg", "/images/destinos/salta-3.jpg", "/images/destinos/salta-4.jpg"], "temporada": ["media", "media", "alta", "alta", "alta", "alta", "alta", "alta", "media", "media", "baja", "baja"], "intereses": [{"k": "quebrada", "e": "🌈", "l": "Quebrada de Humahuaca"}, {"k": "vino", "e": "🍇", "l": "Vinos de altura"}, {"k": "folclore", "e": "🎶", "l": "Folclore y peñas"}, {"k": "salinas", "e": "🧂", "l": "Salinas Grandes"}], "act": [{"t": "Quebrada de Humahuaca", "d": "Purmamarca, Cerro de los Siete Colores y Tilcara.", "tags": ["quebrada"], "kids": true}, {"t": "Salinas Grandes", "d": "El desierto blanco a 3.450msnm, fotos infinitas.", "tags": ["salinas"], "kids": true}, {"t": "Cafayate y vinos de altura", "d": "Bodegas de Torrontés en los Valles Calchaquíes.", "tags": ["vino"], "kids": false}, {"t": "Centro histórico salteño", "d": "Cabildo, MAAM y teleférico al Cerro San Bernardo.", "tags": ["folclore"], "kids": true}, {"t": "Peña folclórica", "d": "Cena show con empanadas, locro y música en vivo.", "tags": ["folclore"], "kids": true}, {"t": "Quebrada de las Conchas", "d": "Formaciones rocosas camino a Cafayate (Garganta del Diablo, Anfiteatro).", "tags": ["quebrada"], "kids": true}]}, "cordoba": {"nombre": "Córdoba", "emoji": "⛰️", "region": "Sierras · Argentina", "img": ["/images/destinos/cordoba-1.jpg", "/images/destinos/cordoba-2.jpg", "/images/destinos/cordoba-3.jpg", "/images/destinos/cordoba-4.jpg"], "temporada": ["alta", "media", "media", "baja", "baja", "baja", "media", "media", "media", "media", "alta", "alta"], "intereses": [{"k": "sierras", "e": "⛰️", "l": "Sierras y trekking"}, {"k": "lagos", "e": "🏞️", "l": "Lagos y ríos"}, {"k": "pueblos", "e": "🏘️", "l": "Pueblos serranos"}, {"k": "noche", "e": "🌃", "l": "Vida nocturna"}], "act": [{"t": "Villa Carlos Paz", "d": "Lago San Roque, costanera y el reloj cucú más famoso del país.", "tags": ["lagos", "pueblos"], "kids": true}, {"t": "Cerro Uritorco (Capilla del Monte)", "d": "Trekking a uno de los cerros más místicos de Argentina.", "tags": ["sierras"], "kids": false}, {"t": "La Cumbrecita", "d": "Pueblo peatonal alpino con arroyos y hosterías de montaña.", "tags": ["pueblos", "sierras"], "kids": true}, {"t": "Salsipuedes y Río Ceballos", "d": "Balnearios naturales entre las sierras.", "tags": ["lagos"], "kids": true}, {"t": "Noche en Carlos Paz", "d": "Teatros, casino y bares sobre la costanera.", "tags": ["noche"], "kids": false}, {"t": "Jesús María y Estancias", "d": "Historia jesuítica declarada Patrimonio de la Humanidad.", "tags": ["pueblos"], "kids": true}]}, "san-martin": {"nombre": "San Martín de los Andes", "emoji": "🌲", "region": "Patagonia · Argentina", "img": ["/images/destinos/san-martin-1.jpg", "/images/destinos/san-martin-2.jpg", "/images/destinos/san-martin-3.jpg", "/images/destinos/san-martin-4.jpg"], "temporada": ["media", "media", "baja", "baja", "media", "alta", "alta", "alta", "media", "baja", "baja", "media"], "intereses": [{"k": "lagos", "e": "🚤", "l": "7 Lagos"}, {"k": "nieve", "e": "🎿", "l": "Chapelco"}, {"k": "trekking", "e": "🥾", "l": "Trekking"}, {"k": "pesca", "e": "🎣", "l": "Pesca con mosca"}], "act": [{"t": "Ruta de los 7 Lagos", "d": "El recorrido escénico más lindo de la Patagonia, hasta Villa La Angostura.", "tags": ["lagos"], "kids": true}, {"t": "Cerro Chapelco", "d": "Esquí y snowboard con vista al volcán Lanín.", "tags": ["nieve"], "kids": false}, {"t": "Centro cívico y costanera", "d": "Paseo junto al Lago Lácar, artesanías y gastronomía patagónica.", "tags": ["lagos"], "kids": true}, {"t": "Pesca con mosca", "d": "Salida con guía en los ríos de la zona, cupos limitados.", "tags": ["pesca"], "kids": false}, {"t": "Parque Nacional Lanín", "d": "Trekking con vista al volcán y bosques de araucarias.", "tags": ["trekking"], "kids": true}]}, "angostura": {"nombre": "Villa La Angostura", "emoji": "🌲", "region": "Patagonia · Argentina", "img": ["/images/destinos/angostura-1.jpg", "/images/destinos/angostura-2.jpg", "/images/destinos/angostura-3.jpg", "/images/destinos/angostura-4.jpg"], "temporada": ["media", "media", "baja", "baja", "media", "alta", "alta", "alta", "media", "baja", "baja", "media"], "intereses": [{"k": "nieve", "e": "🎿", "l": "Cerro Bayo"}, {"k": "trekking", "e": "🥾", "l": "Trekking arrayanes"}, {"k": "lago", "e": "🚤", "l": "Lago Nahuel Huapi"}, {"k": "gastro", "e": "🍽️", "l": "Gastronomía"}], "act": [{"t": "Bosque de Arrayanes", "d": "Trekking o navegación al único bosque de arrayanes centenarios del mundo.", "tags": ["trekking", "lago"], "kids": true}, {"t": "Cerro Bayo", "d": "Centro de esquí familiar, ideal para principiantes.", "tags": ["nieve"], "kids": true}, {"t": "La Villa y Puerto Manzano", "d": "Paseo gastronómico frente al lago, atardeceres patagónicos.", "tags": ["gastro", "lago"], "kids": true}, {"t": "Cerro Belvedere", "d": "Trekking con vista panorámica a los siete lagos.", "tags": ["trekking"], "kids": false}]}, "florianopolis": {"nombre": "Florianópolis", "emoji": "🏖️", "region": "Santa Catarina · Brasil", "img": ["/images/destinos/florianopolis-1.jpg", "/images/destinos/florianopolis-2.jpg", "/images/destinos/florianopolis-3.jpg", "/images/destinos/florianopolis-4.jpg"], "temporada": ["alta", "alta", "media", "baja", "baja", "baja", "baja", "baja", "media", "media", "alta", "alta"], "intereses": [{"k": "playa", "e": "🏖️", "l": "Playas"}, {"k": "surf", "e": "🏄", "l": "Surf"}, {"k": "noche", "e": "🌃", "l": "Vida nocturna"}, {"k": "lagoa", "e": "🛶", "l": "Lagoa da Conceição"}], "act": [{"t": "Praia Mole y Joaquina", "d": "Las playas más populares de la isla, ideales para surf.", "tags": ["playa", "surf"], "kids": true}, {"t": "Lagoa da Conceição", "d": "Stand up paddle, bares y atardecer sobre la laguna.", "tags": ["lagoa"], "kids": true}, {"t": "Barra da Lagoa", "d": "Pueblo de pescadores, ideal para principiantes en surf.", "tags": ["surf"], "kids": true}, {"t": "Centro histórico y Mercado Público", "d": "Gastronomía local y arquitectura colonial.", "tags": ["noche"], "kids": true}, {"t": "Praia dos Ingleses", "d": "Playa familiar en el norte de la isla, aguas calmas.", "tags": ["playa"], "kids": true}]}, "rio": {"nombre": "Río de Janeiro", "emoji": "🌴", "region": "Brasil", "img": ["/images/destinos/rio-1.jpg", "/images/destinos/rio-2.jpg", "/images/destinos/rio-3.jpg", "/images/destinos/rio-4.jpg"], "temporada": ["alta", "alta", "media", "baja", "baja", "baja", "media", "media", "media", "media", "alta", "alta"], "intereses": [{"k": "playa", "e": "🏖️", "l": "Copacabana / Ipanema"}, {"k": "pancorcov", "e": "⛰️", "l": "Pan de Azúcar / Corcovado"}, {"k": "favela", "e": "🎨", "l": "Santa Teresa"}, {"k": "noche", "e": "🎉", "l": "Vida nocturna"}], "act": [{"t": "Cristo Redentor", "d": "Subida en tren al Corcovado, la vista más icónica de Río.", "tags": ["pancorcov"], "kids": true}, {"t": "Pan de Azúcar", "d": "Teleférico con vista 360° a la bahía de Guanabara.", "tags": ["pancorcov"], "kids": true}, {"t": "Copacabana e Ipanema", "d": "Día de playa carioca, caipirinha incluida.", "tags": ["playa"], "kids": true}, {"t": "Santa Teresa y Selarón", "d": "Barrio bohemio, escalera de Selarón y arte callejero.", "tags": ["favela"], "kids": true}, {"t": "Lapa de noche", "d": "Arcos de Lapa, samba en vivo y vida nocturna carioca.", "tags": ["noche"], "kids": false}]}, "buzios": {"nombre": "Búzios", "emoji": "⛵", "region": "Río de Janeiro · Brasil", "img": ["/images/destinos/buzios-1.jpg", "/images/destinos/buzios-2.jpg", "/images/destinos/buzios-3.jpg", "/images/destinos/buzios-4.jpg"], "temporada": ["alta", "alta", "media", "baja", "baja", "baja", "media", "media", "media", "media", "alta", "alta"], "intereses": [{"k": "playa", "e": "🏖️", "l": "Playas paradisíacas"}, {"k": "barco", "e": "⛵", "l": "Paseo en barco"}, {"k": "rua", "e": "🛍️", "l": "Rua das Pedras"}, {"k": "noche", "e": "🍹", "l": "Bares de noche"}], "act": [{"t": "Paseo en escuna", "d": "Recorrido por las 20+ playas de Búzios en catamarán.", "tags": ["barco", "playa"], "kids": true}, {"t": "Praia da Ferradura", "d": "Aguas calmas ideales para familias y snorkel.", "tags": ["playa"], "kids": true}, {"t": "Rua das Pedras", "d": "La calle principal, boutiques, heladerías y restaurantes.", "tags": ["rua"], "kids": true}, {"t": "Praia de Geribá", "d": "La playa más animada, surf y beach clubs.", "tags": ["playa", "noche"], "kids": false}, {"t": "Atardecer en Orla Bardot", "d": "Estatua de Brigitte Bardot y bares frente al mar.", "tags": ["noche"], "kids": true}]}, "aruba": {"nombre": "Aruba", "emoji": "🏝️", "region": "Caribe", "img": ["/images/aruba-hero.jpg", "/images/aruba.jpg", "/images/aruba-hero.jpg", "/images/aruba.jpg"], "temporada": ["alta", "alta", "media", "media", "baja", "baja", "media", "media", "media", "media", "alta", "alta"], "intereses": [{"k": "playa", "e": "🏖️", "l": "Eagle Beach"}, {"k": "buceo", "e": "🤿", "l": "Buceo y snorkel"}, {"k": "kids", "e": "👨‍👩‍👧", "l": "Con niños"}, {"k": "casino", "e": "🎰", "l": "Casinos"}], "act": [{"t": "Eagle Beach", "d": "Elegida de las mejores playas del mundo, arena blanca y aguas turquesas.", "tags": ["playa"], "kids": true}, {"t": "Baby Beach", "d": "Aguas calmas y poco profundas, ideal para chicos.", "tags": ["kids", "playa"], "kids": true}, {"t": "Snorkel en el naufragio Antilla", "d": "Uno de los naufragios más buceables del Caribe.", "tags": ["buceo"], "kids": false}, {"t": "Oranjestad de noche", "d": "Casinos, bares y arquitectura colonial holandesa.", "tags": ["casino"], "kids": false}, {"t": "Arikok National Park", "d": "Paisaje desértico caribeño en 4x4, cuevas y playas escondidas.", "tags": ["buceo"], "kids": true}]}, "cancun": {"nombre": "Cancún", "emoji": "🌊", "region": "México · Caribe", "img": ["/images/cancun-hero.jpg", "/images/cancun.jpg", "/images/cancun-hero.jpg", "/images/cancun.jpg"], "temporada": ["alta", "alta", "media", "media", "baja", "baja", "media", "media", "media", "media", "alta", "alta"], "intereses": [{"k": "playa", "e": "🏖️", "l": "Zona Hotelera"}, {"k": "ruinas", "e": "🏛️", "l": "Chichén Itzá / Tulum"}, {"k": "cenotes", "e": "💧", "l": "Cenotes"}, {"k": "noche", "e": "🎉", "l": "Coco Bongo y vida nocturna"}], "act": [{"t": "Zona Hotelera", "d": "Playas de arena blanca y aguas turquesas, all-inclusive.", "tags": ["playa"], "kids": true}, {"t": "Chichén Itzá", "d": "Una de las 7 Maravillas del Mundo Moderno, excursión de día completo.", "tags": ["ruinas"], "kids": true}, {"t": "Tulum y sus ruinas frente al mar", "d": "El único sitio arqueológico maya sobre el Caribe.", "tags": ["ruinas", "playa"], "kids": true}, {"t": "Cenote Dos Ojos", "d": "Buceo o snorkel en cuevas de agua dulce cristalina.", "tags": ["cenotes"], "kids": false}, {"t": "Coco Bongo", "d": "El show nocturno más famoso de Cancún — apto solo mayores.", "tags": ["noche"], "kids": false}]}, "punta-cana": {"nombre": "Punta Cana", "emoji": "🌴", "region": "Rep. Dominicana · Caribe", "img": ["/images/punta-cana-hero.jpg", "/images/punta-cana.jpg", "/images/punta-cana-hero.jpg", "/images/punta-cana.jpg"], "temporada": ["alta", "alta", "media", "media", "baja", "baja", "media", "media", "media", "media", "alta", "alta"], "intereses": [{"k": "playa", "e": "🏖️", "l": "Bávaro / Macao"}, {"k": "isla", "e": "🏝️", "l": "Isla Saona"}, {"k": "aventura", "e": "🚣", "l": "Excursiones de aventura"}, {"k": "allinc", "e": "🍹", "l": "All inclusive"}], "act": [{"t": "Playa Bávaro", "d": "Una de las mejores playas del Caribe, resorts all-inclusive.", "tags": ["playa", "allinc"], "kids": true}, {"t": "Isla Saona", "d": "Excursión en catamarán a la isla paradisíaca, parada en piscina natural.", "tags": ["isla"], "kids": true}, {"t": "Hoyo Azul y Scape Park", "d": "Cenote de aguas turquesas y tirolesas en la selva.", "tags": ["aventura"], "kids": false}, {"t": "Playa Macao", "d": "Playa salvaje, ideal para surf y menos concurrida.", "tags": ["playa"], "kids": true}, {"t": "Excursión en buggy", "d": "Recorrido de aventura por pueblos locales y plantaciones de cacao.", "tags": ["aventura"], "kids": false}]}};
+const MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+const WA_NUM = "5491130615149";
+
+let state = { destino:null, mes:null, adultos:2, menores:0, noches:5, intereses:[] };
+
+// --- Render Paso 1: destinos ---
+const destGrid = document.getElementById('destGrid');
+Object.entries(D).forEach(([slug, dest]) => {
+  const div = document.createElement('div');
+  div.className = 'sim-dest-card';
+  div.id = 'dest-' + slug;
+  div.onclick = () => selDestino(slug);
+  div.innerHTML = `<img src="${dest.img[0]}" alt="${dest.nombre}" loading="lazy" onerror="this.style.opacity=0.15">
+    <div class="sim-dest-overlay">
+      <div class="sim-dest-name">${dest.emoji} ${dest.nombre}</div>
+      <div class="sim-dest-region">${dest.region}</div>
+    </div>`;
+  destGrid.appendChild(div);
+});
+
+function selDestino(slug) {
+  state.destino = slug;
+  document.querySelectorAll('.sim-dest-card').forEach(c => c.classList.remove('sel'));
+  document.getElementById('dest-' + slug).classList.add('sel');
+  buildMeses();
+  setTimeout(() => goStep(2), 220);
+}
+
+function buildMeses() {
+  const dest = D[state.destino];
+  const grid = document.getElementById('mesGrid');
+  grid.innerHTML = '';
+  MESES.forEach((m, i) => {
+    const temp = dest.temporada[i];
+    const div = document.createElement('div');
+    div.className = 'sim-mes';
+    div.id = 'mes-' + i;
+    div.onclick = () => selMes(i);
+    div.innerHTML = `<div class="sim-mes-name">${m}</div><span class="sim-badge ${temp}">${temp}</span>`;
+    grid.appendChild(div);
+  });
+  state.mes = null;
+  document.getElementById('btn2').disabled = true;
+}
+
+function selMes(i) {
+  state.mes = i;
+  document.querySelectorAll('.sim-mes').forEach(c => c.classList.remove('sel'));
+  document.getElementById('mes-' + i).classList.add('sel');
+  document.getElementById('btn2').disabled = false;
+}
+
+// --- Paso 3: viajeros y noches ---
+function chg(tipo, delta) {
+  if (tipo === 'adultos') {
+    state.adultos = Math.max(1, Math.min(10, state.adultos + delta));
+    document.getElementById('numAdultos').textContent = state.adultos;
+  } else {
+    state.menores = Math.max(0, Math.min(6, state.menores + delta));
+    document.getElementById('numMenores').textContent = state.menores;
+  }
+}
+
+const nochesGrid = document.getElementById('nochesGrid');
+[3,4,5,6,7,8,9,10].forEach(n => {
+  const div = document.createElement('div');
+  div.className = 'sim-noche' + (n === 5 ? ' sel' : '');
+  div.textContent = n + ' noches';
+  div.onclick = () => {
+    state.noches = n;
+    document.querySelectorAll('.sim-noche').forEach(c => c.classList.remove('sel'));
+    div.classList.add('sel');
+    document.getElementById('btn3').disabled = false;
+  };
+  nochesGrid.appendChild(div);
+});
+document.getElementById('btn3').disabled = false; // 5 noches viene preseleccionado
+
+// --- Paso 4: intereses ---
+function buildIntereses() {
+  const dest = D[state.destino];
+  const grid = document.getElementById('interesesGrid');
+  grid.innerHTML = '';
+  dest.intereses.forEach(int => {
+    const div = document.createElement('div');
+    div.className = 'sim-chip';
+    div.id = 'int-' + int.k;
+    div.innerHTML = `${int.e} ${int.l}`;
+    div.onclick = () => {
+      const idx = state.intereses.indexOf(int.k);
+      if (idx > -1) { state.intereses.splice(idx,1); div.classList.remove('sel'); }
+      else { state.intereses.push(int.k); div.classList.add('sel'); }
+    };
+    grid.appendChild(div);
+  });
+}
+
+// --- Navegación entre pasos ---
+function goStep(n) {
+  [1,2,3,4].forEach(i => document.getElementById('paso'+i).classList.add('hidden'));
+  document.getElementById('resultado').classList.add('hidden');
+  document.getElementById('paso'+n).classList.remove('hidden');
+  [1,2,3,4].forEach(i => document.getElementById('dot'+i).classList.toggle('on', i <= n));
+  if (n === 4) { state.intereses = []; buildIntereses(); }
+  window.scrollTo({top: document.getElementById('paso'+n).offsetTop - 80, behavior:'smooth'});
+}
+
+// --- Generar itinerario ---
+function generarActividades(dest) {
+  const conMenores = state.menores > 0;
+  let pool = dest.act.filter(a => !conMenores || a.kids);
+  if (pool.length < 3) pool = dest.act; // fallback
+
+  // priorizar por intereses elegidos
+  let priorizadas = [];
+  let resto = [];
+  pool.forEach(a => {
+    if (state.intereses.length && a.tags.some(t => state.intereses.includes(t))) priorizadas.push(a);
+    else resto.push(a);
+  });
+  let ordenadas = priorizadas.concat(resto);
+
+  const diasAMostrar = Math.min(state.noches, 6);
+  let dias = [];
+  for (let i = 0; i < diasAMostrar; i++) {
+    dias.push(ordenadas[i % ordenadas.length]);
+  }
+  return dias;
+}
+
+function verResultado() {
+  const dest = D[state.destino];
+  const temp = dest.temporada[state.mes];
+  const dias = generarActividades(dest);
+  const imgs = dest.img;
+
+  const notas = {
+    alta: "Temporada alta: más movimiento y conviene reservar con anticipación.",
+    media: "Temporada media: buen equilibrio entre clima, precio y disponibilidad.",
+    baja: "Temporada baja: la oportunidad del viajero inteligente — menos gente, mejores precios."
+  };
+
+  const menoresTxt = state.menores > 0 ? ` + ${state.menores} menor${state.menores>1?'es':''}` : '';
+  const interesesTxt = state.intereses.length
+    ? dest.intereses.filter(i => state.intereses.includes(i.k)).map(i => i.l).join(', ')
+    : '';
+
+  let diasHtml = dias.map((a, i) => renderDia(i+1, a.t, a.d, imgs[i % imgs.length])).join('');
+
+  const msg = `Hola Gemicheck! Simulé mi viaje en la web ✈️ ${dest.nombre} · ${state.noches} noches · ${state.adultos} adultos${menoresTxt} · ${MESES[state.mes]}` +
+    (interesesTxt ? ` · Me interesa: ${interesesTxt}` : '') + `. ¿Me pasan una cotización?`;
+
+  const html = `
+    <div class="sim-result-head">
+      <div class="sim-result-dest">${dest.emoji} ${dest.region}</div>
+      <div class="sim-result-title">Tu viaje a <em>${dest.nombre}</em></div>
+      <div class="sim-result-meta">
+        <span>📅 ${MESES[state.mes]}</span>
+        <span>🌙 ${state.noches} noches</span>
+        <span>👥 ${state.adultos} adultos${menoresTxt}</span>
+        <span class="sim-badge ${temp}">Temporada ${temp}</span>
+      </div>
+      <div class="sim-season-note">${notas[temp]}</div>
+    </div>
+    <div style="margin-top:28px">${diasHtml}</div>
+    <div class="sim-cta-box">
+      <a class="sim-cta-wa" href="https://wa.me/${WA_NUM}?text=${encodeURIComponent(msg)}" target="_blank">
+        💬 Quiero este viaje — pedir cotización
+      </a>
+      <p class="sub">Este itinerario es orientativo. Gonza y Cris lo ajustan a tu medida en la cotización real, sin compromiso.</p>
+      <button class="sim-restart" onclick="reiniciar()">↻ Simular otro viaje</button>
+    </div>`;
+
+  const res = document.getElementById('resultado');
+  res.innerHTML = html;
+  [1,2,3,4].forEach(i => document.getElementById('paso'+i).classList.add('hidden'));
+  document.querySelectorAll('#stepsBar .sim-dot').forEach(d => d.classList.add('on'));
+  res.classList.remove('hidden');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function renderDia(n, t, d, img) {
+  return `<div class="sim-day">
+    <img class="sim-day-img" src="${img}" alt="${t}" loading="lazy" onerror="this.style.display='none'">
+    <div>
+      <div class="sim-day-n">Día ${n}</div>
+      <div class="sim-day-t">${t}</div>
+      <div class="sim-day-d">${d}</div>
+    </div>
+  </div>`;
+}
+
+function reiniciar() {
+  state = { destino:null, mes:null, adultos:2, menores:0, noches:5, intereses:[] };
+  document.querySelectorAll('.sim-dest-card').forEach(c => c.classList.remove('sel'));
+  document.querySelectorAll('.sim-noche').forEach(c => c.classList.remove('sel'));
+  document.getElementById('numAdultos').textContent = 2;
+  document.getElementById('numMenores').textContent = 0;
+  goStep(1);
+}
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 40) nav.style.padding = '10px 0';
+  else nav.style.padding = '16px 0';
+});
+</script>
+</body>
+</html>
