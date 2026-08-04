@@ -1846,6 +1846,66 @@
   }
   .instagram-feed-link:hover { color: var(--accent); border-color: var(--accent); }
   behold-widget { display: block; }
+
+  /* ── Selector Argentina / Internacional ── */
+  .cat-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  .cat-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+    border: 2px solid var(--border-strong);
+    transition: all .35s var(--ease);
+    text-decoration: none;
+    display: block;
+  }
+  .cat-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+  .cat-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: .72;
+    transition: opacity .35s var(--ease);
+  }
+  .cat-card:hover img { opacity: .92; }
+  .cat-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.88) 20%, transparent 70%);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 22px 24px;
+  }
+  .cat-card-eyebrow {
+    font-size: 10px; letter-spacing: 2.5px;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 6px;
+  }
+  .cat-card-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 300; color: #fff; line-height: 1.1;
+  }
+  .cat-card-sub {
+    font-size: 12px; color: rgba(255,255,255,.55); margin-top: 6px;
+  }
+  .cat-card-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 14px; font-size: 12px; color: var(--accent);
+    letter-spacing: .5px;
+  }
+  @media (max-width: 480px) {
+    .cat-card { aspect-ratio: 3/4; }
+    .cat-card-title { font-size: 18px; }
+    .cat-card-sub { font-size: 11px; }
+  }
 </style>
 </head>
 <body>
@@ -1944,173 +2004,35 @@
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="section-eyebrow">PRINCIPALES DESTINOS</div>
+        <div class="section-eyebrow">DESTINOS</div>
         <h2 class="section-title">Cada lugar,<br>una <em>historia.</em></h2>
       </div>
     </div>
 
-    <div class="destinos-grid">
-
-      <article class="destino-card destino-1 reveal" onclick="window.location.href='/bariloche'">
-        <img src="images/bariloche.jpg" alt="Bariloche" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
+    <div class="cat-selector reveal">
+      <a href="/argentina" class="cat-card">
+        <img src="images/cat-argentina.jpg" alt="Destinos Argentina">
+        <div class="cat-card-overlay">
+          <div class="cat-card-eyebrow">Nacional</div>
+          <div class="cat-card-title">🇦🇷 Argentina</div>
+          <div class="cat-card-sub">Patagonia · Cuyo · NOA · Litoral</div>
+          <div class="cat-card-cta">Ver destinos →</div>
         </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">PATAGONIA</div>
-            <div class="destino-name">Bariloche</div>
-            <div class="destino-tag">Lagos · Montaña</div>
-          </div>
+      </a>
+      <a href="/internacional" class="cat-card">
+        <img src="images/cat-internacional.jpg" alt="Destinos Internacionales">
+        <div class="cat-card-overlay">
+          <div class="cat-card-eyebrow">Internacional</div>
+          <div class="cat-card-title">🌎 Internacional</div>
+          <div class="cat-card-sub">Brasil · Caribe · Europa · Disney</div>
+          <div class="cat-card-cta">Ver destinos →</div>
         </div>
-      </article>
-
-      <article class="destino-card destino-2 reveal delay-1" onclick="window.location.href='/mendoza'">
-        <img src="images/mendoza.jpg" alt="Mendoza" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">CUYO</div>
-            <div class="destino-name">Mendoza</div>
-            <div class="destino-tag">Viñedos · Andes</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="destino-card destino-3 reveal delay-2" onclick="window.location.href='/iguazu'">
-        <img src="images/iguazu.jpg" alt="Iguazú" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">LITORAL</div>
-            <div class="destino-name">Iguazú</div>
-            <div class="destino-tag">Selva · Cataratas</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="destino-card destino-4 reveal delay-3" onclick="window.location.href='/salta'">
-        <img src="images/salta.jpg" alt="Salta &amp; Jujuy" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">NORTE</div>
-            <div class="destino-name">Salta &amp; Jujuy</div>
-            <div class="destino-tag">Puna · Quebrada</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="destino-card destino-5 reveal" onclick="openDestino('angostura')">
-        <img src="images/angostura.jpg" alt="V. La Angostura" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">PATAGONIA</div>
-            <div class="destino-name">V. La Angostura</div>
-            <div class="destino-tag">Bosques · Lagos</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="destino-card destino-6 reveal delay-1" onclick="openDestino('san-martin')">
-        <img src="images/san-martin.jpg" alt="S. M. de los Andes" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">PATAGONIA</div>
-            <div class="destino-name">S. M. de los Andes</div>
-            <div class="destino-tag">Montaña · Río</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="destino-card destino-7 reveal delay-2" onclick="window.location.href='/cordoba'">
-        <img src="images/cordoba.jpg" alt="Córdoba" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">MEDITERRÁNEA</div>
-            <div class="destino-name">Córdoba</div>
-            <div class="destino-tag">Sierras · Cultura</div>
-          </div>
-        </div>
-      </article>
-
-      <article class="destino-card destino-8 reveal delay-3" onclick="window.location.href='/brasil'">
-        <img src="images/brasil.jpg" alt="Brasil" class="destino-photo">
-        <div class="destino-cta">
-          <svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg>
-        </div>
-        <div class="destino-content">
-          <div>
-            <div class="destino-region">INTERNACIONAL</div>
-            <div class="destino-name">Brasil</div>
-            <div class="destino-tag">Playa · Tropical</div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-    <!-- CARIBE -->
-    <div style="margin-top:48px">
-      <div class="section-eyebrow" style="margin-bottom:16px">DESTINOS INTERNACIONALES · CARIBE</div>
-      <h3 style="font-family:'Fraunces',serif;font-size:clamp(24px,3vw,36px);font-weight:300;margin-bottom:32px;line-height:1.1">Sol, playa y <em style="font-style:italic;color:var(--accent)">todo incluido.</em></h3>
-      <div class="destinos-grid" id="caribe-grid" style="grid-template-columns:repeat(3,1fr)">
-
-        <article class="destino-card reveal" onclick="window.location.href='/aruba'" style="cursor:pointer">
-          <img src="images/aruba.jpg" alt="Aruba" class="destino-photo">
-          <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
-          <div class="destino-content">
-            <div>
-              <div class="destino-region">CARIBE · ANTILLAS HOLANDESAS</div>
-              <div class="destino-name">Aruba</div>
-              <div class="destino-tag">Playas · Sin huracanes · Sol garantizado</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="destino-card reveal delay-1" onclick="window.location.href='/cancun'" style="cursor:pointer">
-          <img src="images/cancun.jpg" alt="Cancún" class="destino-photo">
-          <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
-          <div class="destino-content">
-            <div>
-              <div class="destino-region">CARIBE · MÉXICO</div>
-              <div class="destino-name">Cancún</div>
-              <div class="destino-tag">Cenotes · Chichén Itzá · Riviera Maya</div>
-            </div>
-          </div>
-        </article>
-
-        <article class="destino-card reveal delay-2" onclick="window.location.href='/punta-cana'" style="cursor:pointer">
-          <img src="images/punta-cana.jpg" alt="Punta Cana" class="destino-photo">
-          <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
-          <div class="destino-content">
-            <div>
-              <div class="destino-region">CARIBE · REP. DOMINICANA</div>
-              <div class="destino-name">Punta Cana</div>
-              <div class="destino-tag">Todo incluido · Isla Saona · Bávaro</div>
-            </div>
-          </div>
-        </article>
-
-      </div>
+      </a>
     </div>
 
   </div>
 </section>
+
 
 <section class="personalizada">
   <div class="container">
