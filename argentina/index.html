@@ -1,1 +1,198 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Destinos en Argentina — Gemicheck</title>
+<meta name="description" content="Todos los destinos nacionales de Gemicheck. Patagonia, Cuyo, NOA, Litoral y Buenos Aires. Armamos tu viaje a medida.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/argentina">
+<style>
+:root {
+    --bg: #0a0e1a;
+    --bg-alt: #0f1424;
+    --surface: #141a2e;
+    --surface-hover: #1a2038;
+    --ink: #f4eee4;
+    --ink-muted: #8b8fa0;
+    --ink-dim: #565a6b;
+    --accent: #d4b483;
+    --accent-hot: #e8c89a;
+    --accent-teal: #4ec9a8;
+    --border: rgba(244, 238, 228, 0.08);
+    --border-strong: rgba(244, 238, 228, 0.15);
+    --shadow-lg: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+h1,h2{font-family:'Fraunces',serif;font-weight:300}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--accent)}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,14,26,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-size:20px;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.nav-back{font-size:13px;color:var(--ink-muted);border:1px solid var(--border-strong);padding:8px 16px;border-radius:100px;transition:all .3s ease}
+.nav-back:hover{border-color:var(--accent);color:var(--accent)}
+.hero{padding:48px 0 32px;text-align:center}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.hero h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin-bottom:10px}
+.hero p{color:var(--ink-muted);font-size:15px;max-width:500px;margin:0 auto}
+.dest-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;padding:0 0 72px}
+@media(max-width:600px){.dest-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+.destino-card{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:3/4;border:1px solid var(--border);transition:all .3s ease;background:var(--bg-alt);display:block}
+.destino-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.destino-photo{width:100%;height:100%;object-fit:cover;display:block;opacity:.85;transition:opacity .3s ease}
+.destino-card:hover .destino-photo{opacity:1}
+.destino-cta{position:absolute;top:14px;right:14px;width:32px;height:32px;background:rgba(10,14,26,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.destino-cta svg{width:14px;height:14px}
+.destino-content{position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 100%)}
+.destino-region{font-size:9px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:4px}
+.destino-name{font-family:'Fraunces',serif;font-size:clamp(16px,2.5vw,22px);font-weight:300;line-height:1.1;margin-bottom:4px}
+.destino-tag{font-size:11px;color:var(--ink-muted)}
+footer{text-align:center;padding:28px 0;color:var(--ink-dim);font-size:12px;border-top:1px solid var(--border)}
+</style></head>
+<body>
+<nav><div class="container nav-inner">
+  <a href="/" class="logo">gemi<span>check</span></a>
+  <a href="/" class="nav-back">← Inicio</a>
+</div></nav>
+<div class="container">
+  <div class="hero">
+    <div class="eyebrow">NACIONAL</div>
+    <h1>🇦🇷 Destinos en <em>Argentina</em></h1>
+    <p>De la Patagonia al NOA, te llevamos a los mejores rincones del país.</p>
+  </div>
+  <div class="dest-grid">
+    <a href="/bariloche" class="destino-card">
+      <img src="../images/bariloche.jpg" alt="Bariloche" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">Bariloche</div>
+        <div class="destino-tag">Lagos · Nieve · Montaña</div>
+      </div>
+    </a><a href="/ushuaia" class="destino-card">
+      <img src="../images/ushuaia.jpg" alt="Ushuaia" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">Ushuaia</div>
+        <div class="destino-tag">Fin del Mundo · Glaciares · Pingüinos</div>
+      </div>
+    </a><a href="/calafate" class="destino-card">
+      <img src="../images/calafate.jpg" alt="El Calafate" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">El Calafate</div>
+        <div class="destino-tag">Perito Moreno · Lago Argentino</div>
+      </div>
+    </a><a href="/chalten" class="destino-card">
+      <img src="../images/chalten.jpg" alt="El Chaltén" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">El Chaltén</div>
+        <div class="destino-tag">Fitz Roy · Trekking · Lengas</div>
+      </div>
+    </a><a href="/angostura" class="destino-card">
+      <img src="../images/angostura.jpg" alt="V. La Angostura" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">V. La Angostura</div>
+        <div class="destino-tag">Bosques · Arrayanes · Lagos</div>
+      </div>
+    </a><a href="/san-martin" class="destino-card">
+      <img src="../images/san-martin.jpg" alt="S. M. de los Andes" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">S. M. de los Andes</div>
+        <div class="destino-tag">Montaña · Ríos · 7 Lagos</div>
+      </div>
+    </a><a href="/neuquen" class="destino-card">
+      <img src="../images/neuquen.jpg" alt="Neuquén" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">Neuquén</div>
+        <div class="destino-tag">7 Lagos · Dinosaurios · Volcanes</div>
+      </div>
+    </a><a href="/puerto-madryn" class="destino-card">
+      <img src="../images/puerto-madryn.jpg" alt="Puerto Madryn" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">PATAGONIA</div>
+        <div class="destino-name">Puerto Madryn</div>
+        <div class="destino-tag">Ballenas · Pingüinos · Orcas</div>
+      </div>
+    </a><a href="/mendoza" class="destino-card">
+      <img src="../images/mendoza.jpg" alt="Mendoza" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">CUYO</div>
+        <div class="destino-name">Mendoza</div>
+        <div class="destino-tag">Viñedos · Andes · Vino</div>
+      </div>
+    </a><a href="/san-juan" class="destino-card">
+      <img src="../images/san-juan.jpg" alt="San Juan" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">CUYO</div>
+        <div class="destino-name">San Juan</div>
+        <div class="destino-tag">Valle de la Luna · Dinosaurios</div>
+      </div>
+    </a><a href="/iguazu" class="destino-card">
+      <img src="../images/iguazu.jpg" alt="Iguazú" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">LITORAL</div>
+        <div class="destino-name">Iguazú</div>
+        <div class="destino-tag">Selva · Cataratas · Aves</div>
+      </div>
+    </a><a href="/salta" class="destino-card">
+      <img src="../images/salta.jpg" alt="Salta" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">NORTE · NOA</div>
+        <div class="destino-name">Salta</div>
+        <div class="destino-tag">Quebrada · Salares · Puna</div>
+      </div>
+    </a><a href="/jujuy" class="destino-card">
+      <img src="../images/jujuy.jpg" alt="Jujuy" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">NORTE · NOA</div>
+        <div class="destino-name">Jujuy</div>
+        <div class="destino-tag">Cerro 7 Colores · Salinas</div>
+      </div>
+    </a><a href="/cordoba" class="destino-card">
+      <img src="../images/cordoba.jpg" alt="Córdoba" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">MEDITERRÁNEA</div>
+        <div class="destino-name">Córdoba</div>
+        <div class="destino-tag">Sierras · Cultura · Lagos</div>
+      </div>
+    </a><a href="/buenos-aires" class="destino-card">
+      <img src="../images/buenos-aires.jpg" alt="Buenos Aires" class="destino-photo" loading="lazy" onerror="this.style.opacity=0.15">
+      <div class="destino-cta"><svg viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M13 3H6M13 3V10" stroke="currentColor" stroke-width="1.5"/></svg></div>
+      <div class="destino-content">
+        <div class="destino-region">BUENOS AIRES</div>
+        <div class="destino-name">Buenos Aires</div>
+        <div class="destino-tag">Tango · Gastronomía · Cultura</div>
+      </div>
+    </a>
+  </div>
+</div>
+<footer>Gemicheck Turismo SAS · <a href="https://wa.me/5491130615149" style="color:var(--accent)">WhatsApp</a> · gemicheck.com.ar</footer>
+</body></html>
