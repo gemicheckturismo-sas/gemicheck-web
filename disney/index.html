@@ -1,1 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disney World Orlando — Gemicheck Turismo</title>
+<meta name="description" content="Viajes a Walt Disney World Orlando desde Argentina. 4 parques temáticos, hoteles dentro del resort, entradas y vuelo incluidos. Armamos tu viaje mágico con Gemicheck.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/disney">
+<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<meta name="theme-color" content="#020818">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #020818;
+  --bg-alt: #050e24;
+  --surface: #0a1530;
+  --surface-hover: #0d1a38;
+  --ink: #f0ead8;
+  --ink-muted: #8a90a8;
+  --ink-dim: #4a506a;
+  --accent: #f0c040;
+  --accent-hot: #f8d460;
+  --accent-teal: #4ec9f0;
+  --border: rgba(240,192,64,0.12);
+  --border-strong: rgba(240,192,64,0.22);
+  --ease: cubic-bezier(0.2,0.7,0.2,1);
+  --star: #f0c040;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+.container{max-width:960px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:300}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--accent)}
 
+/* Estrellas decorativas */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(1px 1px at 20% 15%, rgba(240,192,64,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 8%, rgba(240,192,64,.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 25%, rgba(240,192,64,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 35%, rgba(240,192,64,.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 45%, rgba(240,192,64,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 10% 50%, rgba(240,192,64,.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 60%, rgba(240,192,64,.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 70%, rgba(240,192,64,.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 75% 80%, rgba(240,192,64,.3) 0%, transparent 100%);
+}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(2,8,24,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-size:20px;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.nav-back{font-size:13px;color:var(--ink-muted);border:1px solid var(--border-strong);padding:8px 16px;border-radius:100px;transition:all .3s var(--ease)}
+.nav-back:hover{border-color:var(--accent);color:var(--accent)}
+
+/* HERO */
+.hero{position:relative;min-height:520px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(180deg,#020818 0%,#0a1a4a 40%,#020818 100%);z-index:0}
+.hero-castle{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;opacity:.08}
+.hero-castle svg{width:600px;height:400px}
+.hero-glow{position:absolute;top:20%;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(240,192,64,.15) 0%,transparent 70%);z-index:1}
+.hero-content{position:relative;z-index:2;padding:80px 0 60px;text-align:center;width:100%}
+.hero-magic{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:10px}
+.hero-magic::before,.hero-magic::after{content:'✦';font-size:10px}
+.hero-title{font-size:clamp(36px,7vw,64px);line-height:1.05;margin-bottom:16px}
+.hero-sub{font-size:16px;color:var(--ink-muted);max-width:520px;margin:0 auto 32px;line-height:1.6}
+.btn-wa-hero{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#020818;padding:16px 36px;border-radius:100px;font-size:15px;font-weight:700;transition:all .3s var(--ease);letter-spacing:.3px}
+.btn-wa-hero:hover{background:var(--accent-hot);transform:translateY(-2px);box-shadow:0 8px 32px rgba(240,192,64,.4)}
+
+/* BANNER PERSONALIZADO */
+.banner-personalizado{background:linear-gradient(135deg,var(--surface),var(--surface-hover));border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:16px;padding:24px 28px;margin:40px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;position:relative;z-index:1}
+.banner-personalizado h3{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(18px,2.5vw,22px);margin-bottom:4px}
+.banner-personalizado p{font-size:13px;color:var(--ink-muted)}
+.banner-personalizado a{flex-shrink:0;background:var(--accent);color:#020818;padding:12px 24px;border-radius:100px;font-size:13px;font-weight:700;white-space:nowrap;transition:all .3s var(--ease)}
+.banner-personalizado a:hover{background:var(--accent-hot);transform:translateY(-2px)}
+
+/* SECCIONES */
+.section{padding:44px 0;border-top:1px solid var(--border);position:relative;z-index:1}
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-size:clamp(24px,4vw,36px);margin-bottom:20px;line-height:1.15}
+p.body{font-size:15px;color:var(--ink-muted);line-height:1.7;margin-bottom:14px}
+
+/* PARQUES */
+.parques-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin:20px 0 32px}
+.parque-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px 20px;transition:all .3s var(--ease)}
+.parque-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.parque-icon{font-size:32px;margin-bottom:12px}
+.parque-name{font-family:'Fraunces',serif;font-size:17px;font-weight:300;margin-bottom:6px;color:var(--ink)}
+.parque-tag{font-size:10px;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;margin-bottom:10px}
+.parque-hits{list-style:none;padding:0}
+.parque-hits li{font-size:12px;color:var(--ink-muted);padding:4px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+.parque-hits li:last-child{border-bottom:none}
+.parque-hits li::before{content:'→';color:var(--accent);flex-shrink:0}
+
+/* ITINERARIO */
+.itinerario{margin:0 0 28px}
+.dia{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--border)}
+.dia:last-child{border-bottom:none}
+.dia-num{flex-shrink:0;width:52px;height:52px;border-radius:12px;background:var(--surface);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.dia-num span:first-child{font-size:8px;letter-spacing:1px;color:var(--accent);text-transform:uppercase}
+.dia-num span:last-child{font-family:'Fraunces',serif;font-size:18px;color:var(--accent)}
+.dia-info h4{font-family:'Fraunces',serif;font-size:16px;font-weight:300;margin-bottom:4px}
+.dia-info p{font-size:13px;color:var(--ink-muted);line-height:1.6}
+.dia-badge{font-size:9px;letter-spacing:1.5px;color:var(--accent-teal);text-transform:uppercase;margin-bottom:4px}
+
+/* INCLUYE */
+.incluye-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 28px}
+.incluye-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center}
+.incluye-item .icon{font-size:22px;flex-shrink:0}
+.incluye-item p{font-size:13px;font-weight:500;color:var(--ink)}
+
+/* HOTELES */
+.hotel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin:16px 0 28px}
+.hotel-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px}
+.hotel-cat{font-size:9px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.hotel-name{font-family:'Fraunces',serif;font-size:15px;font-weight:300;margin-bottom:8px}
+.hotel-desc{font-size:12px;color:var(--ink-muted);line-height:1.5}
+
+/* TICKETS */
+.ticket-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:16px 0 28px}
+.ticket-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px}
+.ticket-card.destacado{border-color:var(--accent);background:rgba(240,192,64,.06)}
+.ticket-name{font-family:'Fraunces',serif;font-size:15px;font-weight:300;margin-bottom:6px}
+.ticket-desc{font-size:12px;color:var(--ink-muted);line-height:1.5}
+.ticket-badge{display:inline-block;font-size:9px;letter-spacing:1px;padding:3px 10px;border-radius:100px;background:var(--accent);color:#020818;font-weight:700;margin-bottom:8px}
+
+/* TIP */
+.tip-box{background:linear-gradient(135deg,rgba(240,192,64,.08),rgba(240,192,64,.03));border:1px solid rgba(240,192,64,.25);border-radius:16px;padding:24px 28px;margin:28px 0}
+.tip-box .tip-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.tip-box .tip-head span{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+.tip-box p{font-size:14px;color:var(--ink-muted);line-height:1.7}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:'Fraunces',serif;font-size:16px;font-weight:300;margin-bottom:8px}
+.faq-a{font-size:13px;color:var(--ink-muted);line-height:1.7}
+
+/* CTA */
+.cta-box{text-align:center;padding:56px 0 72px}
+.cta-box h2{font-size:clamp(28px,4vw,42px);margin-bottom:14px}
+.cta-box p{color:var(--ink-muted);font-size:15px;max-width:460px;margin:0 auto 28px;line-height:1.6}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:700;transition:all .3s var(--ease)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.35)}
+
+footer{text-align:center;padding:28px 0;color:var(--ink-dim);font-size:12px;border-top:1px solid var(--border);position:relative;z-index:1}
+
+@media(max-width:600px){
+  .hero{min-height:420px}
+  .hero-title{font-size:34px}
+  .incluye-grid{grid-template-columns:repeat(2,1fr)}
+  .banner-personalizado{flex-direction:column}
+  .dia{gap:12px}
+  .dia-num{width:44px;height:44px}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="container nav-inner">
+  <a href="/" class="logo">gemi<span>check</span></a>
+  <a href="/internacional" class="nav-back">← Internacional</a>
+</div></nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <img src="../images/disney-hero.jpg" alt="Walt Disney World" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;z-index:0">
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="hero-magic">El lugar más mágico del mundo</div>
+    <h1 class="hero-title">Walt Disney World<br><em>Orlando</em></h1>
+    <p class="hero-sub">4 parques temáticos, experiencias para toda la familia y la magia de Disney a cada paso. Gemicheck se encarga de todo — vos solo disfrutás.</p>
+    <a class="btn-wa-hero" href="https://wa.me/5491130615149?text=Hola%20Gemicheck!%20Me%20interesa%20viajar%20a%20Walt%20Disney%20World.%20%C2%BFMe%20pueden%20cotizar%20un%20paquete%3F" target="_blank">✨ Quiero mi viaje mágico</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="banner-personalizado">
+    <div>
+      <h3>✨ Armá tu viaje <em>mágico</em> con Gemicheck</h3>
+      <p>Vuelo + hotel en el resort + entradas + asistencia — todo coordinado para que solo pienses en disfrutar.</p>
+    </div>
+    <a href="https://wa.me/5491130615149?text=Hola%20Gemicheck!%20Me%20interesa%20viajar%20a%20Walt%20Disney%20World.%20%C2%BFMe%20pueden%20cotizar%20un%20paquete%3F" target="_blank">Hablar con un asesor →</a>
+  </div>
+
+  <!-- LOS 4 PARQUES -->
+  <div class="section">
+    <div class="section-eyebrow">4 PARQUES TEMÁTICOS</div>
+    <h2 class="section-title">Cada parque,<br>un mundo <em>diferente</em></h2>
+    <p class="body">Walt Disney World tiene 4 parques temáticos únicos — podés visitarlos en días distintos o, con el ticket Park Hopper, combinar más de uno por día. Cada uno tiene su propia identidad, sus propias atracciones y sus propios momentos imperdibles.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:20px 0 28px">
+      <img src="../images/destinos/disney-1.jpg" alt="Magic Kingdom" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+      <img src="../images/destinos/disney-2.jpg" alt="EPCOT" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+      <img src="../images/destinos/disney-3.jpg" alt="Hollywood Studios" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+      <img src="../images/destinos/disney-4.jpg" alt="Animal Kingdom" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+    </div>
+    <div class="parques-grid">
+      <div class="parque-card">
+        <div class="parque-icon">🏰</div>
+        <div class="parque-name">Magic Kingdom</div>
+        <div class="parque-tag">Fantasía · Magia · Cuentos</div>
+        <ul class="parque-hits">
+          <li>Castillo de Cenicienta — la foto obligatoria</li>
+          <li>TRON Lightcycle / Run — montaña rusa premium</li>
+          <li>Pirates of the Caribbean</li>
+          <li>Space Mountain</li>
+          <li>Fuegos artificiales nocturnos</li>
+        </ul>
+      </div>
+      <div class="parque-card">
+        <div class="parque-icon">🌍</div>
+        <div class="parque-name">EPCOT</div>
+        <div class="parque-tag">Cultura · Ciencia · Gastronomía</div>
+        <ul class="parque-hits">
+          <li>Guardians of the Galaxy: Cosmic Rewind</li>
+          <li>Soarin' Around the World</li>
+          <li>Remy's Ratatouille Adventure</li>
+          <li>World Showcase — 11 países con gastronomía real</li>
+          <li>Espectáculo nocturno en la laguna</li>
+        </ul>
+      </div>
+      <div class="parque-card">
+        <div class="parque-icon">🎬</div>
+        <div class="parque-name">Hollywood Studios</div>
+        <div class="parque-tag">Star Wars · Toy Story · Cine</div>
+        <ul class="parque-hits">
+          <li>Star Wars: Galaxy's Edge completo</li>
+          <li>Star Wars: Rise of the Resistance</li>
+          <li>Slinky Dog Dash (apto menores)</li>
+          <li>Tower of Terror — 13 pisos de caída libre</li>
+          <li>Fantasmic! — espectáculo nocturno</li>
+        </ul>
+      </div>
+      <div class="parque-card">
+        <div class="parque-icon">🦁</div>
+        <div class="parque-name">Animal Kingdom</div>
+        <div class="parque-tag">Naturaleza · Avatar · Animales reales</div>
+        <ul class="parque-hits">
+          <li>Avatar: Flight of Passage — la mejor atracción del resort</li>
+          <li>Kilimanjaro Safaris — animales reales en sabana</li>
+          <li>Expedition Everest</li>
+          <li>The Festival of the Lion King</li>
+          <li>Tree of Life — ícono del parque</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <div class="tip-head"><span>✦</span><span>Tip Gemicheck</span></div>
+      <p>Avatar: Flight of Passage en Animal Kingdom tiene la fila más larga del resort — llegá al parque 30 minutos antes de la apertura y andá directo ahí. Es la atracción más impresionante de todo Walt Disney World y vale cada minuto de espera. En Magic Kingdom, el truco es ver los fuegos artificiales desde Main Street, U.S.A. con el castillo de fondo — reservá tu lugar 45 minutos antes.</p>
+    </div>
+  </div>
+
+  <!-- ITINERARIO SUGERIDO -->
+  <div class="section">
+    <div class="section-eyebrow">ITINERARIO RECOMENDADO</div>
+    <h2 class="section-title">7 días de <em>magia pura</em></h2>
+    <p class="body">El itinerario oficial de Disney recomienda 7 días para disfrutar los 4 parques con tiempo y sin apuro. Este es el plan que armamos desde Gemicheck para que no se pierdan nada.</p>
+    <div class="itinerario">
+      <div class="dia"><div class="dia-num"><span>DÍA</span><span>1</span></div><div class="dia-info"><div class="dia-badge">LLEGADA + PARQUES ACUÁTICOS</div><h4>Check-in y primer chapuzón</h4><p>Llegada a Orlando, check-in en el hotel Disney Resort. Beneficio exclusivo: entrada gratuita a un Parque Acuático el día de llegada — Typhoon Lagoon o Blizzard Beach. Primer contacto con la magia Disney.</p></div></div>
+      <div class="dia"><div class="dia-num"><span>DÍA</span><span>2</span></div><div class="dia-info"><div class="dia-badge">MAGIC KINGDOM</div><h4>El corazón de Disney</h4><p>Día completo en Magic Kingdom. TRON Lightcycle, Pirates of the Caribbean, Space Mountain, Tiana's Bayou Adventure y los desfiles. Terminar el día con los fuegos artificiales frente al castillo de Cenicienta.</p></div></div>
+      <div class="dia"><div class="dia-num"><span>DÍA</span><span>3</span></div><div class="dia-info"><div class="dia-badge">EPCOT</div><h4>El mundo en un parque</h4><p>Guardians of the Galaxy al abrir, Soarin' Around the World, Remy's Ratatouille Adventure. Tarde en World Showcase recorriendo los 11 pabellones con gastronomía internacional. Espectáculo nocturno en la laguna.</p></div></div>
+      <div class="dia"><div class="dia-num"><span>DÍA</span><span>4</span></div><div class="dia-info"><div class="dia-badge">HOLLYWOOD STUDIOS</div><h4>Star Wars y cine en vivo</h4><p>Star Wars: Galaxy's Edge completo por la mañana (Millennium Falcon y Rise of the Resistance). Tarde en Toy Story Land con los chicos, Tower of Terror para los valientes. Noche en Fantasmic!</p></div></div>
+      <div class="dia"><div class="dia-num"><span>DÍA</span><span>5</span></div><div class="dia-info"><div class="dia-badge">ANIMAL KINGDOM</div><h4>Aventura y naturaleza</h4><p>Avatar: Flight of Passage antes de las 9am. Kilimanjaro Safaris por la mañana (los animales están más activos). Festival of the Lion King, Expedition Everest y Na'vi River Journey. Tarde en el área de Asia.</p></div></div>
+      <div class="dia"><div class="dia-num"><span>DÍA</span><span>6</span></div><div class="dia-info"><div class="dia-badge">DISNEY SPRINGS + REPETIR FAVORITOS</div><h4>Compras, gastronomía y más magia</h4><p>Mañana en Disney Springs: 96 tiendas, 70 opciones gastronómicas y entretenimiento. Tarde de vuelta al parque favorito para repetir las atracciones que quedaron pendientes.</p></div></div>
+      <div class="dia"><div class="dia-num"><span>DÍA</span><span>7</span></div><div class="dia-info"><div class="dia-badge">DÍA LIBRE + REGRESO</div><h4>Último día de magia</h4><p>Mañana libre para compras de souvenirs en la tienda World of Disney. Check-out y traslado al aeropuerto. Vuelo de regreso a Buenos Aires con la valija llena de recuerdos.</p></div></div>
+    </div>
+  </div>
+
+  <!-- QUÉ INCLUYE -->
+  <div class="section">
+    <div class="section-eyebrow">QUÉ INCLUYE</div>
+    <h2 class="section-title">Todo <em>organizado</em> por Gemicheck</h2>
+    <div class="incluye-grid">
+      <div class="incluye-item"><span class="icon">✈️</span><p>Vuelo ida y vuelta</p></div>
+      <div class="incluye-item"><span class="icon">🏨</span><p>Hotel en el resort Disney</p></div>
+      <div class="incluye-item"><span class="icon">🎫</span><p>Entradas (opcionales)</p></div>
+      <div class="incluye-item"><span class="icon">🚌</span><p>Traslados aeropuerto</p></div>
+      <div class="incluye-item"><span class="icon">🧳</span><p>Asistencia al viajero</p></div>
+      <div class="incluye-item"><span class="icon">📱</span><p>Asesoría pre-viaje</p></div>
+    </div>
+    <div class="tip-box">
+      <div class="tip-head"><span>⭐</span><span>Beneficio exclusivo de hoteles Disney</span></div>
+      <p>Al hospedarse en un hotel de Disney Resorts Collection recibís transporte gratuito en bus, bote y monorriel a todos los parques, estacionamiento gratis, acceso anticipado a Lightning Lane y 24 horas dentro de la magia. Vale mucho más la pena que hospedarse fuera del resort.</p>
+    </div>
+  </div>
+
+  <!-- HOTELES -->
+  <div class="section">
+    <div class="section-eyebrow">HOTELES EN EL RESORT</div>
+    <h2 class="section-title">Tu casa en <em>medio de la magia</em></h2>
+    <p class="body">Disney tiene más de 25 hoteles dentro del resort, clasificados en 3 categorías. Todos incluyen transporte gratuito a los parques y la experiencia Disney desde que llegás.</p>
+    <div class="hotel-grid">
+      <div class="hotel-card">
+        <div class="hotel-cat">⭐ Económica</div>
+        <div class="hotel-name">All-Star Resorts / Art of Animation</div>
+        <div class="hotel-desc">Piscinas temáticas, plaza de comidas y la experiencia Disney completa a un precio accesible. Ideal para familias con chicos que pasan todo el día en los parques.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-cat">⭐⭐ Moderada</div>
+        <div class="hotel-name">Coronado Springs / Port Orleans</div>
+        <div class="hotel-desc">Restaurante propio, decoración temática detallada y más comodidades. Coronado Springs tiene la torre Gran Destino con vistas espectaculares.</div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-cat">⭐⭐⭐ Lujo</div>
+        <div class="hotel-name">Animal Kingdom Lodge / Contemporary</div>
+        <div class="hotel-desc">Animal Kingdom Lodge tiene una sabana real con más de 200 animales. El Contemporary se puede llegar caminando a Magic Kingdom o en monorriel que pasa por adentro del hotel.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKETS -->
+  <div class="section">
+    <div class="section-eyebrow">TIPOS DE TICKETS</div>
+    <h2 class="section-title">Elegí tu <em>pase mágico</em></h2>
+    <p class="body">Los tickets están disponibles de 1 a 10 días. Cuanto más días, más conveniente el precio por día. Niños de 3 a 9 años tienen precio reducido. Menores de 3 años entran gratis.</p>
+    <div class="ticket-grid">
+      <div class="ticket-card">
+        <div class="ticket-name">Un Parque por Día</div>
+        <div class="ticket-desc">Acceso a un parque temático por día — podés entrar y salir cuantas veces quieras. La opción base, ideal si planificás bien cada día.</div>
+      </div>
+      <div class="ticket-card destacado">
+        <div class="ticket-badge">MÁS POPULAR</div>
+        <div class="ticket-name">Park Hopper</div>
+        <div class="ticket-desc">Visitá más de un parque el mismo día. Empezás en Magic Kingdom de mañana y terminás en EPCOT con el espectáculo nocturno. La opción que más libertad da.</div>
+      </div>
+      <div class="ticket-card">
+        <div class="ticket-name">Park Hopper Plus</div>
+        <div class="ticket-desc">Park Hopper + visitas adicionales a Parques Acuáticos (Typhoon Lagoon o Blizzard Beach), campos de golf y ESPN Wide World of Sports.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPORADAS -->
+  <div class="section">
+    <div class="section-eyebrow">CUÁNDO IR</div>
+    <h2 class="section-title">Eventos y <em>temporadas</em></h2>
+    <p class="body">Disney tiene eventos especiales durante todo el año — algunos incluidos en el ticket y otros con entrada adicional. Los más importantes para tener en cuenta desde Argentina:</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:20px 0 28px">
+      <img src="../images/destinos/disney-1.jpg" alt="Magic Kingdom" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+      <img src="../images/destinos/disney-2.jpg" alt="EPCOT" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+      <img src="../images/destinos/disney-3.jpg" alt="Hollywood Studios" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+      <img src="../images/destinos/disney-4.jpg" alt="Animal Kingdom" loading="lazy" style="width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--border)">
+    </div>
+    <div class="parques-grid">
+      <div class="parque-card">
+        <div class="parque-icon">🌸</div>
+        <div class="parque-name">Flower & Garden Festival</div>
+        <div class="parque-tag">EPCOT · Mar-Jun</div>
+        <ul class="parque-hits">
+          <li>Topiarios de personajes Disney</li>
+          <li>Mercados gastronómicos de primavera</li>
+          <li>Incluido en el ticket de EPCOT</li>
+        </ul>
+      </div>
+      <div class="parque-card">
+        <div class="parque-icon">🍷</div>
+        <div class="parque-name">Food & Wine Festival</div>
+        <div class="parque-tag">EPCOT · Jul-Nov</div>
+        <ul class="parque-hits">
+          <li>Mercados globales con gastronomía de 30+ países</li>
+          <li>El evento más popular del año</li>
+          <li>Incluido en el ticket de EPCOT</li>
+        </ul>
+      </div>
+      <div class="parque-card">
+        <div class="parque-icon">🎃</div>
+        <div class="parque-name">Halloween Party</div>
+        <div class="parque-tag">Magic Kingdom · Ago-Oct</div>
+        <ul class="parque-hits">
+          <li>Desfile temático de Halloween</li>
+          <li>Fuegos artificiales especiales</li>
+          <li>Ticket adicional requerido</li>
+        </ul>
+      </div>
+      <div class="parque-card">
+        <div class="parque-icon">🎄</div>
+        <div class="parque-name">Christmas Party</div>
+        <div class="parque-tag">Magic Kingdom · Nov-Dic</div>
+        <ul class="parque-hits">
+          <li>El evento más mágico del año</li>
+          <li>"Nieve" en Main Street, U.S.A.</li>
+          <li>Ticket adicional requerido</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-eyebrow">PREGUNTAS FRECUENTES</div>
+    <h2 class="section-title">Lo que siempre <em>preguntan</em></h2>
+    <div class="faq-item"><p class="faq-q">¿Cuántos días son suficientes para ver todo Disney?</p><p class="faq-a">El itinerario oficial de Disney recomienda 7 días para visitar los 4 parques temáticos sin apuro, más un día de parque acuático y uno de Disney Springs. Con menos días tenés que elegir — con 5 días podés ver los 4 parques pero más apretado. Nosotros recomendamos no menos de 6 noches para aprovechar bien.</p></div>
+    <div class="faq-item"><p class="faq-q">¿Vale la pena el ticket Park Hopper?</p><p class="faq-a">Sí, en la mayoría de los casos. Te da mucha libertad para terminar el día en otro parque y no perderte eventos nocturnos como los fuegos de Magic Kingdom y el espectáculo acuático de EPCOT el mismo día. Si vas 7 días, el costo adicional por día es mínimo.</p></div>
+    <div class="faq-item"><p class="faq-q">¿Es obligatorio hospedarse en hoteles de Disney?</p><p class="faq-a">No es obligatorio, pero los beneficios son importantes: transporte gratuito a todos los parques, acceso anticipado a Lightning Lane, estacionamiento gratis y estar inmerso en la experiencia Disney desde que abrís la puerta de tu habitación. Gemicheck te ayuda a elegir el hotel según tu presupuesto.</p></div>
+    <div class="faq-item"><p class="faq-q">¿Qué es el Lightning Lane y conviene comprarlo?</p><p class="faq-a">El Lightning Lane es el sistema de "fila rápida" de Disney. Hay dos versiones: el Multi Pass (para varias atracciones populares) y el Single Pass (para las atracciones más demandadas como Tron y Avatar). Para una visita de 7 días, el Single Pass en Avatar y Tron casi siempre vale la pena — te ahorrás 1-2 horas de espera en cada una.</p></div>
+    <div class="faq-item"><p class="faq-q">¿Es apto para viajar sin chicos?</p><p class="faq-a">Completamente. Disney tiene áreas exclusivas para adultos en varios hoteles, restaurantes de alta gama, el festival de Food & Wine de EPCOT (gastronomía de autor de 30+ países), bares temáticos y una oferta cultural que no tiene nada que envidiarle a ningún destino. EPCOT especialmente está diseñado tanto para familias como para adultos.</p></div>
+    <div class="faq-item"><p class="faq-q">¿Cuánto dinero extra llevar para gastos personales?</p><p class="faq-a">Depende del estilo de viaje. Para comidas dentro de los parques (que no estén en el plan de comidas), souvenirs y Lightning Lane adicional, recomendamos entre USD 80 y USD 150 por día por persona. Disney no es barato dentro de los parques — pero tampoco hay que exagerar si se planifica bien.</p></div>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿Listo para la <em>magia</em>?</h2>
+    <p>Contanos cuántos viajan, las edades de los chicos y las fechas tentativas — te armamos el paquete Disney completo en menos de 24 horas.</p>
+    <a class="btn-wa" href="https://wa.me/5491130615149?text=Hola%20Gemicheck!%20Me%20interesa%20viajar%20a%20Walt%20Disney%20World.%20%C2%BFMe%20pueden%20cotizar%20un%20paquete%3F" target="_blank">💬 Quiero mi paquete Disney</a>
+  </div>
+
+</div>
+
+<footer>Gemicheck Turismo SAS · <a href="https://wa.me/5491130615149" style="color:var(--accent)">WhatsApp</a> · gemicheck.com.ar</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TouristDestination","name":"Walt Disney World Orlando","description":"Viajes a Walt Disney World Orlando desde Argentina con Gemicheck. 4 parques temáticos, hoteles en el resort, entradas y vuelo incluidos.","url":"https://www.gemicheck.com.ar/disney","touristType":"Family tourism, Theme park tourism","includesAttraction":[{"@type":"TouristAttraction","name":"Magic Kingdom Park"},{"@type":"TouristAttraction","name":"EPCOT"},{"@type":"TouristAttraction","name":"Disney's Hollywood Studios"},{"@type":"TouristAttraction","name":"Disney's Animal Kingdom"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuántos días son suficientes para ver todo Disney?","acceptedAnswer":{"@type":"Answer","text":"El itinerario oficial recomienda 7 días para visitar los 4 parques sin apuro. Con menos de 6 noches tenés que elegir qué dejar afuera."}},{"@type":"Question","name":"¿Vale la pena el ticket Park Hopper?","acceptedAnswer":{"@type":"Answer","text":"Sí, da libertad para combinar parques en el mismo día y no perderse los eventos nocturnos de Magic Kingdom y EPCOT juntos."}},{"@type":"Question","name":"¿Es apto para viajar sin chicos?","acceptedAnswer":{"@type":"Answer","text":"Completamente. EPCOT tiene gastronomía de autor de 30+ países, áreas solo para adultos y una oferta cultural que va mucho más allá de los personajes de Disney."}}]}
+</script>
+</body>
+</html>
