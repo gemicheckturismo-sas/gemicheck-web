@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>El Chaltén — Capital del Trekking · Gemicheck</title>
+<meta name="description" content="Viajes a El Chaltén desde Argentina. El Fitz Roy, la Laguna de los Tres y los mejores senderos de la Patagonia. La capital nacional del trekking.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/chalten">
+<style>
+:root {
+    --bg: #0a0e1a;
+    --bg-alt: #0f1424;
+    --surface: #141a2e;
+    --surface-hover: #1a2038;
+    --ink: #f4eee4;
+    --ink-muted: #8b8fa0;
+    --ink-dim: #565a6b;
+    --accent: #d4b483;
+    --accent-hot: #e8c89a;
+    --accent-teal: #4ec9a8;
+    --border: rgba(244, 238, 228, 0.08);
+    --border-strong: rgba(244, 238, 228, 0.15);
+    --shadow-lg: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:300}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--accent)}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,14,26,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-size:20px;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.nav-back{font-size:13px;color:var(--ink-muted);border:1px solid var(--border-strong);padding:8px 16px;border-radius:100px;transition:all .3s ease}
+.nav-back:hover{border-color:var(--accent);color:var(--accent)}
+.hero-img{width:100%;height:420px;object-fit:cover;display:block;filter:brightness(.5)}
+.hero-wrap{position:relative;overflow:hidden}
+.hero-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 55%)}
+.hero-content{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:40px 24px;max-width:900px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero-title{font-size:clamp(32px,6vw,54px);line-height:1.08;margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--ink-muted);max-width:520px;line-height:1.6}
+.section{padding:40px 0;border-top:1px solid var(--border)}
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-size:clamp(22px,4vw,34px);margin-bottom:20px;line-height:1.15}
+p.body{font-size:15px;color:var(--ink-muted);line-height:1.7;margin-bottom:14px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+.badge{font-size:11px;padding:5px 14px;border-radius:100px;border:1px solid var(--border-strong);color:var(--ink-muted)}
+.badge.alta{border-color:rgba(232,89,89,.4);color:#e88989}
+.badge.media{border-color:rgba(212,180,131,.4);color:var(--accent)}
+.badge.baja{border-color:rgba(78,201,168,.4);color:var(--accent-teal)}
+.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0 28px}
+.act-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+.act-item .act-icon{font-size:22px;margin-bottom:8px}
+.act-item h4{font-family:'Fraunces',serif;font-size:15px;font-weight:300;margin-bottom:4px}
+.act-item p{font-size:12px;color:var(--ink-muted);line-height:1.5}
+.tip-box{background:linear-gradient(135deg,rgba(212,180,131,.08),rgba(212,180,131,.03));border:1px solid rgba(212,180,131,.25);border-radius:16px;padding:24px 28px;margin:28px 0}
+.tip-box .tip-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.tip-box .tip-head span{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+.tip-box p{font-size:14px;color:var(--ink-muted);line-height:1.7}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:'Fraunces',serif;font-size:16px;font-weight:300;margin-bottom:8px}
+.faq-a{font-size:13px;color:var(--ink-muted);line-height:1.7}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 28px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.cta-box{text-align:center;padding:48px 0 64px}
+.cta-box h2{font-size:clamp(26px,4vw,38px);margin-bottom:12px}
+.cta-box p{color:var(--ink-muted);font-size:15px;max-width:440px;margin:0 auto 24px}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:600;transition:all .3s ease;text-decoration:none}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.35)}
+.combo-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:14px;padding:20px 24px;margin:24px 0}
+.combo-box p{font-size:14px;color:var(--ink-muted);line-height:1.6}
+.combo-box strong{color:var(--ink)}
+footer{text-align:center;padding:28px 0;color:var(--ink-dim);font-size:12px;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero-img{height:300px}.gal{grid-template-columns:repeat(2,1fr)}.act-grid{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<nav><div class="container nav-inner">
+  <a href="/" class="logo">gemi<span>check</span></a>
+  <a href="/argentina" class="nav-back">← Argentina</a>
+</div></nav>
+<div class="hero-wrap">
+  <img src="../images/destinos/chalten-1.jpg" alt="El Chaltén — Capital del Trekking · Gemicheck" class="hero-img" onerror="this.src='../images/bariloche.jpg'">
+  <div class="container"><div class="hero-content">
+    <div class="eyebrow">PATAGONIA · SANTA CRUZ</div>
+    <h1 class="hero-title">El Chaltén y el <em>Fitz Roy</em></h1></h1>
+    <p class="hero-sub">La capital nacional del trekking. Senderos gratis, vistas que cortan la respiración y el Fitz Roy iluminado al amanecer.</p>
+  </div></div>
+</div>
+<div class="container">
 
+  <div class="section">
+    <div class="section-eyebrow">EL DESTINO</div>
+    <h2 class="section-title">¿Por qué <em>El Chaltén</em>?</h2>
+    <p class="body">El Chaltén es el secreto mejor guardado de la Patagonia argentina. Un pueblo de apenas 1.500 habitantes donde todos los senderos empiezan en la calle principal y terminan en vistas que parecen pintadas. El Fitz Roy y el Cerro Torre son dos de las montañas más fotografiadas del planeta — y los senderos para verlos de cerca son completamente gratuitos y no requieren guía.</p>
+    <div class="gal">
+      <img src="../images/destinos/chalten-1.jpg" alt="chalten 1" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/chalten-2.jpg" alt="chalten 2" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/chalten-3.jpg" alt="chalten 3" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/chalten-4.jpg" alt="chalten 4" loading="lazy" onerror="this.style.opacity=0.15">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">TEMPORADA</div>
+    <h2 class="section-title">¿Cuándo <em>ir</em>?</h2>
+    <div class="badges">
+      <span class="badge alta">☀️ Verano (Nov-Mar) — Mejor clima, senderos abiertos, días muy largos</span>
+      <span class="badge media">🍂 Otoño (Abr-May) — Lengas rojizas, menos gente, vistas espectaculares</span>
+      <span class="badge baja">❄️ Invierno (Jun-Sep) — Senderos cerrados por nieve, solo expertos</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">ACTIVIDADES DESTACADAS</div>
+    <h2 class="section-title">Qué <em>hacer</em></h2>
+    <div class="act-grid"><div class="act-item"><div class="act-icon">🏔️</div><h4>Laguna de los Tres (Fitz Roy)</h4><p>El trekking más icónico: 22 km ida y vuelta con 800m de desnivel. Al llegar a la laguna, el Fitz Roy aparece en toda su magnitud. Moderado-exigente.</p></div><div class="act-item"><div class="act-icon">🏔️</div><h4>Laguna Torre (Cerro Torre)</h4><p>Trekking de 18 km ida y vuelta más accesible que el Fitz Roy. El Cerro Torre con su aguja de hielo es aún más dramático en días nublados.</p></div><div class="act-item"><div class="act-icon">🚣</div><h4>Kayak en el lago del Desierto</h4><p>A 37 km de El Chaltén, el lago del Desierto es la joya escondida: agua verde esmeralda y silencio absoluto.</p></div><div class="act-item"><div class="act-icon">🌅</div><h4>Piedras Blancas</h4><p>Trekking corto (3hs) con vista al glaciar Piedras Blancas. Ideal para quienes no quieren hacer el Fitz Roy completo.</p></div><div class="act-item"><div class="act-icon">🍺</div><h4>Cerveza artesanal</h4><p>El Chaltén tiene varias cervecerías artesanales propias. Después de un día de trekking, la Cervecería El Chaltén es el lugar.</p></div><div class="act-item"><div class="act-icon">🦅</div><h4>Avistaje de cóndores</h4><p>Los cóndores son parte del paisaje cotidiano en los senderos. Con suerte, los ves planeando a pocos metros.</p></div></div>
+  </div>
+
+  <div class="tip-box"><div class="tip-head"><span>✦</span><span>Tip Gemicheck</span></div><p>Los senderos del Chaltén son gratis y no necesitan guía — pero sí hay que registrarse en el centro de informes al entrar al pueblo (obligatorio y gratis). El Fitz Roy es un trekking largo: salí antes de las 7am para evitar el viento de la tarde y tener luz en la cima. Las lengas en otoño (abril-mayo) convierten todo en un incendio de colores — es el momento más fotogénico del año.</p></div>
+  <div class="combo-box"><p><strong>Combinación ideal:</strong> El Chaltén se visita casi siempre desde El Calafate (3 horas por ruta o excursión de día). Si tenés más tiempo, quedarte 2-3 noches en Chaltén y después ir a Calafate es la mejor secuencia.</p></div>
+
+  <div class="section">
+    <div class="section-eyebrow">PREGUNTAS FRECUENTES</div>
+    <h2 class="section-title">Lo que siempre <em>preguntan</em></h2>
+    <div class="faq-item"><p class="faq-q">¿Qué nivel de dificultad tienen las caminatas?</p><p class="faq-a">Hay para todos los niveles. La Laguna Torre (18 km) es accesible para personas en buena condición física sin experiencia técnica. La Laguna de los Tres (22 km, 800m de desnivel) es más exigente pero no requiere equipo especial. En ambos casos, zapatillas de trekking y ropa de abrigo son indispensables.</p></div><div class="faq-item"><p class="faq-q">¿Se puede ir sin ser trekker experimentado?</p><p class="faq-a">Sí. Hay varios senderos cortos (3-5 horas) con vistas increíbles sin necesidad de gran esfuerzo físico. El Mirador del Fitz Roy desde el pueblo es uno de ellos. El Chaltén no es solo para deportistas extremos.</p></div><div class="faq-item"><p class="faq-q">¿Hay algo para hacer además de trekking?</p><p class="faq-a">Sí: cervecerías artesanales, kayak en el Lago del Desierto, fotografía de fauna (cóndores, guanacos, zorros), y simplemente sentarse en el pueblo a mirar las montañas cambiar de color con la luz.</p></div><div class="faq-item"><p class="faq-q">¿Se combina siempre con El Calafate?</p><p class="faq-a">Casi siempre. Están a 3 horas por ruta y el circuito natural es Calafate (glaciares) + Chaltén (montaña y trekking). Se puede ir en excursión de día desde Calafate o quedarse 2-3 noches en Chaltén.</p></div>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿El Fitz Roy en tu próximo <em>viaje</em>?</h2>
+    <p>Armamos el circuito patagónico completo con todo incluido.</p>
+    <a class="btn-wa" href="https://wa.me/5491130615149?text=Hola%20Gemicheck%21%20Me%20interesa%20viajar%20a%20El%20Chalten.%20%C2%BFMe%20pueden%20cotizar%20un%20paquete%3F" target="_blank">💬 Consultar con Gemicheck</a>
+  </div>
+</div>
+<footer>Gemicheck Turismo SAS · <a href="https://wa.me/5491130615149" style="color:var(--accent)">WhatsApp</a> · gemicheck.com.ar</footer>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Qué nivel de dificultad tienen las caminatas?","acceptedAnswer":{"@type":"Answer","text":"Hay para todos los niveles, desde senderos cortos de 3hs hasta el Fitz Roy de 22 km."}},{"@type":"Question","name":"¿Se puede ir sin ser trekker experimentado?","acceptedAnswer":{"@type":"Answer","text":"Sí, hay varios senderos accesibles para personas sin experiencia técnica."}}]}
+</script>
+</body></html>
