@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Buenos Aires — La Ciudad que Nunca Duerme · Gemicheck</title>
+<meta name="description" content="Turismo en Buenos Aires. San Telmo, La Boca, Palermo, Recoleta, teatro, gastronomía y la mejor vida nocturna de Latinoamérica. Paquetes desde el interior.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/buenos-aires">
+<style>
+:root {
+    --bg: #0a0e1a;
+    --bg-alt: #0f1424;
+    --surface: #141a2e;
+    --surface-hover: #1a2038;
+    --ink: #f4eee4;
+    --ink-muted: #8b8fa0;
+    --ink-dim: #565a6b;
+    --accent: #d4b483;
+    --accent-hot: #e8c89a;
+    --accent-teal: #4ec9a8;
+    --border: rgba(244, 238, 228, 0.08);
+    --border-strong: rgba(244, 238, 228, 0.15);
+    --shadow-lg: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:300}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--accent)}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,14,26,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-size:20px;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.nav-back{font-size:13px;color:var(--ink-muted);border:1px solid var(--border-strong);padding:8px 16px;border-radius:100px;transition:all .3s ease}
+.nav-back:hover{border-color:var(--accent);color:var(--accent)}
+.hero-img{width:100%;height:420px;object-fit:cover;display:block;filter:brightness(.5)}
+.hero-wrap{position:relative;overflow:hidden}
+.hero-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 55%)}
+.hero-content{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:40px 24px;max-width:900px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero-title{font-size:clamp(32px,6vw,54px);line-height:1.08;margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--ink-muted);max-width:520px;line-height:1.6}
+.section{padding:40px 0;border-top:1px solid var(--border)}
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-size:clamp(22px,4vw,34px);margin-bottom:20px;line-height:1.15}
+p.body{font-size:15px;color:var(--ink-muted);line-height:1.7;margin-bottom:14px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+.badge{font-size:11px;padding:5px 14px;border-radius:100px;border:1px solid var(--border-strong);color:var(--ink-muted)}
+.badge.alta{border-color:rgba(232,89,89,.4);color:#e88989}
+.badge.media{border-color:rgba(212,180,131,.4);color:var(--accent)}
+.badge.baja{border-color:rgba(78,201,168,.4);color:var(--accent-teal)}
+.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0 28px}
+.act-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+.act-item .act-icon{font-size:22px;margin-bottom:8px}
+.act-item h4{font-family:'Fraunces',serif;font-size:15px;font-weight:300;margin-bottom:4px}
+.act-item p{font-size:12px;color:var(--ink-muted);line-height:1.5}
+.tip-box{background:linear-gradient(135deg,rgba(212,180,131,.08),rgba(212,180,131,.03));border:1px solid rgba(212,180,131,.25);border-radius:16px;padding:24px 28px;margin:28px 0}
+.tip-box .tip-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.tip-box .tip-head span{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+.tip-box p{font-size:14px;color:var(--ink-muted);line-height:1.7}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:'Fraunces',serif;font-size:16px;font-weight:300;margin-bottom:8px}
+.faq-a{font-size:13px;color:var(--ink-muted);line-height:1.7}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 28px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.cta-box{text-align:center;padding:48px 0 64px}
+.cta-box h2{font-size:clamp(26px,4vw,38px);margin-bottom:12px}
+.cta-box p{color:var(--ink-muted);font-size:15px;max-width:440px;margin:0 auto 24px}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:600;transition:all .3s ease;text-decoration:none}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.35)}
+.combo-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:14px;padding:20px 24px;margin:24px 0}
+.combo-box p{font-size:14px;color:var(--ink-muted);line-height:1.6}
+.combo-box strong{color:var(--ink)}
+footer{text-align:center;padding:28px 0;color:var(--ink-dim);font-size:12px;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero-img{height:300px}.gal{grid-template-columns:repeat(2,1fr)}.act-grid{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<nav><div class="container nav-inner">
+  <a href="/" class="logo">gemi<span>check</span></a>
+  <a href="/argentina" class="nav-back">← Argentina</a>
+</div></nav>
+<div class="hero-wrap">
+  <img src="../images/destinos/buenos-aires-1.jpg" alt="Buenos Aires — La Ciudad que Nunca Duerme · Gemicheck" class="hero-img" onerror="this.src='../images/bariloche.jpg'">
+  <div class="container"><div class="hero-content">
+    <div class="eyebrow">BUENOS AIRES · CABA</div>
+    <h1 class="hero-title">Buenos Aires, <em>siempre viva</em></h1>
+    <p class="hero-sub">La ciudad que nunca duerme. Tango, gastronomía de clase mundial, museos, teatros y barrios que son mundos aparte. Cada visita descubre algo nuevo.</p>
+  </div></div>
+</div>
+<div class="container">
 
+  <div class="section">
+    <div class="section-eyebrow">EL DESTINO</div>
+    <h2 class="section-title">¿Por qué <em>Buenos Aires</em>?</h2>
+    <p class="body">Buenos Aires es la ciudad que más te sorprende cuando creés que ya la conocés. Capital con más teatros per cápita del mundo, una escena gastronómica que compite con las mejores de Europa, mercados de pulgas donde encontrás antigüedades únicas, y barrios tan distintos entre sí que parecen ciudades dentro de la ciudad. San Telmo, Palermo, La Boca, Recoleta, San Nicolás — cada uno tiene su propio ritmo, su propia luz y su propia razón para quedarse.</p>
+    <div class="gal">
+      <img src="../images/destinos/buenos-aires-1.jpg" alt="buenos-aires 1" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/buenos-aires-2.jpg" alt="buenos-aires 2" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/buenos-aires-3.jpg" alt="buenos-aires 3" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/buenos-aires-4.jpg" alt="buenos-aires 4" loading="lazy" onerror="this.style.opacity=0.15">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">TEMPORADA</div>
+    <h2 class="section-title">¿Cuándo <em>ir</em>?</h2>
+    <div class="badges">
+      <span class="badge alta">🍂 Mar-May — Otoño porteño, clima ideal, sin turistas masivos</span>
+      <span class="badge alta">🌸 Sep-Nov — Primavera, los jacarandás florecen en Palermo</span>
+      <span class="badge media">❄️ Jun-Ago — Invierno suave, ideal para teatro y museos</span>
+      <span class="badge media">☀️ Dic-Feb — Verano, calor intenso pero la ciudad no para</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">ACTIVIDADES DESTACADAS</div>
+    <h2 class="section-title">Qué <em>hacer</em></h2>
+    <div class="act-grid"><div class="act-item"><div class="act-icon">💃</div><h4>San Telmo y el Tango</h4><p>El barrio más antiguo de Buenos Aires. Mercado de San Telmo, milongas tradicionales, antigüedades y el tango en su cuna original.</p></div><div class="act-item"><div class="act-icon">🎨</div><h4>La Boca y Caminito</h4><p>El barrio de colores, el Estadio de Boca Juniors y el conventillo más fotografiado de Argentina. Llegá a la mañana para evitar las multitudes.</p></div><div class="act-item"><div class="act-icon">🌳</div><h4>Palermo y sus barrios</h4><p>Palermo Soho (diseño y gastronomía), Palermo Hollywood (bares y restós), el Jardín Botánico y el Rosedal del Parque Tres de Febrero.</p></div><div class="act-item"><div class="act-icon">🏛️</div><h4>Recoleta y su Cementerio</h4><p>El cementerio más famoso del mundo, donde descansa Evita. El barrio más europeo de BA, con cafés históricos y el Museo de Bellas Artes (gratis).</p></div><div class="act-item"><div class="act-icon">🎭</div><h4>Teatro y shows</h4><p>Buenos Aires tiene más teatros que Londres o Nueva York. El Colón es uno de los 5 mejores del mundo. Las obras del circuito Corrientes son de primer nivel.</p></div><div class="act-item"><div class="act-icon">🥩</div><h4>Gastronomía y parrillas</h4><p>La mejor carne del mundo, heladerías artesanales, cafés históricos (Tortoni, Las Violetas) y una nueva gastronomía de autor que explota en Palermo y San Telmo.</p></div></div>
+  </div>
+
+  <div class="tip-box"><div class="tip-head"><span>✦</span><span>Tip Gemicheck</span></div><p>Buenos Aires tiene el mejor teatro en español del mundo y las entradas son increíblemente baratas comparadas con cualquier capital europea. Buscá la cartelera de Avenida Corrientes antes de viajar y reservá — ver una obra en el circuito porteño es una de las experiencias culturales más subestimadas por los turistas del interior. Y para la parrilla: evitá las que tienen foto del menú en inglés en la puerta, son para turistas. Preguntale al hotel dónde come la gente del barrio.</p></div>
+  <div class="combo-box"><p><strong>Desde el interior:</strong> Buenos Aires funciona perfecto como punto de inicio o cierre de cualquier viaje. Llegar 2 días antes a Buenos Aires y arrancar desde acá hacia Bariloche, Iguazú o cualquier destino es la secuencia más eficiente para los que vienen de otras provincias.</p></div>
+
+  <div class="section">
+    <div class="section-eyebrow">PREGUNTAS FRECUENTES</div>
+    <h2 class="section-title">Lo que siempre <em>preguntan</em></h2>
+    <div class="faq-item"><p class="faq-q">¿Qué tiene de turístico CABA para alguien que ya vivió ahí o la conoce?</p><p class="faq-a">Muchísimo que no viste. La escena gastronómica porteña cambia constantemente — los mejores restós de los últimos 3 años probablemente no existían la última vez que fuiste. El circuito de galerías de arte contemporáneo en San Telmo y Palermo, los mercados de diseño y las milongas de tango para turistas vs las milongas "de verdad" son mundos completamente distintos.</p></div><div class="faq-item"><p class="faq-q">¿Cuántos días son suficientes?</p><p class="faq-a">Para un primer viaje, 3-4 días es el mínimo para ver los barrios principales. Con 5-6 días podés entrar en los detalles: un día en el Tigre, una noche en el Teatro Colón, el mercado de Mataderos los domingos.</p></div><div class="faq-item"><p class="faq-q">¿Qué barrios no se pueden perder?</p><p class="faq-a">San Telmo (historia y tango), La Boca (color e identidad porteña), Palermo (gastronomía y diseño), Recoleta (cultura y arquitectura europea) y Puerto Madero (modernidad). En ese orden, del más auténtico al más nuevo.</p></div><div class="faq-item"><p class="faq-q">¿Es segura para turistas?</p><p class="faq-a">Como cualquier capital latinoamericana, hay zonas de más y menos cuidado. Los barrios turísticos son seguros de día. De noche en Palermo, San Telmo y Puerto Madero no hay problema. Evitá mostrar el celular de manera ostentosa en transportes y zonas concurridas.</p></div>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿Buenos Aires te está <em>esperando</em>?</h2>
+    <p>Armamos tu escapada a la ciudad con hotel, traslados y recomendaciones.</p>
+    <a class="btn-wa" href="https://wa.me/5491130615149?text=Hola%20Gemicheck%21%20Me%20interesa%20armar%20un%20viaje%20a%20Buenos%20Aires.%20%C2%BFMe%20pueden%20ayudar%3F" target="_blank">💬 Consultar con Gemicheck</a>
+  </div>
+</div>
+<footer>Gemicheck Turismo SAS · <a href="https://wa.me/5491130615149" style="color:var(--accent)">WhatsApp</a> · gemicheck.com.ar</footer>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿Cuántos días son suficientes para Buenos Aires?","acceptedAnswer":{"@type":"Answer","text":"Para un primer viaje, 3-4 días es el mínimo. Con 5-6 podés entrar en los detalles."}},{"@type":"Question","name":"¿Qué barrios no se pueden perder?","acceptedAnswer":{"@type":"Answer","text":"San Telmo, La Boca, Palermo, Recoleta y Puerto Madero."}}]}
+</script>
+</body></html>
