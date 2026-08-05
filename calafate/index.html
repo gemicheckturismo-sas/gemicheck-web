@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<meta name="theme-color" content="#0a0e1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>El Calafate — Perito Moreno · Gemicheck</title>
+<meta name="description" content="Viajes a El Calafate desde Argentina. El Glaciar Perito Moreno, trekking sobre hielo y la Patagonia más salvaje. Paquetes con vuelo incluido.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/calafate">
+<style>
+:root {
+    --bg: #0a0e1a;
+    --bg-alt: #0f1424;
+    --surface: #141a2e;
+    --surface-hover: #1a2038;
+    --ink: #f4eee4;
+    --ink-muted: #8b8fa0;
+    --ink-dim: #565a6b;
+    --accent: #d4b483;
+    --accent-hot: #e8c89a;
+    --accent-teal: #4ec9a8;
+    --border: rgba(244, 238, 228, 0.08);
+    --border-strong: rgba(244, 238, 228, 0.15);
+    --shadow-lg: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:300}
+a{color:inherit;text-decoration:none}
+em{font-style:italic;color:var(--accent)}
+nav{position:sticky;top:0;z-index:50;background:rgba(10,14,26,0.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-size:20px;letter-spacing:1px}
+.logo span{color:var(--accent)}
+.nav-back{font-size:13px;color:var(--ink-muted);border:1px solid var(--border-strong);padding:8px 16px;border-radius:100px;transition:all .3s ease}
+.nav-back:hover{border-color:var(--accent);color:var(--accent)}
+.hero-img{width:100%;height:420px;object-fit:cover;display:block;filter:brightness(.5)}
+.hero-wrap{position:relative;overflow:hidden}
+.hero-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,transparent 55%)}
+.hero-content{position:absolute;bottom:0;left:0;right:0;z-index:2;padding:40px 24px;max-width:900px;margin:0 auto}
+.eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.hero-title{font-size:clamp(32px,6vw,54px);line-height:1.08;margin-bottom:12px}
+.hero-sub{font-size:15px;color:var(--ink-muted);max-width:520px;line-height:1.6}
+.section{padding:40px 0;border-top:1px solid var(--border)}
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.section-title{font-size:clamp(22px,4vw,34px);margin-bottom:20px;line-height:1.15}
+p.body{font-size:15px;color:var(--ink-muted);line-height:1.7;margin-bottom:14px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 24px}
+.badge{font-size:11px;padding:5px 14px;border-radius:100px;border:1px solid var(--border-strong);color:var(--ink-muted)}
+.badge.alta{border-color:rgba(232,89,89,.4);color:#e88989}
+.badge.media{border-color:rgba(212,180,131,.4);color:var(--accent)}
+.badge.baja{border-color:rgba(78,201,168,.4);color:var(--accent-teal)}
+.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0 28px}
+.act-item{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px}
+.act-item .act-icon{font-size:22px;margin-bottom:8px}
+.act-item h4{font-family:'Fraunces',serif;font-size:15px;font-weight:300;margin-bottom:4px}
+.act-item p{font-size:12px;color:var(--ink-muted);line-height:1.5}
+.tip-box{background:linear-gradient(135deg,rgba(212,180,131,.08),rgba(212,180,131,.03));border:1px solid rgba(212,180,131,.25);border-radius:16px;padding:24px 28px;margin:28px 0}
+.tip-box .tip-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.tip-box .tip-head span{font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase}
+.tip-box p{font-size:14px;color:var(--ink-muted);line-height:1.7}
+.faq-item{border-bottom:1px solid var(--border);padding:18px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-family:'Fraunces',serif;font-size:16px;font-weight:300;margin-bottom:8px}
+.faq-a{font-size:13px;color:var(--ink-muted);line-height:1.7}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0 28px}
+.gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px}
+.cta-box{text-align:center;padding:48px 0 64px}
+.cta-box h2{font-size:clamp(26px,4vw,38px);margin-bottom:12px}
+.cta-box p{color:var(--ink-muted);font-size:15px;max-width:440px;margin:0 auto 24px}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:16px 32px;border-radius:100px;font-size:15px;font-weight:600;transition:all .3s ease;text-decoration:none}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.35)}
+.combo-box{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:14px;padding:20px 24px;margin:24px 0}
+.combo-box p{font-size:14px;color:var(--ink-muted);line-height:1.6}
+.combo-box strong{color:var(--ink)}
+footer{text-align:center;padding:28px 0;color:var(--ink-dim);font-size:12px;border-top:1px solid var(--border)}
+@media(max-width:600px){.hero-img{height:300px}.gal{grid-template-columns:repeat(2,1fr)}.act-grid{grid-template-columns:1fr 1fr}}
+</style></head>
+<body>
+<nav><div class="container nav-inner">
+  <a href="/" class="logo">gemi<span>check</span></a>
+  <a href="/argentina" class="nav-back">← Argentina</a>
+</div></nav>
+<div class="hero-wrap">
+  <img src="../images/destinos/calafate-1.jpg" alt="El Calafate — Perito Moreno · Gemicheck" class="hero-img" onerror="this.src='../images/bariloche.jpg'">
+  <div class="container"><div class="hero-content">
+    <div class="eyebrow">PATAGONIA · SANTA CRUZ</div>
+    <h1 class="hero-title">El Calafate y el <em>Perito Moreno</em></h1>
+    <p class="hero-sub">El glaciar más famoso del mundo avanza 2 metros por día y ruge como un trueno cuando se rompe. Esto no se ve en ningún otro lugar del planeta.</p>
+  </div></div>
+</div>
+<div class="container">
 
+  <div class="section">
+    <div class="section-eyebrow">EL DESTINO</div>
+    <h2 class="section-title">¿Por qué <em>El Calafate</em>?</h2>
+    <p class="body">El Calafate existe porque existe el Perito Moreno. Y el Perito Moreno existe para recordarte que hay fuerzas en este planeta que no tienen escala humana. El glaciar más visitado de la Patagonia tiene 60 metros de pared de hielo azul sobre el lago Argentino, avanza 2 metros por día y cada tanto se rompe con un estruendo que sacude el aire. Verlo es una experiencia que se lleva para siempre.</p>
+    <div class="gal">
+      <img src="../images/destinos/calafate-1.jpg" alt="calafate 1" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/calafate-2.jpg" alt="calafate 2" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/calafate-3.jpg" alt="calafate 3" loading="lazy" onerror="this.style.opacity=0.15">
+      <img src="../images/destinos/calafate-4.jpg" alt="calafate 4" loading="lazy" onerror="this.style.opacity=0.15">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">TEMPORADA</div>
+    <h2 class="section-title">¿Cuándo <em>ir</em>?</h2>
+    <div class="badges">
+      <span class="badge alta">☀️ Verano (Oct-Mar) — Días largos, todos los circuitos abiertos</span>
+      <span class="badge media">❄️ Invierno (Jun-Sep) — Menos gente, precios más bajos, frío intenso</span>
+      <span class="badge baja">🍂 Otoño (Abr-May) — La estepa patagónica en colores</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-eyebrow">ACTIVIDADES DESTACADAS</div>
+    <h2 class="section-title">Qué <em>hacer</em></h2>
+    <div class="act-grid"><div class="act-item"><div class="act-icon">🧊</div><h4>Glaciar Perito Moreno</h4><p>Las pasarelas frente al glaciar permiten verlo de frente, de costado y desde arriba. La entrada al Parque Nacional Los Glaciares incluye el acceso.</p></div><div class="act-item"><div class="act-icon">🥾</div><h4>Trekking sobre Hielo (Big Ice)</h4><p>Caminata con crampones sobre el glaciar. Se ven grietas, cuevas y el azul profundo del hielo milenario. Apto para personas en buena forma física.</p></div><div class="act-item"><div class="act-icon">⛵</div><h4>Navegación Lago Argentino</h4><p>Excursión en barco por el Lago Argentino, el más grande de Argentina. Pasa frente al Upsala y el Spegazzini, glaciares menos conocidos pero igual de impactantes.</p></div><div class="act-item"><div class="act-icon">🦅</div><h4>Estancias patagónicas</h4><p>Las estancias tradicionales ofrecen asado patagónico, avistaje de cóndores y un contacto real con la vida gaucha en la estepa.</p></div><div class="act-item"><div class="act-icon">🏔️</div><h4>Los Glaciares NP</h4><p>Patrimonio Mundial UNESCO desde 1981. El parque tiene 47 glaciares y es la tercera reserva de agua dulce del planeta.</p></div><div class="act-item"><div class="act-icon">🚌</div><h4>Excursión a El Chaltén</h4><p>A 3 horas de El Calafate, El Chaltén es la capital del trekking argentina. Se puede hacer como excursión de día desde Calafate.</p></div></div>
+  </div>
+
+  <div class="tip-box"><div class="tip-head"><span>✦</span><span>Tip Gemicheck</span></div><p>El Perito Moreno se puede ver sin hacer trekking — las pasarelas gratuitas son épicas. Pero si querés el momento "wow" extra, reservá el Mini Trekking o el Big Ice con anticipación desde Argentina: los cupos se agotan rápido en temporada alta. Y llevá capas: en el glaciar hace 10 grados menos que en el pueblo.</p></div>
+  <div class="combo-box"><p><strong>Combo clásico patagónico:</strong> El Calafate (3-4 noches) + El Chaltén (2-3 noches) + Ushuaia (3 noches) — el circuito completo del sur argentino. Lo armamos en 9-10 días con vuelos internos incluidos.</p></div>
+
+  <div class="section">
+    <div class="section-eyebrow">PREGUNTAS FRECUENTES</div>
+    <h2 class="section-title">Lo que siempre <em>preguntan</em></h2>
+    <div class="faq-item"><p class="faq-q">¿El Perito Moreno se puede ver sin hacer trekking?</p><p class="faq-a">Sí, y es igual de impresionante. Las pasarelas gratuitas dan acceso a múltiples miradores frente al glaciar. El trekking sobre hielo es una experiencia adicional para quienes quieren subirse al glaciar.</p></div><div class="faq-item"><p class="faq-q">¿Cuándo es la mejor época para ir?</p><p class="faq-a">Octubre a marzo es la temporada ideal: días largos y todos los circuitos abiertos. Junio-agosto tiene menos gente y precios más bajos, pero hace mucho frío y algunos senderos están cerrados.</p></div><div class="faq-item"><p class="faq-q">¿Cuántos días necesito solo en El Calafate?</p><p class="faq-a">Con 3 noches ves el Perito Moreno bien y podés hacer una excursión adicional (trekking en hielo o navegación). Si querés sumar El Chaltén como excursión, necesitás 4 noches mínimo.</p></div><div class="faq-item"><p class="faq-q">¿Conviene combinar con El Chaltén?</p><p class="faq-a">Sí, están a 3 horas por ruta y se complementan perfecto: Calafate es glaciares y lago, Chaltén es montaña y trekking. Se puede ir a Chaltén en excursión de día o quedarse 2-3 noches.</p></div>
+  </div>
+
+  <div class="cta-box">
+    <h2>¿Listo para ver el <em>Perito Moreno</em>?</h2>
+    <p>Contanos tus fechas y armamos el paquete patagónico completo.</p>
+    <a class="btn-wa" href="https://wa.me/5491130615149?text=Hola%20Gemicheck%21%20Me%20interesa%20viajar%20a%20El%20Calafate.%20%C2%BFMe%20pueden%20cotizar%20un%20paquete%3F" target="_blank">💬 Consultar con Gemicheck</a>
+  </div>
+</div>
+<footer>Gemicheck Turismo SAS · <a href="https://wa.me/5491130615149" style="color:var(--accent)">WhatsApp</a> · gemicheck.com.ar</footer>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"¿El Perito Moreno se puede ver sin hacer trekking?","acceptedAnswer":{"@type":"Answer","text":"Sí, las pasarelas gratuitas dan acceso a múltiples miradores frente al glaciar."}},{"@type":"Question","name":"¿Cuándo es la mejor época?","acceptedAnswer":{"@type":"Answer","text":"Octubre a marzo: días largos y todos los circuitos abiertos."}}]}
+</script>
+</body></html>
