@@ -3,152 +3,149 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GemiCheck Turismo</title>
+<title>Gemicheck | Links</title>
+<meta name="description" content="Gemicheck Turismo. Agencia de viajes a medida en Buenos Aires. WhatsApp, web, reseñas y más.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/links/">
 <link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<meta name="theme-color" content="#0a0e1a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.gemicheck.com.ar/links/">
+<meta property="og:title" content="Gemicheck — Tu viaje listo">
+<meta property="og:description" content="Agencia de viajes a medida. Hablá con nosotros por WhatsApp.">
+<meta property="og:image" content="https://gemicheck.com.ar/images/og-image.jpg">
+<meta property="og:locale" content="es_AR">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; }
-
   :root {
-    --bg: #f5f2ec;
-    --ink: #111111;
-    --muted: #7a7670;
-    --line: rgba(17,17,17,.18);
-    --gold: #b8963e;
+    --bg:#0a0e1a; --bg-alt:#0f1424; --surface:#141a2e; --surface-hover:#1a2038;
+    --ink:#f4eee4; --ink-muted:#8b8fa0; --ink-dim:#565a6b;
+    --accent:#d4b483; --accent-hot:#e8c89a;
+    --border:rgba(244,238,228,0.08); --border-strong:rgba(244,238,228,0.15);
+    --ease:cubic-bezier(0.2,0.7,0.2,1);
   }
-
-  html, body { height: 100%; }
-
-  body {
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    display: flex; align-items: flex-start; justify-content: center;
-    padding: 48px 24px;
-    -webkit-font-smoothing: antialiased;
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{
+    background:var(--bg); color:var(--ink); font-family:'Inter',-apple-system,sans-serif; line-height:1.6;
+    min-height:100vh; position:relative; overflow-x:hidden;
+    display:flex; justify-content:center; align-items:flex-start;
+    padding:56px 20px 64px; -webkit-font-smoothing:antialiased;
   }
+  ::selection{ background:var(--accent); color:var(--bg); }
 
-  .card {
-    width: 100%; max-width: 400px;
-    display: flex; flex-direction: column; align-items: center;
-  }
+  .bg{ position:fixed; inset:0; z-index:0; opacity:.4; pointer-events:none; }
+  .bg::before{ content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse at top right, rgba(212,180,131,.15), transparent 50%),
+               radial-gradient(ellipse at bottom left, rgba(78,201,168,.08), transparent 50%); }
+  .bg::after{ content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(244,238,228,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(244,238,228,.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at center, black 20%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse at center, black 20%, transparent 70%); }
 
-  .logo {
-    width: 240px; height: auto; display: block;
-    margin-bottom: 22px;
-  }
+  .card{ position:relative; z-index:2; width:100%; max-width:420px; animation:fadeUp .9s var(--ease); }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:none;} }
 
-  .rating {
-    display: flex; align-items: center; gap: 10px;
-    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--muted); font-weight: 500;
-    margin-bottom: 40px;
+  .head{ text-align:center; margin-bottom:28px; }
+  .logo{ height:56px; width:auto; display:block; margin:0 auto 18px; }
+  .tagline{ font-family:'Fraunces',serif; font-style:italic; font-weight:300; font-size:22px; color:var(--ink); letter-spacing:-.2px; }
+  .tagline em{ font-style:italic; color:var(--accent); }
+  .rating{
+    display:inline-flex; align-items:center; gap:10px; margin-top:14px;
+    font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--ink-muted);
+    text-decoration:none; transition:color .3s var(--ease);
   }
-  .rating .stars { display: flex; gap: 2px; color: var(--ink); }
-  .rating .stars svg { width: 11px; height: 11px; }
-  .rating .sep { width: 1px; height: 12px; background: var(--line); }
+  .rating:hover{ color:var(--ink); }
+  .rating .stars{ color:var(--accent); display:inline-flex; gap:2px; }
+  .rating .stars svg{ width:11px; height:11px; fill:currentColor; }
+  .rating .sep{ width:1px; height:12px; background:var(--border-strong); }
+  .rating strong{ color:var(--accent); font-weight:500; }
 
-  .links { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+  .links{ display:flex; flex-direction:column; gap:12px; }
 
-  .btn {
-    display: flex; align-items: center; gap: 18px;
-    width: 100%; padding: 18px 22px;
-    border: 1px solid var(--ink);
-    background: transparent; color: var(--ink);
-    text-decoration: none;
-    transition: background .2s ease, color .2s ease, transform .15s ease;
+  .btn{
+    display:flex; align-items:center; gap:18px; width:100%;
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+    color:var(--ink); padding:18px 20px; text-decoration:none; font:inherit; text-align:left; cursor:pointer;
+    -webkit-appearance:none; appearance:none;
+    transition:border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
   }
-  .btn:hover { background: var(--ink); color: var(--bg); }
-  .btn:active { transform: scale(.985); }
+  .btn:hover{ border-color:var(--accent); background:var(--surface-hover); transform:translateY(-3px); }
+  .btn:active{ transform:scale(.99); }
+  .btn .ico{
+    width:42px; height:42px; flex:none; border-radius:50%;
+    border:1px solid var(--border-strong); display:flex; align-items:center; justify-content:center;
+    color:var(--accent); transition:all .3s var(--ease);
+  }
+  .btn:hover .ico{ background:var(--accent); border-color:var(--accent); color:var(--bg); }
+  .btn .ico svg{ width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
+  .btn .ico svg.fill{ fill:currentColor; stroke:none; }
+  .btn .text{ flex:1; min-width:0; }
+  .btn .title{ display:block; font-family:'Fraunces',serif; font-weight:400; font-size:20px; line-height:1.15; letter-spacing:-.2px; }
+  .btn .desc{ display:block; font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--ink-muted); margin-top:5px; }
+  .btn .arrow{ width:16px; height:16px; flex:none; color:var(--ink-dim); transition:all .3s var(--ease); }
+  .btn .arrow svg{ width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .btn:hover .arrow{ color:var(--accent); transform:translate(3px,-3px); }
 
-  .btn .ico { width: 22px; height: 22px; flex-shrink: 0; }
-  .btn .ico svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-  .btn .ico.fill svg { fill: currentColor; stroke: none; }
+  .btn.primary{ background:var(--accent); border-color:var(--accent); color:var(--bg); }
+  .btn.primary:hover{ background:var(--accent-hot); border-color:var(--accent-hot); }
+  .btn.primary .ico{ border-color:rgba(10,14,26,.3); color:var(--bg); }
+  .btn.primary:hover .ico{ background:var(--bg); border-color:var(--bg); color:var(--accent); }
+  .btn.primary .desc{ color:rgba(10,14,26,.65); }
+  .btn.primary .arrow{ color:var(--bg); }
+  .btn.primary:hover .arrow{ color:var(--bg); }
+  .btn .chev svg{ transition:transform .3s var(--ease); }
+  .btn[aria-expanded="true"] .chev svg{ transform:rotate(180deg); }
+  .btn[aria-expanded="true"]:hover .chev{ transform:none; }
 
-  .btn .text { display: flex; flex-direction: column; gap: 2px; }
-  .btn .title {
-    font-family: 'Playfair Display', serif; font-weight: 600;
-    font-size: 18px; letter-spacing: .2px; line-height: 1.15;
+  .about{ width:100%; }
+  .about[hidden]{ display:none; }
+  .about-inner{
+    background:var(--bg-alt); border:1px solid var(--border); border-radius:16px;
+    padding:28px 24px 26px; animation:reveal .4s var(--ease);
   }
-  .btn .desc {
-    font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase;
-    opacity: .72; font-weight: 500;
+  @keyframes reveal{ from{opacity:0; transform:translateY(-8px);} to{opacity:1; transform:none;} }
+  .about h3{ font-family:'Fraunces',serif; font-weight:300; font-style:italic; font-size:24px; color:var(--accent); margin:22px 0 8px; line-height:1; }
+  .about h3:first-child{ margin-top:0; }
+  .about p{ font-size:15px; line-height:1.7; color:var(--ink-muted); }
+  .about-cta{
+    display:inline-flex; align-items:center; gap:10px; margin-top:26px;
+    padding:14px 24px; border-radius:100px; background:var(--accent); color:var(--bg);
+    text-decoration:none; font-size:13px; font-weight:500; transition:all .3s var(--ease);
   }
+  .about-cta:hover{ background:var(--accent-hot); transform:translateY(-2px); }
+  .about-cta svg{ width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 
-  .btn .arrow { margin-left: auto; width: 18px; height: 18px; flex-shrink: 0; opacity: .55; transition: transform .2s; }
-  .btn .arrow svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
-  .btn:hover .arrow { transform: translateX(4px); opacity: 1; }
-
-  .btn.primary { background: var(--ink); color: var(--bg); }
-  .btn.primary:hover { background: #000; }
-  .btn.primary .desc { color: var(--gold); opacity: 1; }
-
-  .footer {
-    margin-top: 44px; text-align: center;
-  }
-  .footer .claim {
-    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 400;
-    font-size: 20px; color: var(--ink); letter-spacing: .3px;
-  }
-  .footer .claim .check { color: var(--gold); font-style: normal; margin-left: 2px; }
-  .footer .meta {
-    margin-top: 12px; font-size: 11px; letter-spacing: 2.4px;
-    text-transform: uppercase; color: var(--muted);
-  }
-  .footer .meta a { color: inherit; text-decoration: none; }
-  .footer .meta .dot { margin: 0 10px; }
-
-  button.btn { font: inherit; cursor: pointer; text-align: left; -webkit-appearance: none; appearance: none; }
-  .btn .chev svg { transition: transform .25s ease; }
-  .btn[aria-expanded="true"] .chev svg { transform: rotate(180deg); }
-  .btn[aria-expanded="true"] .chev { transform: none; }
-
-  .about { width: 100%; overflow: hidden; }
-  .about[hidden] { display: none; }
-  .about-inner {
-    border: 1px solid var(--ink); border-top: none;
-    margin-top: -12px; padding: 26px 22px 24px;
-    background: #fbf9f5;
-    animation: reveal .3s ease;
-  }
-  @keyframes reveal { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-  .about h3 {
-    font-family: 'Playfair Display', serif; font-weight: 600; font-size: 17px;
-    margin: 18px 0 6px; letter-spacing: .2px;
-  }
-  .about h3:first-child { margin-top: 0; }
-  .about p { font-size: 14.5px; line-height: 1.6; color: #2b2925; }
-  .about-cta {
-    display: inline-flex; align-items: center; gap: 10px;
-    margin-top: 22px; padding: 12px 18px;
-    border: 1px solid var(--ink); color: var(--ink); text-decoration: none;
-    font-size: 12px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 500;
-    transition: background .2s, color .2s;
-  }
-  .about-cta svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-  .about-cta:hover { background: var(--ink); color: var(--bg); }
+  .footer{ margin-top:40px; text-align:center; }
+  .footer .meta{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--ink-dim); }
+  .footer .meta a{ color:inherit; text-decoration:none; transition:color .3s var(--ease); }
+  .footer .meta a:hover{ color:var(--accent); }
+  .footer .meta .dot{ margin:0 10px; }
 </style>
 </head>
 <body>
+<div class="bg"></div>
 <div class="card">
 
-  <img class="logo" src="/links/logo.png" alt="GemiCheck — Tu viaje listo">
-
-  <div class="rating">
-    <span class="stars">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
-    </span>
-    <span>5.0 en Google</span>
-    <span class="sep"></span>
-    <span>Buenos Aires</span>
+  <div class="head">
+    <a href="https://gemicheck.com.ar"><img class="logo" src="/images/logo.png" alt="Gemicheck"></a>
+    <div class="tagline">Tu viaje <em>listo</em> ✓</div>
+    <a class="rating" href="https://g.page/r/CagcIAklS46tEBM" target="_blank" rel="noopener">
+      <span class="stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+      </span>
+      <span><strong>5.0</strong> en Google</span>
+      <span class="sep"></span>
+      <span>Buenos Aires</span>
+    </a>
   </div>
 
   <div class="links">
@@ -156,7 +153,7 @@
     <button class="btn primary" id="aboutBtn" type="button" aria-expanded="false" aria-controls="about">
       <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.1-7-11a7 7 0 0114 0c0 5.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
       <span class="text">
-        <span class="title">Somos GemiCheck</span>
+        <span class="title">Somos Gemicheck</span>
         <span class="desc">Quiénes · Cómo · Por qué</span>
       </span>
       <span class="arrow chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>
@@ -166,36 +163,42 @@
       <div class="about-inner">
         <h3>Quiénes somos</h3>
         <p>Somos Cris y Gonza, dos personas reales detrás de cada viaje. Una agencia boutique de Buenos Aires que nació para hacer las cosas distinto: sin call centers, sin letra chica, sin que seas un número.</p>
-
         <h3>Cómo lo hacemos</h3>
         <p>Todo por WhatsApp, con alguien que te conoce por tu nombre. Escuchamos qué viaje querés, lo armamos a medida con precios transparentes y planes de pago en cuotas, y te acompañamos antes, durante y después del viaje.</p>
-
         <h3>Por qué lo hacemos</h3>
         <p>Porque creemos que tu viaje empieza desde la planificación, y que esa parte también tiene que disfrutarse. No vendemos paquetes: creamos recuerdos.</p>
-
         <a class="about-cta" href="https://wa.me/5491130615149?text=Hola!%20Vi%20su%20Instagram%20y%20quiero%20empezar%20a%20armar%20mi%20viaje" target="_blank" rel="noopener">
           Empezá a armar tu viaje
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>
     </div>
 
     <a class="btn" href="https://wa.me/5491130615149" target="_blank" rel="noopener">
-      <span class="ico fill"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span>
+      <span class="ico"><svg class="fill" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.9 11.9 0 0 0 5.74 1.46h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg></span>
       <span class="text">
         <span class="title">WhatsApp directo</span>
         <span class="desc">Hablá con nosotros</span>
       </span>
-      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
     </a>
 
-    <a class="btn" href="https://gemicheck.com.ar" target="_blank" rel="noopener">
-      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+    <a class="btn" href="/quiz">
+      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
+      <span class="text">
+        <span class="title">¿Qué tipo de viajero sos?</span>
+        <span class="desc">Jugá y descubrí tu destino</span>
+      </span>
+      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
+    </a>
+
+    <a class="btn" href="https://gemicheck.com.ar">
+      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg></span>
       <span class="text">
         <span class="title">Página web</span>
         <span class="desc">gemicheck.com.ar</span>
       </span>
-      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
     </a>
 
     <a class="btn" href="https://g.page/r/CagcIAklS46tEBM" target="_blank" rel="noopener">
@@ -204,15 +207,16 @@
         <span class="title">Mirá lo que dicen de nosotros</span>
         <span class="desc">5.0 en Google</span>
       </span>
-      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      <span class="arrow"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></span>
     </a>
 
   </div>
 
   <div class="footer">
-    <div class="claim">Tu viaje listo <span class="check">✓</span></div>
     <div class="meta">
       <a href="https://instagram.com/gemicheck.turismo" target="_blank" rel="noopener">@gemicheck.turismo</a>
+      <span class="dot">·</span>
+      <span>Buenos Aires</span>
     </div>
   </div>
 
@@ -223,9 +227,7 @@
     const o=b.getAttribute('aria-expanded')==='true';
     b.setAttribute('aria-expanded',String(!o));
     p.hidden=o;
-    if(!o){
-      setTimeout(()=>{ p.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 50);
-    }
+    if(!o){ setTimeout(()=>{ p.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 50); }
   });
 </script>
 </body>
