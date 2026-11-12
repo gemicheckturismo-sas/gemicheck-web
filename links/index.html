@@ -27,7 +27,7 @@
     color: var(--ink);
     font-family: 'Jost', sans-serif;
     font-weight: 400;
-    display: flex; align-items: center; justify-content: center;
+    display: flex; align-items: flex-start; justify-content: center;
     padding: 48px 24px;
     -webkit-font-smoothing: antialiased;
   }
@@ -219,7 +219,14 @@
 </div>
 <script>
   const b=document.getElementById('aboutBtn'), p=document.getElementById('about');
-  b.addEventListener('click',()=>{const o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));p.hidden=o;});
+  b.addEventListener('click',()=>{
+    const o=b.getAttribute('aria-expanded')==='true';
+    b.setAttribute('aria-expanded',String(!o));
+    p.hidden=o;
+    if(!o){
+      setTimeout(()=>{ p.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 50);
+    }
+  });
 </script>
 </body>
 </html>
