@@ -1,1 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Qué tipo de viajero sos? | Gemicheck</title>
+<meta name="description" content="Respondé 6 preguntas y descubrí tu perfil viajero y tu destino ideal. Un juego de Gemicheck, agencia de viajes a medida.">
+<link rel="canonical" href="https://www.gemicheck.com.ar/quiz/">
+<link rel="icon" type="image/x-icon" href="/favicons/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<meta name="theme-color" content="#0a0e1a">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.gemicheck.com.ar/quiz/">
+<meta property="og:title" content="¿Qué tipo de viajero sos?">
+<meta property="og:description" content="6 preguntas, 1 minuto, tu destino ideal. Jugá y descubrilo.">
+<meta property="og:image" content="https://gemicheck.com.ar/images/og-image.jpg">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg:#0a0e1a; --bg-alt:#0f1424; --surface:#141a2e; --surface-hover:#1a2038;
+    --ink:#f4eee4; --ink-muted:#8b8fa0; --ink-dim:#565a6b;
+    --accent:#d4b483; --accent-hot:#e8c89a; --accent-teal:#4ec9a8;
+    --border:rgba(244,238,228,0.08); --border-strong:rgba(244,238,228,0.15);
+    --ease:cubic-bezier(0.2,0.7,0.2,1);
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter',-apple-system,sans-serif; line-height:1.6; overflow-x:hidden; min-height:100vh; }
+  .container{ max-width:1400px; margin:0 auto; padding:0 40px; }
+  @media (max-width:700px){ .container{ padding:0 24px; } }
+  ::selection{ background:var(--accent); color:var(--bg); }
+
+  /* NAV (idéntico a la web) */
+  nav{ position:fixed; top:0; left:0; right:0; z-index:100; padding:24px 0; transition:background .4s var(--ease), padding .4s var(--ease); }
+  nav.scrolled{ background:rgba(10,14,26,.85); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); padding:16px 0; border-bottom:1px solid var(--border); }
+  .nav-inner{ display:flex; justify-content:space-between; align-items:center; }
+  .logo{ display:flex; align-items:center; text-decoration:none; color:var(--ink); }
+  .logo-img{ height:36px; width:auto; display:block; }
+  .nav-links{ display:flex; gap:40px; list-style:none; font-size:14px; }
+  .nav-links a{ color:var(--ink-muted); text-decoration:none; transition:color .3s var(--ease); position:relative; }
+  .nav-links a::after{ content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--accent); transition:width .3s var(--ease); }
+  .nav-links a:hover{ color:var(--ink); } .nav-links a:hover::after{ width:100%; }
+  @media (max-width:700px){ .nav-links{ display:none; } }
+  .nav-cta{ padding:10px 20px; border:1px solid var(--border-strong); border-radius:100px; background:transparent; color:var(--ink); font-size:13px; text-decoration:none; transition:all .3s var(--ease); }
+  .nav-cta:hover{ background:var(--accent); color:var(--bg); border-color:var(--accent); }
+
+  /* HERO / JUEGO */
+  .game{ min-height:100vh; padding:150px 0 100px; position:relative; display:flex; align-items:center; overflow:hidden; }
+  .game-bg{ position:absolute; inset:0; z-index:0; opacity:.4; }
+  .game-bg::before{ content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse at top right, rgba(212,180,131,.15), transparent 50%),
+               radial-gradient(ellipse at bottom left, rgba(78,201,168,.08), transparent 50%); }
+  .game-bg::after{ content:''; position:absolute; inset:0;
+    background-image:linear-gradient(rgba(244,238,228,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(244,238,228,.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    mask-image:radial-gradient(ellipse at center, black 20%, transparent 70%); -webkit-mask-image:radial-gradient(ellipse at center, black 20%, transparent 70%); }
+  .game-inner{ position:relative; z-index:2; width:100%; max-width:620px; margin:0 auto; }
+
+  .eyebrow{ font-size:12px; letter-spacing:3px; color:var(--accent); margin-bottom:24px; display:flex; align-items:center; gap:12px; text-transform:uppercase; }
+  .eyebrow::before{ content:''; width:40px; height:1px; background:var(--accent); }
+
+  .screen{ display:none; animation:fadeUp .7s var(--ease); }
+  .screen.active{ display:block; }
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:none;} }
+
+  h1{ font-family:'Fraunces',serif; font-size:clamp(44px,6.5vw,76px); line-height:.98; font-weight:300; letter-spacing:-1.5px; margin-bottom:28px; }
+  h1 em{ font-style:italic; color:var(--accent); font-variation-settings:"opsz" 144; }
+  .lead{ font-size:17px; line-height:1.65; color:var(--ink-muted); max-width:480px; margin-bottom:40px; }
+
+  .btn{ padding:16px 32px; border-radius:100px; font-size:14px; font-weight:500; font-family:inherit; transition:all .3s var(--ease); text-decoration:none; display:inline-flex; align-items:center; gap:10px; border:1px solid transparent; cursor:pointer; }
+  .btn-primary{ background:var(--accent); color:var(--bg); }
+  .btn-primary:hover{ background:var(--accent-hot); transform:translateY(-2px); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--border-strong); }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); }
+  .btn svg{ width:16px; height:16px; transition:transform .3s var(--ease); flex:none; }
+  .btn:not(.btn-wa) svg{ fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .btn-wa svg{ fill:currentColor; width:18px; height:18px; }
+  .btn:hover .arrow{ transform:translate(4px,-4px); }
+  .ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+
+  /* progreso */
+  .progress{ display:flex; gap:6px; margin-bottom:36px; }
+  .progress i{ flex:1; height:2px; background:var(--border-strong); transition:background .3s; }
+  .progress i.on{ background:var(--accent); }
+  .qn{ font-size:11px; letter-spacing:3px; color:var(--accent); margin-bottom:16px; text-transform:uppercase; }
+  .q{ font-family:'Fraunces',serif; font-size:clamp(30px,4.5vw,46px); font-weight:300; line-height:1.08; letter-spacing:-.8px; margin-bottom:36px; }
+
+  .opts{ display:flex; flex-direction:column; gap:12px; }
+  .opt{
+    font:inherit; text-align:left; cursor:pointer; -webkit-appearance:none; appearance:none;
+    display:flex; align-items:center; gap:18px;
+    background:var(--surface); border:1px solid var(--border); border-radius:16px;
+    color:var(--ink); padding:20px 22px;
+    transition:border-color .3s var(--ease), background .3s var(--ease), transform .3s var(--ease);
+  }
+  .opt:hover, .opt:focus-visible{ border-color:var(--accent); background:var(--surface-hover); transform:translateY(-3px); outline:none; }
+  .opt:active{ transform:scale(.99); }
+  .opt .k{ width:34px; height:34px; flex:none; border-radius:50%; border:1px solid var(--border-strong); display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-style:italic; font-size:16px; color:var(--accent); transition:all .3s var(--ease); }
+  .opt:hover .k{ background:var(--accent); color:var(--bg); border-color:var(--accent); }
+  .opt .t{ font-size:16px; line-height:1.35; }
+
+  /* resultado */
+  .res-title{ font-family:'Fraunces',serif; font-size:clamp(44px,6vw,72px); line-height:.98; font-weight:300; letter-spacing:-1.5px; margin-bottom:24px; }
+  .res-title em{ font-style:italic; color:var(--accent); }
+  .res-desc{ font-size:17px; line-height:1.65; color:var(--ink-muted); margin-bottom:36px; }
+
+  .panel{ background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:32px; margin-bottom:28px; }
+  @media (max-width:600px){ .panel{ padding:24px 20px; } }
+  .panel-title{ font-size:11px; letter-spacing:2px; color:var(--ink-dim); margin-bottom:18px; text-transform:uppercase; }
+  .dest{ display:flex; flex-direction:column; gap:10px; }
+  .dest button{
+    font:inherit; cursor:pointer; -webkit-appearance:none; appearance:none; text-align:left;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    background:transparent; border:1px solid var(--border); border-radius:14px; color:var(--ink); padding:16px 18px;
+    transition:all .3s var(--ease);
+  }
+  .dest button:hover{ border-color:var(--border-strong); }
+  .dest button.sel{ border-color:var(--accent); background:rgba(212,180,131,.06); }
+  .dest .n{ font-family:'Fraunces',serif; font-style:italic; font-size:24px; font-weight:300; line-height:1; }
+  .dest .s{ display:block; font-size:11px; letter-spacing:1.5px; color:var(--ink-muted); margin-top:6px; text-transform:uppercase; }
+  .dest .chk{ width:24px; height:24px; flex:none; border-radius:50%; border:1px solid var(--border-strong); display:flex; align-items:center; justify-content:center; transition:all .3s var(--ease); }
+  .dest button.sel .chk{ background:var(--accent); border-color:var(--accent); }
+  .dest .chk svg{ width:12px; height:12px; fill:none; stroke:var(--bg); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; opacity:0; }
+  .dest button.sel .chk svg{ opacity:1; }
+  .hint{ font-size:13px; color:var(--ink-dim); margin-top:16px; }
+
+  /* FOOTER (idéntico a la web) */
+  footer{ background:var(--bg); padding:80px 0 40px; border-top:1px solid var(--border); }
+  .footer-inner{ display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:60px; margin-bottom:60px; }
+  @media (max-width:900px){ .footer-inner{ grid-template-columns:1fr 1fr; gap:40px; } }
+  @media (max-width:500px){ .footer-inner{ grid-template-columns:1fr; } }
+  .footer-brand-title{ font-family:'Fraunces',serif; font-size:24px; margin-bottom:12px; font-weight:400; font-style:italic; }
+  .footer-brand-desc{ font-size:14px; color:var(--ink-muted); line-height:1.7; max-width:360px; }
+  .footer-col-title{ font-size:11px; letter-spacing:2px; color:var(--ink-dim); margin-bottom:20px; }
+  .footer-col ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .footer-col a{ color:var(--ink-muted); text-decoration:none; font-size:14px; transition:color .3s var(--ease); }
+  .footer-col a:hover{ color:var(--accent); }
+  .footer-bottom{ padding-top:32px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--ink-dim); }
+  @media (max-width:600px){ .footer-bottom{ flex-direction:column; gap:12px; } }
+
+  /* FLOTANTES (idénticos a la web) */
+  .floating-buttons{ position:fixed; bottom:32px; right:32px; display:flex; flex-direction:column; gap:14px; z-index:50; }
+  .whatsapp-float,.instagram-float{ width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; text-decoration:none; transition:all .3s var(--ease); }
+  .whatsapp-float{ background:#25D366; box-shadow:0 10px 40px rgba(37,211,102,.4); }
+  .whatsapp-float:hover{ transform:scale(1.1) rotate(-8deg); }
+  .instagram-float{ background:linear-gradient(45deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); box-shadow:0 10px 40px rgba(220,39,67,.4); }
+  .instagram-float:hover{ transform:scale(1.1) rotate(8deg); }
+  .whatsapp-float svg,.instagram-float svg{ width:28px; height:28px; }
+  @media (max-width:600px){ .floating-buttons{ bottom:20px; right:20px; } .whatsapp-float,.instagram-float{ width:52px; height:52px; } }
+
+  .toast{ position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(10px); background:var(--accent); color:var(--bg); font-size:13px; font-weight:500; padding:12px 20px; border-radius:100px; opacity:0; pointer-events:none; transition:all .3s var(--ease); z-index:60; }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo"><img src="/images/logo.png" alt="Gemicheck" class="logo-img"></a>
+    <ul class="nav-links">
+      <li><a href="/#destinos">Destinos</a></li>
+      <li><a href="/#nosotros">Nosotros</a></li>
+      <li><a href="/simulador">Simulador</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+    </ul>
+    <a href="/#cotizar" class="nav-cta">Cotizá tu viaje</a>
+  </div>
+</nav>
+
+<section class="game">
+  <div class="game-bg"></div>
+  <div class="container">
+    <div class="game-inner">
+
+      <!-- INTRO -->
+      <div class="screen active" id="intro">
+        <div class="eyebrow">Un juego de 1 minuto</div>
+        <h1>¿Qué tipo de <em>viajero</em> sos?</h1>
+        <p class="lead">Seis preguntas cortas. Al final te decimos tu perfil viajero y los destinos que más te van. Sin registro, sin vueltas.</p>
+        <div class="ctas">
+          <button class="btn btn-primary" id="start" type="button">
+            Empezar a jugar
+            <svg class="arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- PREGUNTA -->
+      <div class="screen" id="quiz">
+        <div class="progress" id="progress"></div>
+        <div class="qn" id="qn"></div>
+        <div class="q" id="qtext"></div>
+        <div class="opts" id="opts"></div>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="screen" id="result">
+        <div class="eyebrow">Tu perfil viajero</div>
+        <div class="res-title" id="rTitle"></div>
+        <p class="res-desc" id="rDesc"></p>
+
+        <div class="panel">
+          <div class="panel-title">Tus destinos ideales</div>
+          <div class="dest" id="rDest"></div>
+          <div class="hint">Elegí uno y lo cotizamos por WhatsApp. Sin compromiso.</div>
+        </div>
+
+        <div class="ctas">
+          <a class="btn btn-primary btn-wa" id="waBtn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.91-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.95L0 24l6.3-1.65a11.9 11.9 0 0 0 5.74 1.46h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.41"/></svg>
+            <span id="waLabel">Cotizar</span>
+          </a>
+          <button class="btn btn-ghost" id="share" type="button">
+            <svg viewBox="0 0 24 24"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M12 3v12M7 8l5-5 5 5"/></svg>
+            Compartir
+          </button>
+          <button class="btn btn-ghost" id="again" type="button">
+            <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>
+            Jugar de nuevo
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer id="contacto">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-title">Gemicheck</div>
+        <p class="footer-brand-desc">Agencia de viajes. Diseñamos experiencias personalizadas a cualquier destino, con asesoramiento humano y atención a cada detalle.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">DESTINOS TOP</div>
+        <ul>
+          <li><a href="/bariloche">Viajes a Bariloche</a></li>
+          <li><a href="/mendoza">Viajes a Mendoza</a></li>
+          <li><a href="/iguazu">Viajes a Iguazú</a></li>
+          <li><a href="/brasil">Viajes a Brasil</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">CONTACTO</div>
+        <ul>
+          <li><a href="https://wa.me/5491130615149" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:gemicheck.turismo@gmail.com">gemicheck.turismo@gmail.com</a></li>
+          <li><span style="color:var(--ink-muted)">Buenos Aires · CABA</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">REDES</div>
+        <ul>
+          <li><a href="https://www.instagram.com/gemicheck.turismo" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="/links">Todos los links</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Gemicheck SAS · CUIT 30-71936940-1</div>
+      <div>Hecho con ♥ en Buenos Aires</div>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-buttons">
+  <a href="https://www.instagram.com/gemicheck.turismo" target="_blank" rel="noopener" class="instagram-float" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+  </a>
+  <a href="https://wa.me/5491130615149" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+<div class="toast" id="toast">Link copiado</div>
+
+<script>
+(function(){
+  const WA = '5491130615149';
+  const SITE = 'https://www.gemicheck.com.ar/quiz/';
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=> nav.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
+
+  const P = {
+    montana:{ title:'Alma de <em>montaña</em>', plain:'Alma de montaña',
+      desc:'Te mueve el aire frío, las vistas que cortan la respiración y volver a la cabaña con las piernas cansadas. Tu viaje ideal tiene lagos, bosque y silencio.',
+      dest:[['Bariloche','Patagonia · Lagos y nieve'],['Villa La Angostura','Patagonia · Bosque y calma'],['San Martín de los Andes','Patagonia · Pueblo de montaña']] },
+    playa:{ title:'Playero <em>sin apuro</em>', plain:'Playero sin apuro',
+      desc:'Para vos el plan perfecto es arena, mar y cero reloj. Un buen lugar donde comer rico de noche y volver a la playa al día siguiente.',
+      dest:[['Florianópolis','Brasil · 42 playas'],['Búzios','Brasil · Caletas y encanto'],['Punta Cana','Caribe · Todo relax']] },
+    caribe:{ title:'Caribeño <em>premium</em>', plain:'Caribeño premium',
+      desc:'Agua turquesa, un trago con el mar de fondo y que todo esté resuelto. Te gusta darte el gusto y que el viaje se sienta especial de principio a fin.',
+      dest:[['Aruba','Caribe · La isla feliz'],['Cancún','México · Playa y Riviera Maya'],['Punta Cana','Caribe · Resorts y mar']] },
+    sabores:{ title:'Viajero de <em>sabores</em>', plain:'Viajero de sabores',
+      desc:'Viajás con el paladar. Bodegas, mesas largas, paisajes que acompañan la copa. Tu mejor recuerdo de viaje casi siempre fue una comida.',
+      dest:[['Mendoza','Cuyo · Vino y cordillera'],['Salta y Jujuy','NOA · Cultura y colores'],['Córdoba','Sierras · Pueblos y asado']] },
+    selva:{ title:'Explorador de <em>naturaleza</em>', plain:'Explorador de naturaleza',
+      desc:'Te atraen los lugares que te hacen sentir chiquito: cataratas, cerros de colores, selva. Cuanto más intenso el paisaje, mejor.',
+      dest:[['Iguazú','Litoral · Cataratas'],['Salta y Jujuy','NOA · Quebrada y cerros'],['Bariloche','Patagonia · Lagos y bosque']] },
+    ciudad:{ title:'<em>Cosmopolita</em>', plain:'Cosmopolita',
+      desc:'Te gusta la energía de una ciudad grande: caminar, salir, descubrir barrios y volver con historias. Playa sí, pero con vida alrededor.',
+      dest:[['Río de Janeiro','Brasil · Ciudad y playa'],['Europa','Italia · España · Londres'],['Florianópolis','Brasil · Playa y noche']] }
+  };
+
+  const Q = [
+    { t:'Un domingo ideal es…', o:[
+      ['Caminar al aire libre hasta cansarme', {montana:2, selva:1}],
+      ['Playa, libro y nada más', {playa:2, caribe:1}],
+      ['Brunch, recorrer la ciudad, salir', {ciudad:2}],
+      ['Mesa larga con amigos y vino', {sabores:2}] ]},
+    { t:'En tu valija nunca falta…', o:[
+      ['Zapatillas para trekking', {montana:2, selva:1}],
+      ['Malla, protector y ojotas', {playa:2, caribe:1}],
+      ['Ropa linda para salir de noche', {ciudad:2, caribe:1}],
+      ['Cámara para los paisajes', {selva:2, sabores:1}] ]},
+    { t:'¿Qué te relaja de verdad?', o:[
+      ['Silencio y naturaleza', {montana:2, selva:1}],
+      ['El sonido del mar', {playa:2, caribe:1}],
+      ['Música y gente alrededor', {ciudad:2}],
+      ['Una comida que dura toda la tarde', {sabores:2}] ]},
+    { t:'Tu clima ideal', o:[
+      ['Frío, con nieve si se puede', {montana:3}],
+      ['Calor y sol todo el día', {playa:1, caribe:2}],
+      ['Templado, cómodo para caminar', {sabores:1, ciudad:1, selva:1}],
+      ['Me da igual, que sea un lugar nuevo', {selva:1, ciudad:1}] ]},
+    { t:'Lo que no puede faltar en el viaje', o:[
+      ['Una vista que me deje sin palabras', {montana:1, selva:2}],
+      ['Un trago con el mar de fondo', {caribe:2, playa:1}],
+      ['Salidas y vida nocturna', {ciudad:2}],
+      ['Probar la comida típica del lugar', {sabores:2}] ]},
+    { t:'Si tuvieras que elegir hoy…', o:[
+      ['Montaña', {montana:2}],
+      ['Playa', {playa:1, caribe:1}],
+      ['Ciudad', {ciudad:2}],
+      ['Naturaleza salvaje', {selva:2}] ]}
+  ];
+
+  const $ = id => document.getElementById(id);
+  const screens = { intro:$('intro'), quiz:$('quiz'), result:$('result') };
+  let i = 0, score = {}, chosen = null, profile = null;
+
+  function show(name){
+    Object.values(screens).forEach(s => s.classList.remove('active'));
+    screens[name].classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function renderQ(){
+    $('progress').innerHTML = Q.map((_,k)=>`<i class="${k<=i?'on':''}"></i>`).join('');
+    $('qn').textContent = `Pregunta ${i+1} de ${Q.length}`;
+    $('qtext').textContent = Q[i].t;
+    const L = ['a','b','c','d'];
+    $('opts').innerHTML = Q[i].o.map((o,k)=>`
+      <button class="opt" type="button" data-k="${k}">
+        <span class="k">${L[k]}</span><span class="t">${o[0]}</span>
+      </button>`).join('');
+    screens.quiz.classList.remove('active'); void screens.quiz.offsetWidth; screens.quiz.classList.add('active');
+  }
+
+  $('opts').addEventListener('click', e => {
+    const b = e.target.closest('.opt'); if(!b) return;
+    const pts = Q[i].o[+b.dataset.k][1];
+    for (const p in pts) score[p] = (score[p]||0) + pts[p];
+    i++;
+    if (i < Q.length) renderQ(); else finish();
+  });
+
+  function finish(){
+    profile = Object.keys(P).sort((a,b)=>(score[b]||0)-(score[a]||0))[0];
+    const r = P[profile];
+    $('rTitle').innerHTML = r.title;
+    $('rDesc').textContent = r.desc;
+    $('rDest').innerHTML = r.dest.map((d,k)=>`
+      <button type="button" data-k="${k}" class="${k===0?'sel':''}">
+        <span><span class="n">${d[0]}</span><span class="s">${d[1]}</span></span>
+        <span class="chk"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+      </button>`).join('');
+    chosen = r.dest[0][0];
+    updateWA();
+    show('result');
+  }
+
+  $('rDest').addEventListener('click', e => {
+    const b = e.target.closest('button'); if(!b) return;
+    [...$('rDest').children].forEach(x=>x.classList.remove('sel'));
+    b.classList.add('sel');
+    chosen = P[profile].dest[+b.dataset.k][0];
+    updateWA();
+  });
+
+  function updateWA(){
+    const msg = `Hola! Hice el quiz de Gemicheck y me salió "${P[profile].plain}". Quiero cotizar un viaje a ${chosen}.`;
+    $('waBtn').href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+    $('waLabel').textContent = `Cotizar ${chosen}`;
+  }
+
+  $('start').addEventListener('click', ()=>{ i=0; score={}; renderQ(); show('quiz'); });
+  $('again').addEventListener('click', ()=>{ i=0; score={}; show('intro'); });
+
+  $('share').addEventListener('click', async ()=>{
+    const data = { title:'¿Qué tipo de viajero sos?', text:`Me salió "${P[profile].plain}". Jugá y descubrí el tuyo:`, url:SITE };
+    if (navigator.share) { try { await navigator.share(data); } catch(e){} return; }
+    try { await navigator.clipboard.writeText(SITE); } catch(e){}
+    const t = $('toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 1800);
+  });
+})();
+</script>
+</body>
+</html>
